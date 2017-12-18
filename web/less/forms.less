@@ -1,0 +1,233 @@
+/*******************************************/
+/*                 FORMS                   */
+/*******************************************/
+
+/***** FIELDSET *****/
+
+fieldset {
+
+}
+
+/* Legend */
+
+/* Label */
+
+/***** LABEL *****/
+.checkboxInputLabel {
+    display: inline-block;
+    min-width: 200px;
+    white-space: nowrap;
+}
+
+
+/**** SELECT *****/
+/* * html select { font-size: @normal-font-size; }
+select {
+    background-color: @input-background-color;
+    border: @input-border;	
+    .border-radius(@input-border-radius 0px 0px @input-border-radius);
+
+    font-family: @normal-font-family;
+    font-size: @normal-font-size;
+    line-height: @normal-line-height;
+    color: @input-font-color;
+}
+
+select:hover { border: @input-border-hover; }
+select:focus:hover, select:focus { border: @input-border-focus; }*/
+
+
+/***** INPUT *****/
+
+/* Global */
+* html input { font-size: @normal-font-size; }
+input {
+	font-family: @normal-font-family;
+    font-size: @normal-font-size;
+    line-height: @normal-line-height;
+    color: @input-font-color;
+    margin: 2px;
+}
+
+/* Size */
+input.size2 {
+    width: 38px;
+    padding-left: 4px;
+}
+
+input.size3 {
+    width: 57px;
+    padding-left: 4px;
+}
+
+input.size4 {
+    width: 57px;
+    padding-left: 4px;
+}
+
+/* Checkbox */
+input[type="checkbox"] {
+    margin: 2px;
+    margin-right: 7px;
+}
+
+/* File */
+input[type="file"] { font-size: @very-small-font-size; }
+
+/* Others */
+input[type="date"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="email"],
+input[type="file"],
+input[type="month"],
+input[type="number"], 
+input[type="password"],
+input[type="search"],
+input[type="tel"],
+input[type="text"],
+input[type="time"],
+input[type="url"],
+input[type="week"],
+.inputbox {
+    background-color: @input-background-color;
+    border: @input-border;
+    .border-radius(@input-border-radius);
+}
+
+input[type="date"]:hover,
+input[type="datetime"]:hover,
+input[type="datetime-local"]:hover,
+input[type="email"]:hover,
+input[type="file"]:hover,
+input[type="month"]:hover,
+input[type="number"]:hover, 
+input[type="password"]:hover,
+input[type="search"]:hover,
+input[type="tel"]:hover,
+input[type="text"]:hover,
+input[type="time"]:hover,
+input[type="url"]:hover,
+input[type="week"]:hover,
+.inputbox:hover {
+  border: @input-border-hover;
+}
+
+input[type="date"]:focus:hover,           input[type="date"]:focus,
+input[type="datetime"]:focus:hover,       input[type="datetime"]:focus,
+input[type="datetime-local"]:focus:hover, input[type="datetime-local"]:focus,
+input[type="email"]:focus:hover,          input[type="email"]:focus,
+input[type="file"]:focus:hover,           input[type="file"]:focus,
+input[type="month"]:focus:hover,          input[type="month"]:focus,
+input[type="number"]:focus:hover,         input[type="number"]:focus,
+input[type="password"]:focus:hover,       input[type="password"]:focus,
+input[type="search"]:focus:hover,         input[type="search"]:focus,
+input[type="tel"]:focus:hover,            input[type="tel"]:focus,
+input[type="text"]:focus:hover,           input[type="text"]:focus,
+input[type="time"]:focus:hover,           input[type="time"]:focus,
+input[type="url"]:focus:hover,            input[type="url"]:focus,
+input[type="week"]:focus:hover,           input[type="week"]:focus,
+.inputbox:focus:hover,                    .inputbox:focus {
+  border: @input-border-focus;
+}
+
+
+/***** TEXTAREA *****/
+textarea {
+    .border-radius(@input-border-radius);
+    border: @input-border;
+    padding: 1px 5px;
+
+    font-family: @normal-font-family;
+    font-size: @normal-font-size;
+    line-height: @normal-line-height;
+    color: @input-font-color;
+}
+textarea:hover { border: @input-border-hover !important; }
+textarea:focus:hover, textarea:focus { border: @input-border-focus !important; }
+
+#textarea_content {
+    textarea, textarea:hover, textarea:focus:hover, textarea:focus {
+        border: 0px !important;
+        padding: 0px;
+    }
+}
+
+
+
+/*******************************************/
+/*                BUTTONS                  */
+/*******************************************/
+
+
+/***** ALL *****/
+input[type="button"], input[type="submit"], input[type="reset"],
+input.button, a.button,
+input[type="button"]:hover, input[type="submit"]:hover, input[type="reset"]:hover,
+input.button:hover, a.button:hover {
+    background-image: none;
+    border-image: none;
+    border-radius: 4px 4px 4px 4px;
+    border-width: 1px;
+    border-style: solid;
+    margin: 0px;
+    padding: 4px 6px;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    height: auto;
+    width: auto;
+    overflow: visible;
+    vertical-align: middle;
+
+    font-family: @normal-font-family;
+    font-size: @small-font-size;
+    line-height: @normal-line-height;
+
+    text-shadow: @button-text-shadow;
+    box-shadow: @button-box-shadow;
+    text-decoration: none;
+}
+
+.sectionHeader {
+    input[type="button"], input[type="submit"], input[type="reset"],
+    input.button, a.button,
+    input[type="button"]:hover, input[type="submit"]:hover, input[type="reset"]:hover,
+    input.button:hover, a.button:hover {
+        float: right;
+        font-size: 0.73em;
+        padding: 2px 6px;
+        margin-left: 3px;
+    }
+}
+
+/***** NORMAL *****/
+input[type="button"], input[type="reset"],
+input.button, a.button {
+    background-color: @button-normal-background-color;
+    color: @button-normal-font-color !important;
+    border-color: @button-normal-border-color;
+}
+
+input[type="button"]:hover, input[type="reset"]:hover,
+input.button:hover, a.button:hover {
+    background-color: @button-normal-hover-background-color;
+    color: @button-normal-hover-font-color !important;
+    border-color: @button-normal-hover-border-color;
+}
+
+/***** IMPORTANT *****/
+input[type="submit"],
+input.button.mainoption, a.button.mainoption {
+    background-color: @button-important-background-color;
+    color: @button-important-font-color !important;
+    border-color: @button-important-border-color;
+}
+
+input[type="submit"]:hover,
+input.button.mainoption:hover, a.button.mainoption:hover {
+    background-color: @button-important-hover-background-color;
+    color: @button-important-hover-font-color !important;
+    border-color: @button-important-hover-border-color;
+}

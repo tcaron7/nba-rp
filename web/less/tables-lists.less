@@ -1,0 +1,99 @@
+/*******************************************/
+/*             TABLES & LISTS              */
+/*******************************************/
+
+
+/***** TABLES *****/
+
+/* Global */
+* html table { font-size: @normal-font-size; }
+
+table {
+    border: @table-border;
+    border-collapse: collapse;
+    .border-radius(@table-border-radius);
+    background-color: @table-background-color;
+    
+    th, td {
+        padding: 3px;   
+    }
+    
+    thead th.tableHeader {
+        background-color: #5f6a78;
+        color: white;
+        font-weight: bold;
+    }
+    
+    thead th {
+        background-color: @th-background-color;
+        border-bottom: @th-border-bottom;
+        border-left: @th-border-sides;
+        border-right: @th-border-sides;
+
+        color: @th-font-color;
+        font-family: @th-font-family;
+        font-size: @th-font-size;
+        font-weight: @th-font-weight;
+        font-style: @th-font-style;
+        font-variant: @th-font-variant;
+        
+        a, a:link, a:active, a:visited {
+            color: @th-link-font-color;
+            text-decoration: @link-text-decoration;
+        }
+        
+        a:hover {
+            color: @th-link-hover-font-color;
+            text-decoration: @link-hover-text-decoration;
+        }
+
+    }
+   
+   tbody {
+        td {
+            border-bottom: @td-border-bottom;
+            border-left: @td-border-sides;
+            border-right: @td-border-sides;
+            font-color: @td-font-color;
+            
+        }
+        tr:last-child td { border-bottom-width: 0px; }
+        
+        tr:nth-child(even) { background-color: @td-background-color-1; }
+        tr:nth-child(odd) { background-color: @td-background-color-2; }
+   }
+}
+
+/* Draft Table */
+table.draftTable {
+    display: inline-block;
+    width: 492px;
+    overflow: hidden;
+    
+    td {
+        height: 42px;
+    }
+    
+    .pick {}
+    .team {}
+    .player {}
+    .position {}
+    .formation {}
+    .nationality {}
+}
+
+/* Standing Table */
+table.standingTable {
+
+    .team {
+        width: 200px;
+    }
+    
+    tr.rankHeight td {
+        border-bottom-width: 4px;
+    }
+}
+
+/***** LISTES *****/
+
+/* Linklist */

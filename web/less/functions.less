@@ -1,0 +1,27 @@
+/*******************************************/
+/*                FUNCTIONS                */
+/*******************************************/
+
+.box-shadow {
+    box-shadow: 0px 0px 5px #595959;
+        -moz-box-shadow: 0px 0px 5px #595959;
+        -o-box-shadow: 0px 0px 5px #595959;
+        -htm-box-shadow: 0px 0px 5px #595959;
+        -webkit-box-shadow: 0px 0px 5px #595959;
+}
+
+.border-radius(@radius: 5px) {
+    border-radius: @radius;
+        -moz-border-radius: @radius;
+        -webkit-border-radius: @radius;
+}
+
+.linar-gradient(@direction, @color1, @color2) {
+    background-color: @color1;
+    
+    background-image: -webkit-gradient(linear, left top, left bottom, from(@color1), to(@color2));
+    background-image:      -o-linear-gradient(@direction, @color1, @color2);
+    background-image:         linear-gradient(@direction, @color1, @color2);
+    background-image: -webkit-linear-gradient(@direction, @color1, @color2);
+    background-image:    -moz-linear-gradient(@direction, @color1, @color2);
+}

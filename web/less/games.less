@@ -1,0 +1,122 @@
+/*******************************************/
+/*                  GAMES                  */
+/*******************************************/
+
+section.scoreboard {
+    .gamestrip {
+        display: flex;
+        flex-wrap: wrap;
+        vertical-align: top;
+        padding: 4px;
+    }
+      
+    .tile {
+        background-color: #fff;
+        border: 1px solid #c8c7cc;
+        
+        display: block;
+        float: left;
+        height: 101px;
+        width: 94px;
+        padding: 6px 5px 9px;
+        margin: 2px;
+        
+        text-align: center;
+        color: #767676;
+        
+        .visitor, .home {
+            font-size: 11px;
+        }
+    }
+    
+    .tile.final {
+        .clock {
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 2px;
+            text-transform: uppercase;
+            color: #006bb6;
+        }
+        
+        .score {
+            color: #767676;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .score.win {
+            color: #006bb6;
+        }
+        
+        .visitor, .home {
+            display: flex;
+            flex-wrap: wrap;
+            vertical-align: top;
+            height: 39px;
+            
+            span { margin-left: 12px; }
+            .teamBox { margin-left: 10px; }
+        }
+        
+        .visitor {
+            border-bottom: 1px solid #c8c7cc;
+        }
+        
+        .home {
+            margin-top: 5px;   
+        }
+    }
+    
+    .tile.final:hover {
+        text-decoration: none;
+        background-color: darken(#fff, 10%);
+    }
+    
+    .tile.futur {
+        .clock, .score {
+            display: none;
+        }
+        
+        .matchup {
+            border-bottom: 1px solid #c8c7cc;
+            height: 47px;
+            
+            .visitor, .home {
+                height: 47px;
+            }
+            
+            .visitor {
+                float: left;
+                width: 47px;
+                z-index: 3;
+            }
+            
+            .home {
+                border-left: 1px solid #c8c7cc;
+                float: right;
+                width: 46px;
+                position: relative;
+                top: -20px;
+            }
+                
+            .vs {
+                background-color: #fff;
+                left: -22.5px;;
+                display: inline;
+                position: relative;
+                text-align: left;
+                top: 16px;
+                width: 94px;
+                color: #323232;
+                z-index: 2;
+            }
+        }
+    
+        .play {
+            display: block;
+            font-size: 12px;
+        }
+        .play a::before { content: ' - '; }
+        .play a::after { content: ' - '; }
+        
+    }
+}

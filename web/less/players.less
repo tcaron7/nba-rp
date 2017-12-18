@@ -1,0 +1,42 @@
+/*******************************************/
+/*                 PLAYERS                 */
+/*******************************************/
+
+/* Player List */
+section.playersList {
+    div.letterList {
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        border-bottom-color: #B6B6B4;
+        margin-top: 15px;
+        padding-bottom: 30px;
+        
+        div.letter {
+            color: #919191;
+            font-family: "Oswald", sans-serif;
+            font-size: 32px;
+            font-weight: bold;
+            
+            float: left;
+            width: 50px;
+            padding-left: 15px;
+            padding-right: 15px;
+            display: inline-block;
+        }
+        
+        div.list {
+            display: flex;
+            flex-direction: column;
+            flex-flow: row wrap;
+            
+            span {
+                display: block;
+                width: 303px;
+            }
+        }
+    }
+    
+    div.letterList:last-child {
+        border-width: 0px;   
+    }
+}

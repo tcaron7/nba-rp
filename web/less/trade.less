@@ -1,0 +1,82 @@
+/*******************************************/
+/*                 TRADE                   */
+/*******************************************/
+
+#tradingTeams form {
+    > .sectionHeader {
+        input, input:hover {
+            float: right;
+            font-size: 0.6em;
+            font-weight: bold;
+        }
+    }
+    
+    > .sectionBody {
+        display: flex;
+        flex-wrap: wrap;
+        vertical-align: top;
+    }
+}
+
+.tradingTeam {
+    display: none;
+    visibility: none;
+    
+    width: 475px;
+    height: 1200px;
+    white-space: nowrap;
+    margin: 7px;
+    
+    background-color: #f2f2f2;
+    border-bottom: 5px solid #005f9f;
+    box-shadow: 0 0 5px #666;
+
+    .header {
+        background-color: #fff;
+        border-bottom: 1px solid #dcdfe2;
+        font-size: 22px;
+        font-weight: bold;
+        height: 29px;
+        line-height: 30px;
+        padding: 8px 10px 8px 30px;
+        
+        text-transform: uppercase;
+        text-align: center;
+    }
+    
+    .body {
+        padding: 0px 20px ;
+        
+        .subheader {
+            font-weight: bold;
+            padding: 10px 0px 7px 0px;
+        }
+        table + .subheader { padding-top: 25px; }
+        
+        table {
+            margin: 0px;
+            width: 100%;
+            text-align: center;
+            
+            .tradedPlayerName {
+                white-space: normal;
+                text-align: left;
+            }
+            td.tradedPlayerName { font-style: italic; }
+        }
+        
+        input.moreDrafts {
+            display: block;
+            width: 100%;
+            text-align: center;
+            margin-top: 10px;
+        }
+    }
+
+    tr.receivingTeamSelect td {
+        text-align: left;
+        select { min-width: 150px; }
+    }
+
+}
+
