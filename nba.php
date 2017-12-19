@@ -26,10 +26,10 @@
 		{
 			$title = 'Accueil NBA';
 		}
-        else if ($_GET['section'] == 'play')
-        {
-            $title = 'Fill NBA Games';
-        }
+        	else if ($_GET['section'] == 'play')
+        	{
+            		$title = 'Fill NBA Games';
+        	}
 		else if ($_GET['section'] == 'season_view' and isset($_GET['year']))
 		{
 			$title = 'NBA Saison';
@@ -66,47 +66,47 @@
 		{
 			$title = 'NBA Prospects Ranking';
 		}
-        else if ($_GET['section'] == 'add_prospect')
+		else if ($_GET['section'] == 'add_prospect')
 		{
 			$title = 'Add Players';
 		}
-        else if ($_GET['section'] == 'trade')
+        	else if ($_GET['section'] == 'trade')
 		{
 			$title = 'Trade';
 		}
-        else if ($_GET['section'] == 'signature')
+        	else if ($_GET['section'] == 'signature')
 		{
 			$title = 'Signature';
 		}
-        else if ($_GET['section'] == 'sign_player' or $_GET['section'] == 'sign_rookie')
+        	else if ($_GET['section'] == 'sign_player' or $_GET['section'] == 'sign_rookie')
 		{
 			$title = 'Sign Player';
 		}
-        else if ($_GET['section'] == 'lottery')
+        	else if ($_GET['section'] == 'lottery')
 		{
 			$title = 'Draft Lottery';
 		}
-        else if ($_GET['section'] == 'draft_subscription')
+        	else if ($_GET['section'] == 'draft_subscription')
 		{
 			$title = 'Draft Prospect Subscription';
 		}
-        else if ($_GET['section'] == 'draft' || $_GET['section'] == 'select_prospect')
+        	else if ($_GET['section'] == 'draft' || $_GET['section'] == 'select_prospect')
 		{
 			$title = 'NBA Draft';
 		}
-        else if ($_GET['section'] == 'season_transition')
+        	else if ($_GET['section'] == 'season_transition')
 		{
 			$title = 'NBA Season Transition';
 		}
-        else if ($_GET['section'] == 'players_option')
+        	else if ($_GET['section'] == 'players_option')
 		{
 			$title = 'NBA Activate option';
 		}
-        else if ($_GET['section'] == 'restricted_players_option')
+        	else if ($_GET['section'] == 'restricted_players_option')
 		{
 			$title = 'NBA Activate restricted player option';
 		}
-        else if ( ($_GET['section'] == 'injuryDisplay') || ($_GET['section'] == 'transactionDisplay') )
+        	else if ( ($_GET['section'] == 'injuryDisplay') || ($_GET['section'] == 'transactionDisplay') )
 		{
 			$title = 'NBA News';
 		}
@@ -132,7 +132,7 @@
 			include_once('model/connexionSql.php');
 			
 			// Classes
-            include_once('controller/utils/date/Date.class.php');
+            		include_once('controller/utils/date/Date.class.php');
 
 			include_once('controller/person/Person.class.php');
 			include_once('controller/person/player/Player.class.php');
@@ -143,19 +143,19 @@
 			include_once('controller/standing/Standing.class.php');
 			include_once('controller/stat/StatPlayer.class.php');
 			include_once('controller/stat/StatTeam.class.php');
-            include_once('controller/stat/StatsGame.class.php');
+            		include_once('controller/stat/StatsGame.class.php');
 
-            include_once('controller/transaction/Transaction.class.php');
+            		include_once('controller/transaction/Transaction.class.php');
 			include_once('controller/transaction/trade/Trade.class.php');
 			include_once('controller/transaction/trade/TradeElement.class.php');
-            include_once('controller/transaction/trade/TradeElementPlayer.class.php');
-            include_once('controller/transaction/trade/TradeElementDraftPick.class.php');
+            		include_once('controller/transaction/trade/TradeElementPlayer.class.php');
+            		include_once('controller/transaction/trade/TradeElementDraftPick.class.php');
 			include_once('controller/transaction/signature/Signature.class.php');
 			include_once('controller/transaction/signature/freeAgent/SignatureFreeAgent.class.php');
-            include_once('controller/transaction/signature/prospect/SignatureProspect.class.php');
+            		include_once('controller/transaction/signature/prospect/SignatureProspect.class.php');
 			include_once('controller/draft/DraftPick.class.php');
 			include_once('controller/injury/Injury.class.php');
-            include_once('controller/award/Award.class.php');
+            		include_once('controller/award/Award.class.php');
 			
             
             
