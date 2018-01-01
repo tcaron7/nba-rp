@@ -42,9 +42,9 @@ class Team
 		
 		else if ($id == 0) {
             $this->id             = 0;
-			$this->city           = '';
-			$this->name           = '';
-            $this->abbreviation   = '';
+			$this->city           = 'Total';
+			$this->name           = 'Total';
+            $this->abbreviation   = 'ALL';
 			$this->conference     = '';
             $this->division       = '';
 			$this->mainColor      = '';

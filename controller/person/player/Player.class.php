@@ -182,7 +182,6 @@ class Player extends Person
 		$stat;
         $seasons = null;
 		$seasons = getSeasonsPlayedByPlayers($this->getId());
-		
 		$idx = 0;
         if($seasons!=null)
         {
@@ -190,31 +189,42 @@ class Player extends Person
             {
                 $year = $season->getYear();
 				$teams = getTeamsPlayedByPlayersInASeason($this->getId(),$year);
-				
-				foreach($teams as $team)
-				{
-					$seasonAndTeam['season'] = $year;
-					$seasonAndTeam['teamId'] = $team->getId();
-					$stat = new StatPlayer($this->getId(), $seasonAndTeam, null, null);
 
-					$id = $stat->getId();
-					
-					if (isset($id)) {
-					$idx++;
-					$this->stats[$idx] = $stat;
+				$seasonAndTeam['season'] = $year;
+				$seasonAndTeam['teamId'] = 0;
+				$stat = new StatPlayer($this->getId(), $seasonAndTeam, null, null);
+				$this->stats[$year] = $stat;
+				
+				if(sizeof($teams) > 1)
+				{
+					$this->stats[$year]->setTeam(0);
+					foreach($teams as $team)
+					{
+						$seasonAndTeam['season'] = $year;
+						$seasonAndTeam['teamId'] = $team->getId();
+						$stat = new StatPlayer($this->getId(), $seasonAndTeam, null, null);
+
+						$id = $stat->getId();
+						
+						if (isset($id)) {
+							
+						$idx++;
+
+						$this->stats[$year . '-' . $team->getId()] = $stat;
+						}
 					}
 				}
             }
         }
-		$currentYear = getCurrentSeason();
-		$seasonAndTeam['season'] = $currentYear;
-		$seasonAndTeam['teamId'] = 0;
-		$stat = new StatPlayer($this->getId(), $seasonAndTeam, null, null);
-		$id = $stat->getId();
-		if (isset($id))
-		{
-			$this->stats[$currentYear] = $stat;
-		}
+		// $currentYear = getCurrentSeason();
+		// $seasonAndTeam['season'] = $currentYear;
+		// $seasonAndTeam['teamId'] = 0;
+		// $stat = new StatPlayer($this->getId(), $seasonAndTeam, null, null);
+		// $id = $stat->getId();
+		// if (isset($id))
+		// {
+			// $this->stats[$currentYear] = $stat;
+		// }
 		return $this->stats;
 	}
 	
@@ -245,7 +255,6 @@ class Player extends Person
 	public function getRoughStats()
 	{
 		$currentSeason = getCurrentSeason();
-		
 		if(isset($this->getStats()[$currentSeason]) && ($this->getStats()[$currentSeason]->getGames()>0))
 		{
 			$games = $this->getStats()[$currentSeason]->getGames();
@@ -266,7 +275,6 @@ class Player extends Person
 			$roughStats['rebounds'] = 0;
 			$roughStats['assists'] = 0;
 		}
-		
 		return $roughStats;
 	}
 	

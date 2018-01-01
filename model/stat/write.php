@@ -1,6 +1,77 @@
 <?php
 
 /**
+  * Update the stats of a player in database
+  */
+function updateStatPlayer($statsGame)
+{
+	global $db;
+	$request;
+		
+	foreach($statsGame->getTeamsStats() as $teamIndex => $statsTeam)
+	{
+		foreach($statsTeam as $statsPlayer)
+		{
+			$teamId = $statsGame->getTeamsId()[$teamIndex];
+			if($statsPlayer->getMinutes() != 0)
+			{
+				// Insert player stat
+				$request = $db->prepare('
+					UPDATE statplayer
+					SET
+						games 				= games + 1,
+						minutes 			= minutes 				+ :minutes,
+						points 				= points  				+ :points,
+						freeThrowsMade 		= freeThrowsMade  		+ :freeThrowsMade,
+						freeThrowsAttempt 	= freeThrowsAttempt  	+ :freeThrowsAttempt,
+						twoPointsMade 		= twoPointsMade  		+ :twoPointsMade,
+						twoPointsAttempt 	= twoPointsAttempt  	+ :twoPointsAttempt,
+						threePointsMade 	= threePointsMade		+ :threePointsMade,
+						threePointsAttempt	= threePointsAttempt	+ :threePointsAttempt,
+						offensiveRebounds 	= offensiveRebounds  	+ :offensiveRebounds,
+						defensiveRebounds 	= defensiveRebounds  	+ :defensiveRebounds,
+						rebounds 			= rebounds  			+ :rebounds,
+						assists 			= assists  				+ :assists,
+						turnovers 			= turnovers  			+ :turnovers,
+						steals 				= steals  				+ :steals,
+						blocks 				= blocks  				+ :blocks,
+						evaluation 			= evaluation  			+ :evaluation
+					WHERE
+						playerId = :playerId AND
+						season = :season AND
+						teamId = :teamId
+				');
+				
+				$request->bindValue(':minutes',    			$statsPlayer->getMinutes(),  			PDO::PARAM_INT);
+				$request->bindValue(':points',     			$statsPlayer->getPoints(),    			PDO::PARAM_INT);
+				$request->bindValue(':freeThrowsMade',    	$statsPlayer->getFreeThrowsMade(),		PDO::PARAM_INT);
+				$request->bindValue(':freeThrowsAttempt',	$statsPlayer->getFreeThrowsAttempt(),	PDO::PARAM_INT);
+				$request->bindValue(':twoPointsMade',    	$statsPlayer->getTwoPointsMade(),		PDO::PARAM_INT);
+				$request->bindValue(':twoPointsAttempt',    $statsPlayer->getTwoPointsAttempt(),		PDO::PARAM_INT);
+				$request->bindValue(':threePointsMade',    	$statsPlayer->getThreePointsAttempt(),	PDO::PARAM_INT);
+				$request->bindValue(':threePointsAttempt',	$statsPlayer->getPoints(),    			PDO::PARAM_INT);
+				$request->bindValue(':offensiveRebounds',   $statsPlayer->getOffensiveRebounds(),	PDO::PARAM_INT);
+				$request->bindValue(':defensiveRebounds',  	$statsPlayer->getDefensiveRebounds(),  	PDO::PARAM_INT);
+				$request->bindValue(':rebounds',    		$statsPlayer->getRebounds(),  			PDO::PARAM_INT);
+				$request->bindValue(':assists',     		$statsPlayer->getAssists(),    			PDO::PARAM_INT);
+				$request->bindValue(':turnovers',    		$statsPlayer->getTurnovers(),  			PDO::PARAM_INT);
+				$request->bindValue(':steals',     			$statsPlayer->getSteals(),    			PDO::PARAM_INT);
+				$request->bindValue(':blocks',    			$statsPlayer->getBlocks(),  				PDO::PARAM_INT);
+				$request->bindValue(':evaluation',     		$statsPlayer->getEvaluation(),    		PDO::PARAM_INT);
+				
+				$request->bindValue(':playerId',    $statsPlayer->getPlayerId(),  		PDO::PARAM_INT);
+				$request->bindValue(':season',      getCurrentSeason(),    				PDO::PARAM_INT);
+				$request->bindValue(':teamId',      $teamId,    						PDO::PARAM_INT);
+				$request->execute();
+				$statId = $db->lastInsertId();
+
+				$request->closeCursor();
+			}
+		}
+	}
+}
+
+/**
   * Inserts the stats of a player in database
   */
 function insertStatPlayer($statPlayer)

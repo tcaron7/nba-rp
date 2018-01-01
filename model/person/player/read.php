@@ -307,9 +307,9 @@ function getAllPlayersWhoPlayedInTheCurrentSeason()
 		SELECT * 
 		FROM player 
 		LEFT JOIN person ON player.personId = person.personId 
-		LEFT JOIN statsgame ON player.playerId = statsgame.playerId 
-		WHERE statsgame.season = :season AND statsgame.playerId > 0
-        GROUP BY statsgame.playerId');
+		LEFT JOIN statplayer ON player.playerId = statplayer.playerId 
+		WHERE statplayer.season = :season AND statplayer.games = max(statplayer.games)
+        GROUP BY statplayer.playerId');
 		
 	$request->bindParam(':season', $season, PDO::PARAM_INT);	
 	$request->execute();
@@ -327,21 +327,93 @@ function getAllPlayersWhoPlayedInTheCurrentSeason()
 /**
   * Returns an array of all the players who played at least one game in the current season
   */
-function getPlayersForTopStatsDisplay($period, $playerType)
+function getPlayersForTopStatsDisplay($period, $playerType, $stats)
 {
     global $db;
 	$request;
     $players;
 	$inTeamPlayers = null;
     
-    $sql = '
-        SELECT * 
-		FROM player 
-		LEFT JOIN person ON player.personId = person.personId 
-		LEFT JOIN statsgame ON player.playerId = statsgame.playerId 
-        LEFT JOIN game ON statsgame.gameId = game.gameId 
-		WHERE statsgame.season = :season AND statsgame.playerId > 0
-    ';
+	if($period == 'Season')
+	{
+		$sql = '
+			SELECT 
+				player.playerId as playerId,  
+				sum(statplayer.games) as games, 
+				sum(statplayer.minutes)/sum(statplayer.games) as minutes, 
+				sum(statplayer.points)/sum(statplayer.games) as points, 
+				100*sum(statplayer.freeThrowsMade)/sum(statplayer.freeThrowsAttempt) as FTPercentage,
+				100*sum(statplayer.twoPointsMade + statplayer.threePointsMade)/sum(statplayer.twoPointsAttempt + statplayer.threePointsAttempt) as FGPercentage,
+				100*sum(statplayer.threePointsMade)/sum(statplayer.threePointsAttempt) as 3FGPercentage ,
+				sum(statplayer.offensiveRebounds)/sum(statplayer.games) as offRebounds,
+				sum(statplayer.defensiveRebounds)/sum(statplayer.games) as defRebounds,
+				sum(statplayer.rebounds)/sum(statplayer.games) as rebounds,
+				sum(statplayer.assists)/sum(statplayer.games) as assists,
+				sum(statplayer.turnovers)/sum(statplayer.games) as turnovers,
+				sum(statplayer.steals)/sum(statplayer.games) as steals,
+				sum(statplayer.blocks)/sum(statplayer.games) as blocks,
+				sum(statplayer.evaluation)/sum(statplayer.games) as efficiency 
+			FROM player 
+			LEFT JOIN person ON player.personId = person.personId 
+			LEFT JOIN statplayer ON player.playerId = statplayer.playerId 
+			WHERE statplayer.season = :season
+		';
+	}
+	else
+	{
+		$sql = '
+			SELECT 				
+				player.playerId as playerId, 
+				count(*) as games, 
+				sum(statsgame.minutes)/count(*) as minutes, 
+				sum(statsgame.points)/count(*) as points, 
+				100*sum(statsgame.freeThrowsMade)/sum(statsgame.freeThrowsAttempt) as FTPercentage,
+				100*sum(statsgame.twoPointsMade + statsgame.threePointsMade)/sum(statsgame.twoPointsAttempt + statsgame.threePointsAttempt) as FGPercentage,
+				100*sum(statsgame.threePointsMade)/sum(statsgame.threePointsAttempt) as 3FGPercentage,
+				sum(statsgame.offensiveRebounds)/count(*) as offRebounds,
+				sum(statsgame.defensiveRebounds)/count(*) as defRebounds,
+				sum(statsgame.rebounds)/count(*) as rebounds,
+				sum(statsgame.assists)/count(*) as assists,
+				sum(statsgame.turnovers)/count(*) as turnovers,
+				sum(statsgame.steals)/count(*) as steals,
+				sum(statsgame.blocks)/count(*) as blocks,
+				sum(statsgame.evaluation)/count(*) as efficiency
+			FROM player 
+			LEFT JOIN person ON player.personId = person.personId 
+			LEFT JOIN statsgame ON player.playerId = statsgame.playerId 
+			LEFT JOIN game ON statsgame.gameId = game.gameId 
+			WHERE statsgame.season = :season AND statsgame.playerId > 0
+		';
+		    
+		if($period == 'October')
+		{
+			$sql .= ' AND month(game.date) = 10 ';
+		}
+		elseif($period == 'November')
+		{
+			$sql .= ' AND month(game.date) = 11 ';
+		}
+		elseif($period == 'December')
+		{
+			$sql .= ' AND month(game.date) = 12 ';
+		}    
+		elseif($period == 'January')
+		{
+			$sql .= ' AND month(game.date) = 1 ';
+		}
+		elseif($period == 'February')
+		{
+			$sql .= ' AND month(game.date) = 2 ';
+		}
+		elseif($period == 'March')
+		{
+			$sql .= ' AND month(game.date) = 3 ';
+		}
+		elseif($period == 'April')
+		{
+			$sql .= ' AND month(game.date) = 4 ';
+		}
+	}
 	
     if($playerType == 'Rookie')
     {
@@ -352,37 +424,16 @@ function getPlayersForTopStatsDisplay($period, $playerType)
         $sql .= ' AND player.experience = 1 ';
     }
     
-    if($period == 'October')
-    {
-        $sql .= ' AND month(game.date) = 10 ';
-    }
-    elseif($period == 'November')
-    {
-        $sql .= ' AND month(game.date) = 11 ';
-    }
-    elseif($period == 'December')
-    {
-        $sql .= ' AND month(game.date) = 12 ';
-    }    
-    elseif($period == 'January')
-    {
-        $sql .= ' AND month(game.date) = 1 ';
-    }
-    elseif($period == 'February')
-    {
-        $sql .= ' AND month(game.date) = 2 ';
-    }
-    elseif($period == 'March')
-    {
-        $sql .= ' AND month(game.date) = 3 ';
-    }
-    elseif($period == 'April')
-    {
-        $sql .= ' AND month(game.date) = 4 ';
-    }
-    
-    $sql .= 'GROUP BY statsgame.playerId';
-    
+	if($period == 'Season')
+	{
+		$sql .= 'GROUP BY statplayer.playerId ';
+	}
+	else
+	{
+		$sql .= 'GROUP BY statsgame.playerId ';
+	}	
+	$sql .= 'ORDER BY ' . $stats . ' DESC';
+	
 	$season = getCurrentSeason();
 	$request = $db->prepare($sql);
     

@@ -100,7 +100,6 @@ else if ($_GET['section'] == 'sign_rookie')
 {
     echo 'Rookie Contract';
     $rookiePlayer = new Player($_GET['id']);
-    var_dump($rookiePlayer);
     
     $valid = updateRookieContract($rookiePlayer);
 }

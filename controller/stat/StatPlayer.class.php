@@ -113,7 +113,14 @@ class StatPlayer
             {
 				$season = $seasonAndTeam['season'];
 				$teamId = $seasonAndTeam['teamId'];
-                $stats = getStatPlayerByIdAndSeasonAndTeamId($playerId, $season, $teamId);
+				if($teamId == 0)
+				{
+					$stats = getStatPlayerByIdAndSeason($playerId, $season);
+				}
+				else
+				{
+					$stats = getStatPlayerByIdAndSeasonAndTeamId($playerId, $season, $teamId);
+				}
                 if ( isset($stats['statsId']) )
                 {
                     $this->playerId           = $stats['playerId'];
@@ -462,6 +469,12 @@ class StatPlayer
 	/*    Functions     */
 	/********************/
     
+	public function setTeam($teamId)
+	{
+		$team = new Team($teamId);
+		$this->team = $team;
+	}
+	
     public function getFreeThrowsPercentage()
 	{
         if($this->freeThrowsAttempt>0)

@@ -5,7 +5,6 @@ if(empty($_POST))
 	$allTeams = getAllTeamsWithPlayersOrderByName();
     include_once('view/transaction/trade/formSelectTeams.php');
 	
-	// var_dump($allTeams);
 	include_once('view/transaction/trade/formTradeTeams.php');  
 }
 else

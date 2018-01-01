@@ -90,7 +90,6 @@
     {
         $award = new Award(null,$_POST);
 		
-        var_dump($award);
 		$valid = updateAward($award);
     }
     elseif(isset($_GET['award']))

@@ -262,9 +262,6 @@ function updateRookieContract($rookiePlayer)
     
     $rookieContract = $request->fetch();
     
-    var_dump($rookieContract);
-    var_dump($rookieContract['salary']);
-    
     $request = $db->prepare('
         UPDATE player
         SET

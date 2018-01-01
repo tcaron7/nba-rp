@@ -20,7 +20,6 @@ elseif (isset($_GET['team']) && $_GET['team'] == 'stats')
 	// $teamPlayersStats = getSeasonPlayersStatsOfATeam($team->getId(),getCurrentSeason());
 	$players = getAllPlayersOfTeam($team->getId());
 	$season = getCurrentSeason();
-	// var_dump($teamPlayersStats);
 	include('view/stat/displayTeamPlayersStats.php');
 	// include('view/team/displayTeamStats.php');
 }

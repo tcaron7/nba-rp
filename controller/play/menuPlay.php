@@ -82,6 +82,7 @@ else if($_GET['option'] == 'submitGame')
     $serializeStatsGame = file_get_contents('store');
     $statsGame = unserialize($serializeStatsGame);
     
+	updateStatPlayer($statsGame);
     insertStatsGame($statsGame);
     updateGameResult($statsGame);
 }

@@ -16,3 +16,12 @@ else
 {
     $playersType = 'All';
 }
+
+if(isset($_POST['stats']))
+{
+	$stats  = $_POST['stats'];
+}
+else
+{
+	$stats  = 'points';
+}
