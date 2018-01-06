@@ -500,10 +500,10 @@ function isStatPlayerDataExist($playerId, $currentSeason, $teamId)
     $request->bindValue(':season',      $currentSeason, PDO::PARAM_INT);
     $request->bindValue(':teamId',      $teamId,        PDO::PARAM_INT);
     $request->execute();
-    $statId = $db->lastInsertId();
+    $statId = $request->fetchAll();
 
     $request->closeCursor();
-    
+    //var_dump($statId);
     if($statId != NULL)
     {
         $isStatPlayerDataExist = true;

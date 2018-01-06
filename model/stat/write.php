@@ -18,6 +18,7 @@ function updateStatPlayer($statsGame)
 			{
                 if(isStatPlayerDataExist($statsPlayer->getPlayerId(), $currentSeason, $teamId))
                 {
+					//var_dump($statsPlayer->getPlayerId());
                     // Update player stat
                     $request = $db->prepare('
                         UPDATE statplayer
@@ -46,8 +47,9 @@ function updateStatPlayer($statsGame)
                         '
                     );
                 }
-                else
+                else if($statsPlayer->getPlayerId() != 0)
                 {
+					var_dump($statsPlayer->getPlayerId());
                     // Insert player stat
                     $request = $db->prepare('
                         INSERT INTO statplayer( 
@@ -73,26 +75,26 @@ function updateStatPlayer($statsGame)
                             evaluation
                         )
                         VALUES( 
-                            playerId            = :playerId,
-                            season              = :season,
-                            teamId              = :teamId,
-                            games 				= 1,
-                            minutes 			= :minutes,
-                            points 				= :points,
-                            freeThrowsMade 		= :freeThrowsMade,
-                            freeThrowsAttempt 	= :freeThrowsAttempt,
-                            twoPointsMade 		= :twoPointsMade,
-                            twoPointsAttempt 	= :twoPointsAttempt,
-                            threePointsMade 	= :threePointsMade,
-                            threePointsAttempt	= :threePointsAttempt,
-                            offensiveRebounds 	= :offensiveRebounds,
-                            defensiveRebounds 	= :defensiveRebounds,
-                            rebounds 			= :rebounds,
-                            assists 			= :assists,
-                            turnovers 			= :turnovers,
-                            steals 				= :steals,
-                            blocks 				= :blocks,
-                            evaluation 			= :evaluation
+                            :playerId,
+                            :season,
+                            :teamId,
+                            1,
+                            :minutes,
+                            :points,
+                            :freeThrowsMade,
+                            :freeThrowsAttempt,
+                            :twoPointsMade,
+                            :twoPointsAttempt,
+                            :threePointsMade,
+                            :threePointsAttempt,
+                            :offensiveRebounds,
+                            :defensiveRebounds,
+                            :rebounds,
+                            :assists,
+                            :turnovers,
+                            :steals,
+                            :blocks,
+                            :evaluation
                         )'
                     );
                 }
