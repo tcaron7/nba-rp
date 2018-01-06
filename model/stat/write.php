@@ -14,11 +14,11 @@ function updateStatPlayer($statsGame)
 		foreach($statsTeam as $statsPlayer)
 		{
 			$teamId = $statsGame->getTeamsId()[$teamIndex];
-			if($statsPlayer->getMinutes() != 0)
+			if( ($statsPlayer->getPlayerId() != 0) and ($statsPlayer->getMinutes() != 0) )
 			{
                 if(isStatPlayerDataExist($statsPlayer->getPlayerId(), $currentSeason, $teamId))
                 {
-					//var_dump($statsPlayer->getPlayerId());
+					var_dump($statsPlayer->getPlayerId());
                     // Update player stat
                     $request = $db->prepare('
                         UPDATE statplayer
@@ -47,7 +47,7 @@ function updateStatPlayer($statsGame)
                         '
                     );
                 }
-                else if($statsPlayer->getPlayerId() != 0)
+                else
                 {
 					var_dump($statsPlayer->getPlayerId());
                     // Insert player stat
