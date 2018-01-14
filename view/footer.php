@@ -20,7 +20,7 @@
 
 <div class="legal">
     <p>
-        Copyright © 2016 Thibault Caron.
+        Copyright &copy; 2016 Thibault Caron.
         All rights reserved.
         No portion of this website may be duplicated, redistributed or manipulated in any form.
     </p>
