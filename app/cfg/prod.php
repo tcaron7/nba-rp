@@ -11,4 +11,6 @@ $APP['db.options'] = array(
 );
 
 // Root folder
-$APP['path.root'] = __DIR__ . '/../../';
+$APP['path.root']     = __DIR__ . '/../../';
+$APP['path.sources']  = $APP['path.root'] . 'src/';
+$APP['path.entities'] = $APP['path.sources'] . 'entity/';

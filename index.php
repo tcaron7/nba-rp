@@ -136,39 +136,7 @@ require( __DIR__ . '/app/app.php' );
 		<div id="wrap">
 		
 			<?php
-			
-			/********************/
-			/*     Includes     */
-			/********************/
 
-			// Classes
-            		include_once('controller/utils/date/Date.class.php');
-
-			include_once('controller/person/Person.class.php');
-			include_once('controller/person/player/Player.class.php');
-			include_once('controller/person/prospect/Prospect.class.php');
-			include_once('controller/team/Team.class.php');
-			include_once('controller/game/Game.class.php');
-			include_once('controller/season/Season.class.php');
-			include_once('controller/standing/Standing.class.php');
-			include_once('controller/stat/StatPlayer.class.php');
-			include_once('controller/stat/StatTeam.class.php');
-            		include_once('controller/stat/StatsGame.class.php');
-
-            		include_once('controller/transaction/Transaction.class.php');
-			include_once('controller/transaction/trade/Trade.class.php');
-			include_once('controller/transaction/trade/TradeElement.class.php');
-            		include_once('controller/transaction/trade/TradeElementPlayer.class.php');
-            		include_once('controller/transaction/trade/TradeElementDraftPick.class.php');
-			include_once('controller/transaction/signature/Signature.class.php');
-			include_once('controller/transaction/signature/freeAgent/SignatureFreeAgent.class.php');
-            		include_once('controller/transaction/signature/prospect/SignatureProspect.class.php');
-			include_once('controller/draft/DraftPick.class.php');
-			include_once('controller/injury/Injury.class.php');
-            		include_once('controller/award/Award.class.php');
-			
-            
-            
 			/********************/
 			/*     Calculs     */
 			/********************/
