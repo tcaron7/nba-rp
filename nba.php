@@ -1,3 +1,16 @@
+<?php
+
+// Application var
+global $APP;
+
+// Configuration
+require( __DIR__ . '/app/cfg/dev.php' ); // prod.php
+
+// Load essentials
+require( __DIR__ . '/app/app.php' );
+
+?>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" >
@@ -127,10 +140,7 @@
 			/********************/
 			/*     Includes     */
 			/********************/
-			
-			// Connexion SQL
-			include_once('model/connexionSql.php');
-			
+
 			// Classes
             		include_once('controller/utils/date/Date.class.php');
 
