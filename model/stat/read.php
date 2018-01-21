@@ -476,3 +476,41 @@ function getSeasonPlayersStatsOfATeam($teamId, $season)
 	
     return $playersTeamStats;
 }
+
+/**
+  * Returns home and visitor teams stats of a given game
+  */
+function isStatPlayerDataExist($playerId, $currentSeason, $teamId)
+{
+	global $db;
+	//$request;
+    
+    // Update player stat
+    $request = $db->prepare('
+        SELECT statsId
+        FROM statplayer
+        WHERE
+            playerId = :playerId AND
+            season = :season AND
+            teamId = :teamId
+        '
+    );
+    
+    $request->bindValue(':playerId',    $playerId,     PDO::PARAM_INT);
+    $request->bindValue(':season',      $currentSeason, PDO::PARAM_INT);
+    $request->bindValue(':teamId',      $teamId,        PDO::PARAM_INT);
+    $request->execute();
+    $statId = $request->fetchAll();
+
+    $request->closeCursor();
+    //var_dump($statId);
+    if($statId != NULL)
+    {
+        $isStatPlayerDataExist = true;
+    }
+    else
+    {
+        $isStatPlayerDataExist = false;
+    }
+    return $isStatPlayerDataExist;
+}

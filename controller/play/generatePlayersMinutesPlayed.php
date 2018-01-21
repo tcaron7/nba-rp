@@ -6,8 +6,17 @@
         foreach($teamPlayers[$teamIndex] as $teamPlayer)
         {
             $playerStats   = $teamPlayer->getStats()[$season];
-            $playerGames   = $playerStats->getGames();
-            $playerMinutes = $playerStats->getMinutes();
+            if($playerStats != NULL)
+            {
+                $playerGames   = $playerStats->getGames();
+                $playerMinutes = $playerStats->getMinutes();
+            }
+            else
+            {
+                $playerGames   = 0;
+                $playerMinutes = 0;
+            }
+
             if($teamPlayer->getInjuryStatus() == 'Healthy')
             {
                 if($playerMinutes/$playerGames > 10)

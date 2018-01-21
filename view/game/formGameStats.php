@@ -56,20 +56,38 @@
                                 $currentSeason = getCurrentSeason();
                                 $minutes = $_POST[$gameId][$playerId]['minutes'];
                                 
-                                $preStats[$teamIndex][$playerId]['minutes']            = $minutes;
-                                $preStats[$teamIndex][$playerId]['ftm']                = round($minutes * ($player->getStats()[$currentSeason]->getFreeThrowsMade()     / max(1,$player->getStats()[$currentSeason]->getMinutes())));
-                                $preStats[$teamIndex][$playerId]['fta']                = round($minutes * ($player->getStats()[$currentSeason]->getFreeThrowsAttempt()  / max(1,$player->getStats()[$currentSeason]->getMinutes())));
-                                $preStats[$teamIndex][$playerId]['fgm']                = round($minutes * ($player->getStats()[$currentSeason]->getTwoPointsMade()      / max(1,$player->getStats()[$currentSeason]->getMinutes())));
-                                $preStats[$teamIndex][$playerId]['fga']                = round($minutes * ($player->getStats()[$currentSeason]->getTwoPointsAttempt()   / max(1,$player->getStats()[$currentSeason]->getMinutes())));
-                                $preStats[$teamIndex][$playerId]['3fgm']               = round($minutes * ($player->getStats()[$currentSeason]->getThreePointsMade()    / max(1,$player->getStats()[$currentSeason]->getMinutes())));
-                                $preStats[$teamIndex][$playerId]['3fga']               = round($minutes * ($player->getStats()[$currentSeason]->getThreePointsAttempt() / max(1,$player->getStats()[$currentSeason]->getMinutes())));
-                                $preStats[$teamIndex][$playerId]['offensive_boards']   = round($minutes * ($player->getStats()[$currentSeason]->getOffensiveRebounds()  / max(1,$player->getStats()[$currentSeason]->getMinutes())));
-                                $preStats[$teamIndex][$playerId]['defensive_boards']   = round($minutes * ($player->getStats()[$currentSeason]->getDefensiveRebounds()  / max(1,$player->getStats()[$currentSeason]->getMinutes())));
-                                $preStats[$teamIndex][$playerId]['assists']            = round($minutes * ($player->getStats()[$currentSeason]->getAssists()            / max(1,$player->getStats()[$currentSeason]->getMinutes())));
-                                $preStats[$teamIndex][$playerId]['turnovers']          = round($minutes * ($player->getStats()[$currentSeason]->getTurnovers()          / max(1,$player->getStats()[$currentSeason]->getMinutes())));
-                                $preStats[$teamIndex][$playerId]['steals']             = round($minutes * ($player->getStats()[$currentSeason]->getSteals()             / max(1,$player->getStats()[$currentSeason]->getMinutes())));
-                                $preStats[$teamIndex][$playerId]['blocks']             = round($minutes * ($player->getStats()[$currentSeason]->getBlocks()             / max(1,$player->getStats()[$currentSeason]->getMinutes())));
-                                
+                                if(isset($player->getStats()[$currentSeason]))
+                                {
+                                    $preStats[$teamIndex][$playerId]['minutes']            = $minutes;
+                                    $preStats[$teamIndex][$playerId]['ftm']                = round($minutes * ($player->getStats()[$currentSeason]->getFreeThrowsMade()     / max(1,$player->getStats()[$currentSeason]->getMinutes())));
+                                    $preStats[$teamIndex][$playerId]['fta']                = round($minutes * ($player->getStats()[$currentSeason]->getFreeThrowsAttempt()  / max(1,$player->getStats()[$currentSeason]->getMinutes())));
+                                    $preStats[$teamIndex][$playerId]['fgm']                = round($minutes * ($player->getStats()[$currentSeason]->getTwoPointsMade()      / max(1,$player->getStats()[$currentSeason]->getMinutes())));
+                                    $preStats[$teamIndex][$playerId]['fga']                = round($minutes * ($player->getStats()[$currentSeason]->getTwoPointsAttempt()   / max(1,$player->getStats()[$currentSeason]->getMinutes())));
+                                    $preStats[$teamIndex][$playerId]['3fgm']               = round($minutes * ($player->getStats()[$currentSeason]->getThreePointsMade()    / max(1,$player->getStats()[$currentSeason]->getMinutes())));
+                                    $preStats[$teamIndex][$playerId]['3fga']               = round($minutes * ($player->getStats()[$currentSeason]->getThreePointsAttempt() / max(1,$player->getStats()[$currentSeason]->getMinutes())));
+                                    $preStats[$teamIndex][$playerId]['offensive_boards']   = round($minutes * ($player->getStats()[$currentSeason]->getOffensiveRebounds()  / max(1,$player->getStats()[$currentSeason]->getMinutes())));
+                                    $preStats[$teamIndex][$playerId]['defensive_boards']   = round($minutes * ($player->getStats()[$currentSeason]->getDefensiveRebounds()  / max(1,$player->getStats()[$currentSeason]->getMinutes())));
+                                    $preStats[$teamIndex][$playerId]['assists']            = round($minutes * ($player->getStats()[$currentSeason]->getAssists()            / max(1,$player->getStats()[$currentSeason]->getMinutes())));
+                                    $preStats[$teamIndex][$playerId]['turnovers']          = round($minutes * ($player->getStats()[$currentSeason]->getTurnovers()          / max(1,$player->getStats()[$currentSeason]->getMinutes())));
+                                    $preStats[$teamIndex][$playerId]['steals']             = round($minutes * ($player->getStats()[$currentSeason]->getSteals()             / max(1,$player->getStats()[$currentSeason]->getMinutes())));
+                                    $preStats[$teamIndex][$playerId]['blocks']             = round($minutes * ($player->getStats()[$currentSeason]->getBlocks()             / max(1,$player->getStats()[$currentSeason]->getMinutes())));
+                                }
+                                else
+                                {
+                                    $preStats[$teamIndex][$playerId]['minutes']            = $minutes;
+                                    $preStats[$teamIndex][$playerId]['ftm']                = 0;
+                                    $preStats[$teamIndex][$playerId]['fta']                = 0;
+                                    $preStats[$teamIndex][$playerId]['fgm']                = 0;
+                                    $preStats[$teamIndex][$playerId]['fga']                = 0;
+                                    $preStats[$teamIndex][$playerId]['3fgm']               = 0;
+                                    $preStats[$teamIndex][$playerId]['3fga']               = 0;
+                                    $preStats[$teamIndex][$playerId]['offensive_boards']   = 0;
+                                    $preStats[$teamIndex][$playerId]['defensive_boards']   = 0;
+                                    $preStats[$teamIndex][$playerId]['assists']            = 0;
+                                    $preStats[$teamIndex][$playerId]['turnovers']          = 0;
+                                    $preStats[$teamIndex][$playerId]['steals']             = 0;
+                                    $preStats[$teamIndex][$playerId]['blocks']             = 0;
+                                }
                                 $preStats[$teamIndex]['total']['minutes']            = $preStats[$teamIndex]['total']['minutes'] + $preStats[$teamIndex][$playerId]['minutes'];
                                 $preStats[$teamIndex]['total']['ftm']                = $preStats[$teamIndex]['total']['ftm'] + $preStats[$teamIndex][$playerId]['ftm'];
                                 $preStats[$teamIndex]['total']['fta']                = $preStats[$teamIndex]['total']['fta'] + $preStats[$teamIndex][$playerId]['fta'];

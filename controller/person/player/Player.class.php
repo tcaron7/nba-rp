@@ -42,7 +42,7 @@ class Player extends Person
 			$player = getPlayerById($id);
 			parent::__construct($player['personId']);
 			$this->setId($player['playerId']);
-			// $this->setStats();
+			//$this->setStats();
 			$this->setInjuryStatus();
 			
 			$this->teamId         = $player['teamId'];
@@ -216,15 +216,6 @@ class Player extends Person
 				}
             }
         }
-		// $currentYear = getCurrentSeason();
-		// $seasonAndTeam['season'] = $currentYear;
-		// $seasonAndTeam['teamId'] = 0;
-		// $stat = new StatPlayer($this->getId(), $seasonAndTeam, null, null);
-		// $id = $stat->getId();
-		// if (isset($id))
-		// {
-			// $this->stats[$currentYear] = $stat;
-		// }
 		return $this->stats;
 	}
 	
