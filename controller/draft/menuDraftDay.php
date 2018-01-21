@@ -23,7 +23,7 @@ if($lotteryDone == 0)
         { 
     ?>
             <p>It is time to NBA Draft Lottery.</p>
-            <p>Follow <a href="nba.php?section=lottery">this link</a> to proceed the lottery.</p>
+            <p>Follow <a href="index.php?section=lottery">this link</a> to proceed the lottery.</p>
     <?php 
         } 
     ?>
@@ -42,11 +42,11 @@ else
             if(checkIfDraftHasStarted($year) == false)
             {
                 echo '<p>Underclassmen prospects will declare them eligible to the <?php echo $year;?> draft.</p>';
-                echo '<p>Follow <a href="nba.php?section=draft_subscription">this link</a> to complete the prospect list.</p>';
+                echo '<p>Follow <a href="index.php?section=draft_subscription">this link</a> to complete the prospect list.</p>';
             }
     ?>      
             <p>The <?php echo $year;?> NBA draft will begin.</p>
-            <p>Follow <a href="nba.php?section=draft">this link</a> to start the draft.</p>
+            <p>Follow <a href="index.php?section=draft">this link</a> to start the draft.</p>
     <?php 
         } 
     ?>

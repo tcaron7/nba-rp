@@ -214,7 +214,7 @@ require( __DIR__ . '/app/app.php' );
 			
 			if (!isset($_GET['section']) OR $_GET['section'] == 'index' OR $_GET['section'] == 'next_day')
 			{
-				include_once('controller/index.php');
+				include_once('controller/home.php');
 			}
             else if ($_GET['section'] == 'play')
 			{

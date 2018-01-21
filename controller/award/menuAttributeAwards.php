@@ -20,28 +20,28 @@
         
         if(!checkAwardAttribution($season, $month, 'Eastern Rookie of The Month'))
         {
-            echo '<a href="nba.php?section=awards&type=month&award=east_rookie">';
+            echo '<a href="index.php?section=awards&type=month&award=east_rookie">';
             echo 'Select Eastern Rookie of the month</br>';
             echo '</a>';
         }
         
         if(!checkAwardAttribution($season, $month, 'Western Rookie of The Month'))
         {
-            echo '<a href="nba.php?section=awards&type=month&award=west_rookie">';
+            echo '<a href="index.php?section=awards&type=month&award=west_rookie">';
             echo 'Select Western Rookie of the month</br>';
             echo '</a>';
         }
         
         if(!checkAwardAttribution($season, $month, 'Eastern Player of The Month'))
         {
-            echo '<a href="nba.php?section=awards&type=month&award=east_player">';
+            echo '<a href="index.php?section=awards&type=month&award=east_player">';
             echo 'Select Eastern Player of the month</br>';
             echo '</a>';
         }
         
         if(!checkAwardAttribution($season, $month, 'Western Player of The Month'))
         {
-            echo '<a href="nba.php?section=awards&type=month&award=west_player">';
+            echo '<a href="index.php?section=awards&type=month&award=west_player">';
             echo 'Select Western Player of the month</br>';
             echo '</a>';
         }        
@@ -53,35 +53,35 @@
         
         if(!checkAwardAttribution($season, $month, '6th Man of The Year'))
         {
-            echo '<a href="nba.php?section=awards&type=season&award=6thman">';
+            echo '<a href="index.php?section=awards&type=season&award=6thman">';
             echo 'Select 6th man</br>';
             echo '</a>';
         }
         
         if(!checkAwardAttribution($season, $month, 'MIP'))
         {
-            echo '<a href="nba.php?section=awards&type=season&award=mip">';
+            echo '<a href="index.php?section=awards&type=season&award=mip">';
             echo 'Select MIP</br>';
             echo '</a>';
         }
         
         if(!checkAwardAttribution($season, $month, 'DPOY'))
         {
-            echo '<a href="nba.php?section=awards&type=season&award=dpoy">';
+            echo '<a href="index.php?section=awards&type=season&award=dpoy">';
             echo 'Select DPOY</br>';
             echo '</a>';
         }
         
         if(!checkAwardAttribution($season, $month, 'ROY'))
         {
-            echo '<a href="nba.php?section=awards&type=season&award=roy">';
+            echo '<a href="index.php?section=awards&type=season&award=roy">';
             echo 'Select ROY</br>';
             echo '</a>';
         }
         
         if(!checkAwardAttribution($season, $month, 'MVP'))
         {
-            echo '<a href="nba.php?section=awards&type=season&award=mvp">';
+            echo '<a href="index.php?section=awards&type=season&award=mvp">';
             echo 'Select MVP</br>';
             echo '</a>';
         }        

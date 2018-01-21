@@ -1,4 +1,4 @@
-<span class="logo" title="Home"><a href="nba.php">&nbsp;</a></span>
+<span class="logo" title="Home"><a href="index.php">&nbsp;</a></span>
     
 <div class="topLine">
 
@@ -36,7 +36,7 @@
         {
     ?>
             <div class="case">
-            <a href="nba.php?section=next_day" class="button mainoption">Next Day &raquo;</a>
+            <a href="index.php?section=next_day" class="button mainoption">Next Day &raquo;</a>
             </div>
     <?php
         }

@@ -1,4 +1,4 @@
-<form action="nba.php?section=add_prospect&submit=yes" method="post">
+<form action="index.php?section=add_prospect&submit=yes" method="post">
 <p>
 	<?php
 	include_once('view/person/inputAddPerson.php');

@@ -1,4 +1,4 @@
-<form action="nba.php?section=sign_player&id=<?php echo $_GET['id'];?>&submit=yes" method="post">
+<form action="index.php?section=sign_player&id=<?php echo $_GET['id'];?>&submit=yes" method="post">
 <p>
 	<?php
 	include_once('view/transaction/signature/inputSignPlayer.php');

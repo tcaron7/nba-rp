@@ -14,6 +14,6 @@ echo '<div class="sectionHeader">' . $sectionTitle . '</div>';
 ?>
     <div class="sectionBody">
     <p>It is time to activate team and player option.</p>
-    <p>Follow <a href="nba.php?section=players_option">this link</a> to see players who have an option.</p>
+    <p>Follow <a href="index.php?section=players_option">this link</a> to see players who have an option.</p>
     </div>
 </section>

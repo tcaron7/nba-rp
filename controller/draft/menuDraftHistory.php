@@ -4,7 +4,7 @@ $draftYears = getPreviousDraftYear();
 
 foreach($draftYears as $draftYear)
 {
-	echo '<a href="nba.php?section=draft_history&draft=' . $draftYear['year'] .'">';
+	echo '<a href="index.php?section=draft_history&draft=' . $draftYear['year'] .'">';
 	echo $draftYear['year'] . ' Draft</br>';
 	echo '</a>';
 }

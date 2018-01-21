@@ -1,7 +1,7 @@
 <section id="selectProspects">
     <div class="sectionHeader">Select Prospects</div>
     
-    <form action="nba.php?section=draft" method="post">
+    <form action="index.php?section=draft" method="post">
     <input type="submit" value="Submit Prospects &raquo;" />
     <div class="sectionBody">
     <?php

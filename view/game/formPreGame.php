@@ -1,4 +1,4 @@
-<form action="nba.php?section=play&option=fillGame&id=<?php echo $gameId; ?>" method="post">
+<form action="index.php?section=play&option=fillGame&id=<?php echo $gameId; ?>" method="post">
     <?php
     foreach($index as $teamIndex)
     {

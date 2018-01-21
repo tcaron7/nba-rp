@@ -1,4 +1,4 @@
-<form action="nba.php" method="post">
+<form action="index.php" method="post">
 <p>
     <section>
         <div class="sectionHeader">Next season parameter</div>

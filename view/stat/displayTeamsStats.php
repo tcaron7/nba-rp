@@ -78,7 +78,7 @@
                             echo '<tr>';
                             echo '<td>' . $rank                                              	. '</td>';
 							echo '<td>';
-							echo '<a href="nba.php?section=team_view&id=' . $team->getId() .'">';
+							echo '<a href="index.php?section=team_view&id=' . $team->getId() .'">';
 							echo $team->getFullname();
 							echo '</a>';
 							echo '</td>';

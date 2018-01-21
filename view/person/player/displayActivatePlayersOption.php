@@ -27,13 +27,13 @@
             echo '<td>' . $playerWithOption->getOptionalYear()  . '</td>';
             echo '<td>' . $playerWithOption->getContractType()  . '</td>';
             echo '<td>';
-                echo '<form action="nba.php?section=players_option&activate=yes" method="post">';
+                echo '<form action="index.php?section=players_option&activate=yes" method="post">';
                 echo '<input type="hidden" name="playerId" value="' . $playerWithOption->getId() . '">';
                 echo '<input type="submit" value="Activate Option"/>';
                 echo '</form>';
             echo '</td>';
             echo '<td>';
-                echo '<form action="nba.php?section=players_option&activate=no" method="post">';
+                echo '<form action="index.php?section=players_option&activate=no" method="post">';
                 echo '<input type="hidden" name="playerId" value="' . $playerWithOption->getId() . '">';
                 echo '<input type="submit" value="Reject Option"/>';
                 echo '</form>';

@@ -13,12 +13,12 @@
     <div class="sectionHeader">Website Plan</div>
     <div class="sectionBody">
         <dl>
-            <dt><a href="nba.php" class="toFinish">Index</a></dt>
+            <dt><a href="index.php" class="toFinish">Index</a></dt>
             <dd>
                 
                 
                 <dl>
-                    <dt><a href="nba.php?section=next_day" class="toFinish">Next Day</a></dt>
+                    <dt><a href="index.php?section=next_day" class="toFinish">Next Day</a></dt>
                     <dd>
                         <p class="noMarginTop">Click this link to move on to the next day.</p>
                         <p class="noMarginBottom note">Note: This link will not work if:</p>

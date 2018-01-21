@@ -62,7 +62,7 @@
                         </div>
                         <br class="clear"/>
                         <div class="play">
-                            <a href="nba.php?section=play&option=fillScore&id=<?php echo $game->getId(); ?>">
+                            <a href="index.php?section=play&option=fillScore&id=<?php echo $game->getId(); ?>">
                                 Play Game
                             </a>
                         </div>
@@ -87,7 +87,7 @@
                     }
                     
                     ?>
-                    <a href="nba.php?section=schedule&gameId=<?php echo $game->getId();?>" class="tile final">
+                    <a href="index.php?section=schedule&gameId=<?php echo $game->getId();?>" class="tile final">
                         <div class="clock">Final</div>
                         <div class="matchup">
                             <div class="visitor">

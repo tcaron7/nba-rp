@@ -1,5 +1,5 @@
 <p>
-<form action="nba.php?section=awards&type=submit" method="post">
+<form action="index.php?section=awards&type=submit" method="post">
     <?php 
         if($_GET['type'] == 'month' and getCurrentDay() == 1)
         {

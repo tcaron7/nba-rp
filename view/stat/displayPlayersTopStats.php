@@ -96,7 +96,7 @@
 								echo '<tr>';
 								echo '<td>' . $rank                                              . '</td>';
 								echo '<td>';
-								echo '<a href="nba.php?section=player&player_id=' . $player->getId() .'">';
+								echo '<a href="index.php?section=player&player_id=' . $player->getId() .'">';
 								echo $player->getFullname();
 								echo '</a>';
 								echo '</td>';

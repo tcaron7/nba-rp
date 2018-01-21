@@ -8,7 +8,7 @@ include('view/team/displayRoster.php');
 
 echo 'Does the ' . $freeAgent->getTeam()->getFullName() . ' desire to match the offer ?';
 ?>
-<form action="nba.php?section=sign_player&id=<?php echo $_GET['id'];?>&submit=yes&match=yes" method="post">
+<form action="index.php?section=sign_player&id=<?php echo $_GET['id'];?>&submit=yes&match=yes" method="post">
     <input type="hidden" name="teamId"          value="<?php echo $freeAgent->getTeamId();?>"   >
     <input type="hidden" name="salary"          value="<?php echo $_POST['salary'];?>"          >
     <input type="hidden" name="guarantedYear"   value="<?php echo $_POST['guarantedYear'];?>"   >
@@ -16,7 +16,7 @@ echo 'Does the ' . $freeAgent->getTeam()->getFullName() . ' desire to match the 
     <input type="hidden" name="contractType"    value="<?php echo $_POST['contractType'];?>"    >
     <input type="submit" value="Yes"/> 
 </form>
-<form action="nba.php?section=sign_player&id=<?php echo $_GET['id'];?>&submit=yes&match=no" method="post">
+<form action="index.php?section=sign_player&id=<?php echo $_GET['id'];?>&submit=yes&match=no" method="post">
     <input type="hidden" name="teamId"          value="<?php echo $_POST['teamId'];?>"          >
     <input type="hidden" name="salary"          value="<?php echo $_POST['salary'];?>"          >
     <input type="hidden" name="guarantedYear"   value="<?php echo $_POST['guarantedYear'];?>"   >

@@ -4,15 +4,15 @@
         if( ($player->getExperience() > 0) or ($player->getTeamId() == 0) )
         {
             echo '<br />';
-            echo '<a class="button" href="nba.php?section=sign_player&id=' . $player->getId() . '">Sign Player</a>'; 
+            echo '<a class="button" href="index.php?section=sign_player&id=' . $player->getId() . '">Sign Player</a>'; 
         }
         else
         {
             echo '<br />';
-            echo '<a class="button" href="nba.php?section=sign_rookie&id=' . $player->getId() . '">Sign Rookie</a>';
+            echo '<a class="button" href="index.php?section=sign_rookie&id=' . $player->getId() . '">Sign Rookie</a>';
         }
     }
     echo '<br />';
-    echo '<a class="button" href="nba.php?section=player&player_id=' . $player->getId() . '&action=retirement">Retire</a>';
+    echo '<a class="button" href="index.php?section=player&player_id=' . $player->getId() . '&action=retirement">Retire</a>';
 ?>	
 

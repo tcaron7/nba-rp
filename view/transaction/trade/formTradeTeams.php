@@ -8,7 +8,7 @@
 	  */
 ?>
 <section id="tradingTeams">
-    <form action="nba.php?section=trade&submit=yes" method="post">
+    <form action="index.php?section=trade&submit=yes" method="post">
         <div class="sectionHeader">
             Trading Teams
             <input type="submit" value="Submit Transaction &raquo;" />

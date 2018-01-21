@@ -15,7 +15,7 @@ if(checkDayOver() == 0)
 { ?>
     <div class="sectionBody">
     <p>It is time to prepare the next NBA Season.</p>
-    <p>Follow <a href="nba.php?section=season_transition">this link</a> to create new season.</p>
+    <p>Follow <a href="index.php?section=season_transition">this link</a> to create new season.</p>
     </div>
 <?php }
 else

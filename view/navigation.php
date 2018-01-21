@@ -12,7 +12,7 @@
                         {
                             echo '<li>';
                             echo '<span class="icon-team-'.preg_replace('/\s+/', '', strtolower($team->getName())).'">&nbsp;</span>';
-                            echo '<a href="nba.php?section=team_view&id=' . $team->getId() . '" >';
+                            echo '<a href="index.php?section=team_view&id=' . $team->getId() . '" >';
                             echo $team->getFullName();
                             echo '</a></li>';
                         }
@@ -28,7 +28,7 @@
                         {
                             echo '<li>';
                             echo '<span class="icon-team-'.preg_replace('/\s+/', '', strtolower($team->getName())).'">&nbsp;</span>';
-                            echo '<a href="nba.php?section=team_view&id=' . $team->getId() . '" >';
+                            echo '<a href="index.php?section=team_view&id=' . $team->getId() . '" >';
                             echo $team->getFullName();
                             echo '</a></li>';
                         }
@@ -38,17 +38,17 @@
             </div>
 		</li>
         
-		<li><a href="nba.php?section=schedule">Scores & Schedules</a></li>
-		<li><a href="nba.php?section=player">Players</a></li>
-		<li><a href="nba.php?section=standing">Standings</a></li>
+		<li><a href="index.php?section=schedule">Scores & Schedules</a></li>
+		<li><a href="index.php?section=player">Players</a></li>
+		<li><a href="index.php?section=standing">Standings</a></li>
 		
 		<li class="hasDropdown">
 			<a href="#">Stats</a>
             <div class="dropdown">
                 <div class="primary">
                     <ul>
-                        <li><a href="nba.php?section=stats&stats=players">Players Top Stats</a></li>
-                        <li><a href="nba.php?section=stats&stats=teams">Team Stats</a></li>
+                        <li><a href="index.php?section=stats&stats=players">Players Top Stats</a></li>
+                        <li><a href="index.php?section=stats&stats=teams">Team Stats</a></li>
                     </ul>
                 </div>
             </div>
@@ -59,16 +59,16 @@
             <div class="dropdown">
                 <div class="primary">
                     <ul>
-                        <li><a href="nba.php?section=awardDisplay">Awards</a></li>
-                        <li><a href="nba.php?section=transactionDisplay">Transactions</a></li>
-                        <li><a href="nba.php?section=injuryDisplay">Injuries</a></li>
+                        <li><a href="index.php?section=awardDisplay">Awards</a></li>
+                        <li><a href="index.php?section=transactionDisplay">Transactions</a></li>
+                        <li><a href="index.php?section=injuryDisplay">Injuries</a></li>
                     </ul>
                 </div>
             </div>
 		</li>
         
-		<li><a href="nba.php?section=draft_history">Draft</a></li>
-		<li><a href="nba.php?section=prospects">Prospects</a></li>
+		<li><a href="index.php?section=draft_history">Draft</a></li>
+		<li><a href="index.php?section=prospects">Prospects</a></li>
         
 		<li class="hasDropdown">
 			<a href="#">Archives</a>
@@ -79,7 +79,7 @@
                         $lastTenSeasons = getLastTenSeasons();
                         foreach ($lastTenSeasons as $key => $season)
                         {
-                            echo '<li><a href="nba.php?section=season_view&year=' . $season->getYear() . '" >';
+                            echo '<li><a href="index.php?section=season_view&year=' . $season->getYear() . '" >';
                             echo  $season->getYear();
                             echo '</a></li>';
                         }

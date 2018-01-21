@@ -14,7 +14,7 @@ echo '<div class="sectionHeader">' . $sectionTitle . '</div>';
 ?>
     <div class="sectionBody">
     <p>It is time to choose player of the month.</p>
-    <p>Follow <a href="nba.php?section=awards&type=month">this link</a> to select winning players.</p>
+    <p>Follow <a href="index.php?section=awards&type=month">this link</a> to select winning players.</p>
     </div>
 </section>
 <?php
@@ -28,7 +28,7 @@ echo '<div class="sectionHeader">' . $sectionTitle . '</div>';
 ?>
     <div class="sectionBody">
     <p>It is time to attribute Season Awards.</p>
-    <p>Follow <a href="nba.php?section=awards&type=season">this link</a> to select winning players.</p>
+    <p>Follow <a href="index.php?section=awards&type=season">this link</a> to select winning players.</p>
     </div>
 </section>
 <?php

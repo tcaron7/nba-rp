@@ -23,14 +23,14 @@
         { 
     ?>
             <p>During this period you are still able to make a trade.</p>
-            <p>Follow <a href="nba.php?section=trade">this link</a> to make a trade.</p>
+            <p>Follow <a href="index.php?section=trade">this link</a> to make a trade.</p>
     <?php 
         } 
         elseif($sectionTitle == 'Sign a player')
         { 
     ?>
             <p>During this period you are still able to sign a player.</p>
-            <p>Follow <a href="nba.php?section=signature">this link</a> to sign a player.</p>
+            <p>Follow <a href="index.php?section=signature">this link</a> to sign a player.</p>
     <?php 
         } 
     ?>
