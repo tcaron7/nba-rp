@@ -296,6 +296,17 @@ require( __DIR__ . '/app/app.php' );
             {
 				include_once('view/plan.php');
             }
+			else
+			{
+				try
+				{
+					$APP['router']->run();
+				}
+				catch ( Exception $e )
+				{
+					echo '<b>Routing error:</b> ' . $e;
+				}
+			}
 			echo '</div>';
             
             // Footer

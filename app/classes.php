@@ -2,6 +2,8 @@
 
 // Entities
 require_once( $APP['path.entities'] . 'Date.class.php' );
+require_once( $APP['path.entities'] . 'Route.class.php' );
+require_once( $APP['path.entities'] . 'Router.class.php' );
 require_once( $APP['path.entities'] . 'Person.class.php' );
 require_once( $APP['path.entities'] . 'Player.class.php' );
 require_once( $APP['path.entities'] . 'Prospect.class.php' );

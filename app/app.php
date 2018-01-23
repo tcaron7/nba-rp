@@ -24,3 +24,7 @@ catch ( PDOException $e )
 
 // Import classes
 require_once( 'classes.php' );
+
+// Load routes
+$APP['router'] = new Router( isset( $_GET['url'] ) ? $_GET['url'] : '' );
+require_once( 'routes.php' );
