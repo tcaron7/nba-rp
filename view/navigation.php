@@ -59,7 +59,7 @@
             <div class="dropdown">
                 <div class="primary">
                     <ul>
-                        <li><a href="index.php?section=awardDisplay">Awards</a></li>
+                        <li><a href="<?php echo $GLOBALS['router']->generateUrl( 'award_news' ); ?>">Awards</a></li>
                         <li><a href="index.php?section=transactionDisplay">Transactions</a></li>
                         <li><a href="index.php?section=injuryDisplay">Injuries</a></li>
                     </ul>

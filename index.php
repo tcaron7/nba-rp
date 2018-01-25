@@ -22,7 +22,7 @@ try
 }
 catch ( PDOException $e )
 {
-	echo 'Unable to connect to database : ' . $e;
+	echo '<b>Unable to connect to database:</b> ' . $e;
 	exit();
 }
 
@@ -270,13 +270,9 @@ require_once( 'app/routes.php' );
 			{
 				include_once('controller/injury/menuAddInjury.php');
 			}
-			else if (isset($_GET['section']) and ( ($_GET['section'] == 'injuryDisplay') || ($_GET['section'] == 'transactionDisplay')  || ($_GET['section'] == 'awardDisplay')))
+			else if (isset($_GET['section']) and ( ($_GET['section'] == 'injuryDisplay') || ($_GET['section'] == 'transactionDisplay') ))
 			{
 				include_once('controller/injury/menuNews.php');
-			}
-			else if (isset($_GET['section']) and $_GET['section'] == 'awards')
-			{
-				include_once('controller/award/menuAttributeAwards.php');
 			}
 			else
 			{
