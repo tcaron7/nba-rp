@@ -25,3 +25,6 @@ require_once( $GLOBALS['path']['entities'] . 'SignatureProspect.class.php' );
 require_once( $GLOBALS['path']['entities'] . 'DraftPick.class.php' );
 require_once( $GLOBALS['path']['entities'] . 'Injury.class.php' );
 require_once( $GLOBALS['path']['entities'] . 'Award.class.php' );
+
+// Controllers
+require_once( $GLOBALS['path']['controllers'] . 'HomeController.class.php' );

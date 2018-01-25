@@ -3,7 +3,7 @@
     <div class="navSection">
         <div class="navTitle">About</div>
         <ul>
-            <li><a href="index.php?section=plan">Website Plan</a></li>
+            <li><a href="<?php echo $GLOBALS['router']->generateUrl( 'plan' ); ?>">Website Plan</a></li>
             <li><a href="#">FAQ</a></li>
             <li><a href="#">Contact us</a></li>
         </ul>

@@ -162,25 +162,6 @@ require_once( 'app/routes.php' );
 			// Current Date
 			$viewDate = getCurrentDate();
 
-            // Date update
-            if (isset($_GET['section']) and $_GET['section'] == 'next_day')
-            {
-                $currentSeason = getCurrentSeason();
-                $season = new Season($currentSeason);
-                $endSeason = $season->getStopDate();
-                if ($viewDate == $endSeason)
-                {
-                    include('controller/season/generateSeasonTransition.php');
-                }
-                
-                preg_match('/^(?<year>[0-9]{4})-(?<month>[0-9]{2})-(?<day>[0-9]{2})$/', $viewDate, $currentDay);
-                $day = new Date($currentDay['year'],$currentDay['month'],$currentDay['day']);
-                
-                $day->incrementDay();
-                writeCurrentDate($day);
-            }
-
-
 			// Header
 			echo '<header id="pageHeader">';
 				include_once( $GLOBALS['path']['views'] . 'header.php' );
@@ -189,11 +170,7 @@ require_once( 'app/routes.php' );
 			// Content
 			echo '<div id="pageContent">';
 
-            if (!isset($_GET['section']) OR $_GET['section'] == 'index' OR $_GET['section'] == 'next_day')
-            {
-                include_once('controller/home.php');
-            }
-			else if (isset($_GET['section']) and $_GET['section'] == 'play')
+            if (isset($_GET['section']) and $_GET['section'] == 'play')
 			{
 				include_once('controller/play/menuPlay.php');
 			}
