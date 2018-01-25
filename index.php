@@ -1,36 +1,58 @@
 <?php
 
-// Application var
-global $APP;
-
 // Configuration
-require( __DIR__ . '/app/cfg/dev.php' ); // prod.php
+require( 'app/cfg/dev.php' ); // prod.php
 
-// Load essentials
-require( __DIR__ . '/app/app.php' );
+// Session start
+session_start();
+
+// Default timezone
+date_default_timezone_set( 'Europe/Paris' );
+
+// Connexion to database
+try
+{
+	$GLOBALS['db'] = new PDO(
+		$GLOBALS['db']['options']['driver'] . ':host=' . $GLOBALS['db']['options']['host'] . '; dbname=' . $GLOBALS['db']['options']['dbname'],
+		$GLOBALS['db']['options']['user'],
+		$GLOBALS['db']['options']['password'],
+		array( PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES ' . $GLOBALS['db']['options']['charset'] )
+	);
+	$db = $GLOBALS['db'];
+}
+catch ( PDOException $e )
+{
+	echo 'Unable to connect to database : ' . $e;
+	exit();
+}
+
+// Import classes
+require_once( 'app/classes.php' );
+
+// Load routes
+$GLOBALS['router'] = new Router( isset( $_GET['url'] ) ? $_GET['url'] : '', $GLOBALS['server'] );
+require_once( 'app/routes.php' );
 
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" >
-
-    <head>
-        <meta charset="iso-8859-1" />
+	<head>
+		<meta charset="iso-8859-1" />
 		
 		<!-- CSS -->
-		<link href="web/css/default.css" rel="stylesheet" type="text/css" />
+		<link href="<?php echo $GLOBALS['path']['css']; ?>default.css" rel="stylesheet" type="text/css" />
 		
 		<!-- JS -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-		<script src="web/js/navDropdown.js"></script>
-        <script src="web/js/generateRandomDate.js"></script>
-        <script src="web/js/tradeTeamSelect.js"></script>
-		<script src="web/js/gameSheetTotal.js"></script>
+		<script src="<?php echo $GLOBALS['path']['js']; ?>navDropdown.js"></script>
+		<script src="<?php echo $GLOBALS['path']['js']; ?>generateRandomDate.js"></script>
+		<script src="<?php echo $GLOBALS['path']['js']; ?>tradeTeamSelect.js"></script>
+		<script src="<?php echo $GLOBALS['path']['js']; ?>gameSheetTotal.js"></script>
+
+		<!-- FAVICON -->
+		<link rel="icon" type="image/png" href="<?php echo $GLOBALS['path']['img']; ?>favicon.png" />
 		
-        <!-- FAVICON -->
-        <link rel="icon" type="image/png" href="web/img/favicon.png" />
-        
 		<!-- TITLE -->
 		<?php
 		$title = '';
@@ -39,10 +61,10 @@ require( __DIR__ . '/app/app.php' );
 		{
 			$title = 'Accueil NBA';
 		}
-        	else if ($_GET['section'] == 'play')
-        	{
-            		$title = 'Fill NBA Games';
-        	}
+		else if ($_GET['section'] == 'play')
+		{
+				$title = 'Fill NBA Games';
+		}
 		else if ($_GET['section'] == 'season_view' and isset($_GET['year']))
 		{
 			$title = 'NBA Saison';
@@ -83,43 +105,43 @@ require( __DIR__ . '/app/app.php' );
 		{
 			$title = 'Add Players';
 		}
-        	else if ($_GET['section'] == 'trade')
+			else if ($_GET['section'] == 'trade')
 		{
 			$title = 'Trade';
 		}
-        	else if ($_GET['section'] == 'signature')
+			else if ($_GET['section'] == 'signature')
 		{
 			$title = 'Signature';
 		}
-        	else if ($_GET['section'] == 'sign_player' or $_GET['section'] == 'sign_rookie')
+			else if ($_GET['section'] == 'sign_player' or $_GET['section'] == 'sign_rookie')
 		{
 			$title = 'Sign Player';
 		}
-        	else if ($_GET['section'] == 'lottery')
+			else if ($_GET['section'] == 'lottery')
 		{
 			$title = 'Draft Lottery';
 		}
-        	else if ($_GET['section'] == 'draft_subscription')
+			else if ($_GET['section'] == 'draft_subscription')
 		{
 			$title = 'Draft Prospect Subscription';
 		}
-        	else if ($_GET['section'] == 'draft' || $_GET['section'] == 'select_prospect')
+			else if ($_GET['section'] == 'draft' || $_GET['section'] == 'select_prospect')
 		{
 			$title = 'NBA Draft';
 		}
-        	else if ($_GET['section'] == 'season_transition')
+			else if ($_GET['section'] == 'season_transition')
 		{
 			$title = 'NBA Season Transition';
 		}
-        	else if ($_GET['section'] == 'players_option')
+			else if ($_GET['section'] == 'players_option')
 		{
 			$title = 'NBA Activate option';
 		}
-        	else if ($_GET['section'] == 'restricted_players_option')
+			else if ($_GET['section'] == 'restricted_players_option')
 		{
 			$title = 'NBA Activate restricted player option';
 		}
-        	else if ( ($_GET['section'] == 'injuryDisplay') || ($_GET['section'] == 'transactionDisplay') )
+			else if ( ($_GET['section'] == 'injuryDisplay') || ($_GET['section'] == 'transactionDisplay') )
 		{
 			$title = 'NBA News';
 		}
@@ -130,177 +152,160 @@ require( __DIR__ . '/app/app.php' );
 		
 		echo "<title>" . $title . "</title>";
 		?>
-    </head>
-	
+	</head>
+
 	<body>
 		<div id="wrap">
 		
 			<?php
 
-			/********************/
-			/*     Calculs     */
-			/********************/
-            
-            // Current Date
-			$nba_date = getCurrentDate();
-            
+			// Current Date
+			$viewDate = getCurrentDate();
+
             // Date update
             if (isset($_GET['section']) and $_GET['section'] == 'next_day')
-			{
+            {
                 $currentSeason = getCurrentSeason();
                 $season = new Season($currentSeason);
                 $endSeason = $season->getStopDate();
-                if ($nba_date == $endSeason)
+                if ($viewDate == $endSeason)
                 {
                     include('controller/season/generateSeasonTransition.php');
                 }
                 
-                preg_match('/^(?<year>[0-9]{4})-(?<month>[0-9]{2})-(?<day>[0-9]{2})$/', $nba_date, $currentDay);
+                preg_match('/^(?<year>[0-9]{4})-(?<month>[0-9]{2})-(?<day>[0-9]{2})$/', $viewDate, $currentDay);
                 $day = new Date($currentDay['year'],$currentDay['month'],$currentDay['day']);
                 
                 $day->incrementDay();
                 writeCurrentDate($day);
-			}
-            
-            
-            
-			/********************/
-			/*       Page       */
-			/********************/
-            
+            }
+
+
 			// Header
 			echo '<header id="pageHeader">';
-                include_once('view/header.php');
+				include_once( $GLOBALS['path']['views'] . 'header.php' );
 			echo '</header>';
 			
 			// Content
 			echo '<div id="pageContent">';
-            
-            
-            
-            
-			
-			if (!isset($_GET['section']) OR $_GET['section'] == 'index' OR $_GET['section'] == 'next_day')
-			{
-				include_once('controller/home.php');
-			}
-            else if ($_GET['section'] == 'play')
+
+            if (!isset($_GET['section']) OR $_GET['section'] == 'index' OR $_GET['section'] == 'next_day')
+            {
+                include_once('controller/home.php');
+            }
+			else if (isset($_GET['section']) and $_GET['section'] == 'play')
 			{
 				include_once('controller/play/menuPlay.php');
 			}
-			else if ($_GET['section'] == 'team_view' and isset($_GET['id']))
+			else if (isset($_GET['section']) and $_GET['section'] == 'team_view' and isset($_GET['id']))
 			{
 				include_once('controller/team/menuTeam.php');
 			}
-			else if ($_GET['section'] == 'schedule')
+			else if (isset($_GET['section']) and $_GET['section'] == 'schedule')
 			{
 				include_once('controller/game/menuGames.php');
 			}
-			else if ($_GET['section'] == 'season_view' and isset($_GET['year']))
+			else if (isset($_GET['section']) and $_GET['section'] == 'season_view' and isset($_GET['year']))
 			{
 				include_once('controller/season/menuSeason.php');
 			}
-			else if ($_GET['section'] == 'add_player')
+			else if (isset($_GET['section']) and $_GET['section'] == 'add_player')
 			{
 				include_once('controller/person/player/addPlayers.php');
 			}
-			else if ($_GET['section'] == 'player')
+			else if (isset($_GET['section']) and $_GET['section'] == 'player')
 			{
 				include_once('controller/person/player/menuPlayers.php');
 			}
-			else if ($_GET['section'] == 'standing')
+			else if (isset($_GET['section']) and $_GET['section'] == 'standing')
 			{
 				include('controller/standing/menuStanding.php');
 			}
-			else if ($_GET['section'] == 'stats')
+			else if (isset($_GET['section']) and $_GET['section'] == 'stats')
 			{
 				include_once('controller/stat/menuStats.php');
 			}
-			else if ($_GET['section'] == 'player_season_stats')
+			else if (isset($_GET['section']) and $_GET['section'] == 'player_season_stats')
 			{
 				include_once('controller/person/player/menuPlayers.php');
 			}
-			else if ($_GET['section'] == 'player_career_stats')
+			else if (isset($_GET['section']) and $_GET['section'] == 'player_career_stats')
 			{
 				include_once('controller/person/player/menuPlayers.php');
 			}
-			else if ($_GET['section'] == 'player_games_logs')
+			else if (isset($_GET['section']) and $_GET['section'] == 'player_games_logs')
 			{
 				include_once('controller/person/player/menuPlayers.php');
 			}
-			else if ($_GET['section'] == 'player_awards')
+			else if (isset($_GET['section']) and $_GET['section'] == 'player_awards')
 			{
 				include_once('controller/person/player/menuPlayers.php');
 			}
-			else if ($_GET['section'] == 'prospects')
+			else if (isset($_GET['section']) and $_GET['section'] == 'prospects')
 			{
 				include_once('controller/person/prospect/menuProspects.php');
 			}
-            else if ($_GET['section'] == 'add_prospect')
+			else if (isset($_GET['section']) and $_GET['section'] == 'add_prospect')
 			{
 				include_once('controller/person/prospect/addProspects.php');
 			}
-            else if ($_GET['section'] == 'signature')
+			else if (isset($_GET['section']) and $_GET['section'] == 'signature')
 			{
 				include_once('controller/transaction/signature/menuSignature.php');
 			}
-            else if ($_GET['section'] == 'sign_player' or $_GET['section'] == 'sign_rookie')
+			else if (isset($_GET['section']) and ( $_GET['section'] == 'sign_player' or $_GET['section'] == 'sign_rookie') )
 			{
 				include_once('controller/transaction/signature/menuSignature.php');
 			}
-            else if ($_GET['section'] == 'trade')
+			else if (isset($_GET['section']) and $_GET['section'] == 'trade')
 			{
 				include_once('controller/transaction/trade/menuTrade.php');
 			}
-            else if ($_GET['section'] == 'lottery')
-            {
+			else if (isset($_GET['section']) and $_GET['section'] == 'lottery')
+			{
 				include_once('controller/draft/menuLotteryDraft.php');
-            }
-            else if ($_GET['section'] == 'draft_subscription')
-            {
+			}
+			else if (isset($_GET['section']) and $_GET['section'] == 'draft_subscription')
+			{
 				include_once('controller/draft/menuSubscriptionDraft.php');
-            }		
-			else if ($_GET['section'] == 'draft_history')
-            {
+			}
+			else if (isset($_GET['section']) and $_GET['section'] == 'draft_history')
+			{
 				include_once('controller/draft/menuDraftHistory.php');
-            }
-            else if ($_GET['section'] == 'draft' || $_GET['section'] == 'select_prospect')
-            {
-                include_once('controller/draft/menuDraft.php');
-            }
-            else if ($_GET['section'] == 'season_transition')
-            {
-                include_once('controller/season/menuSeasonTransition.php');
-            }
-            else if ($_GET['section'] == 'players_option')
-            {
-                include_once('controller/person/player/menuActivatePlayersOption.php');
-            }
-            else if ($_GET['section'] == 'restricted_players_option')
-            {
-                include_once('controller/person/player/menuActivateRestrictedFreeAgentOption.php');
-            }
-			else if ($_GET['section'] == 'injury')
-            {
-                include_once('controller/injury/menuAddInjury.php');
-            }
-			else if ( ($_GET['section'] == 'injuryDisplay') || ($_GET['section'] == 'transactionDisplay')  || ($_GET['section'] == 'awardDisplay'))
+			}
+			else if (isset($_GET['section']) and ( $_GET['section'] == 'draft' || $_GET['section'] == 'select_prospect') )
+			{
+				include_once('controller/draft/menuDraft.php');
+			}
+			else if (isset($_GET['section']) and $_GET['section'] == 'season_transition')
+			{
+				include_once('controller/season/menuSeasonTransition.php');
+			}
+			else if (isset($_GET['section']) and $_GET['section'] == 'players_option')
+			{
+				include_once('controller/person/player/menuActivatePlayersOption.php');
+			}
+			else if (isset($_GET['section']) and $_GET['section'] == 'restricted_players_option')
+			{
+				include_once('controller/person/player/menuActivateRestrictedFreeAgentOption.php');
+			}
+			else if (isset($_GET['section']) and $_GET['section'] == 'injury')
+			{
+				include_once('controller/injury/menuAddInjury.php');
+			}
+			else if (isset($_GET['section']) and ( ($_GET['section'] == 'injuryDisplay') || ($_GET['section'] == 'transactionDisplay')  || ($_GET['section'] == 'awardDisplay')))
 			{
 				include_once('controller/injury/menuNews.php');
-            }
-            else if ($_GET['section'] == 'awards')
-            {
-                include_once('controller/award/menuAttributeAwards.php');
-            }
-            else if ($_GET['section'] == 'plan')
-            {
-				include_once('view/plan.php');
-            }
+			}
+			else if (isset($_GET['section']) and $_GET['section'] == 'awards')
+			{
+				include_once('controller/award/menuAttributeAwards.php');
+			}
 			else
 			{
 				try
 				{
-					$APP['router']->run();
+					$GLOBALS['router']->run();
 				}
 				catch ( Exception $e )
 				{
@@ -308,14 +313,14 @@ require( __DIR__ . '/app/app.php' );
 				}
 			}
 			echo '</div>';
-            
-            // Footer
-            echo '<footer id="pageFooter">';
-                include_once('view/footer.php');
-            echo '</footer>';
-            
-            ?>
-        </div>
-        
+
+			// Footer
+			echo '<footer id="pageFooter">';
+				include_once( $GLOBALS['path']['views'] . 'footer.php' );
+			echo '</footer>';
+
+			?>
+		</div>
+
 	</body>
 </html>

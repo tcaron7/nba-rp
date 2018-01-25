@@ -1,7 +1,7 @@
 <?php
 
 // Database
-$APP['db.options'] = array(
+$GLOBALS['db']['options'] = array(
 	'driver'   => 'mysql',
 	'host'     => 'localhost',
 	'dbname'   => 'nba',
@@ -10,7 +10,17 @@ $APP['db.options'] = array(
 	'charset'  => 'UTF8',
 );
 
-// Root folder
-$APP['path.root']     = __DIR__ . '/../../';
-$APP['path.sources']  = $APP['path.root'] . 'src/';
-$APP['path.entities'] = $APP['path.sources'] . 'entity/';
+// Server
+$GLOBALS['server']   = '';
+$GLOBALS['timezone'] = 'Europe/Paris';
+
+// Paths
+$GLOBALS['path']['root']        = './';
+$GLOBALS['path']['web']         = $GLOBALS['server']          . 'web/';
+$GLOBALS['path']['css']         = $GLOBALS['path']['web']     . 'css/';
+$GLOBALS['path']['img']         = $GLOBALS['path']['web']     . 'img/';
+$GLOBALS['path']['js']          = $GLOBALS['path']['web']     . 'js/';
+$GLOBALS['path']['views']       = $GLOBALS['path']['root']    . 'view/';
+$GLOBALS['path']['sources']     = $GLOBALS['path']['root']    . 'src/';
+$GLOBALS['path']['entities']    = $GLOBALS['path']['sources'] . 'entity/';
+$GLOBALS['path']['controllers'] = $GLOBALS['path']['sources'] . 'controller/';
