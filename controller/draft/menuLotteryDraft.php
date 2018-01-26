@@ -9,7 +9,8 @@ $lotteryDone = checkLottery($year);
 
 if($lotteryDone != 0)
 {
-    include('controller/standing/menuStanding.php');
+    $standing_controller = new StandingController();
+    $standing_controller->displayAction();
     
     echo "It's lottery time !</br></br>";
     

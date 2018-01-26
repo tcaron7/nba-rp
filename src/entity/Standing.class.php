@@ -6,21 +6,21 @@ class Standing
 	/********************/
 	/*    Attributes    */
 	/********************/
-	
+
 	private $team;
 	private $wins;
 	private $losses;
 	private $games;
 	private $winRate;
 	private $conference;
-    private $conferenceRank;
-	
-	
+	private $conferenceRank;
+
+
 	/********************/
 	/*    Constructs    */
 	/********************/
 	
-	public function __construct($teamId, $wins, $losses)
+	public function __construct( $teamId, $wins, $losses )
 	{
 		$team;
 		if ($teamId <= 30 and $teamId > 0) {
@@ -94,13 +94,13 @@ class Standing
 	{
 		return $this->conference;
 	}
-    
-    public function getConferenceRank()
+	
+	public function getConferenceRank()
 	{
 		return $this->conferenceRank;
 	}
-	
-	
+
+
 	/********************/
 	/*     Setters      */
 	/********************/
@@ -124,16 +124,21 @@ class Standing
 		$this->winRate = $this->wins / ($this->wins + $this->losses);
 	}
 	
-    public function setConferenceRank($newConferenceRank)
+	public function setConferenceRank($newConferenceRank)
 	{
 		$this->conferenceRank = $newConferenceRank;
 	}
+
+
 	/********************/
 	/*    Functions     */
 	/********************/
 	
-	public function addLoss() {
-		
+	static function compare( $standing1, $standing2 )
+	{
+		return $standing1->getWinRate() < $standing2->getWinRate();
 	}
+
+	public function addLoss() { }
+
 }
-?>

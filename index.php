@@ -194,10 +194,6 @@ require_once( 'app/routes.php' );
 			{
 				include_once('controller/person/player/menuPlayers.php');
 			}
-			else if (isset($_GET['section']) and $_GET['section'] == 'standing')
-			{
-				include('controller/standing/menuStanding.php');
-			}
 			else if (isset($_GET['section']) and $_GET['section'] == 'stats')
 			{
 				include_once('controller/stat/menuStats.php');

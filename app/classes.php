@@ -29,3 +29,4 @@ require_once( $GLOBALS['path']['entities'] . 'Award.class.php' );
 // Controllers
 require_once( $GLOBALS['path']['controllers'] . 'HomeController.class.php' );
 require_once( $GLOBALS['path']['controllers'] . 'AwardController.class.php' );
+require_once( $GLOBALS['path']['controllers'] . 'StandingController.class.php' );
