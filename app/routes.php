@@ -10,3 +10,8 @@ $GLOBALS['router']->get(  '/award/attribute/:period/:name/nominees', 'AwardContr
 $GLOBALS['router']->post( '/award/attribute',                        'AwardController::attributeAction',   'award_attribute' );
 
 $GLOBALS['router']->get( '/standings', 'StandingController::displayAction', 'standings_display' );
+
+$GLOBALS['router']->get( '/team/:id',          'TeamController::displayAction',  'team_display' );
+$GLOBALS['router']->get( '/team/:id/roster',   'TeamController::rosterAction',   'team_roster' );
+$GLOBALS['router']->get( '/team/:id/stats',    'TeamController::statsAction',    'team_stats' );
+$GLOBALS['router']->get( '/team/:id/schedule', 'TeamController::scheduleAction', 'team_schedule' );

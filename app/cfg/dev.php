@@ -9,7 +9,7 @@ $GLOBALS['db']['options'] = array(
 	'host'     => 'localhost',
 	'dbname'   => 'nba',
 	'user'     => 'root',
-	'password' => '',
+	'password' => 'root',
 	'charset'  => 'UTF8',
 );
 

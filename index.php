@@ -174,10 +174,6 @@ require_once( 'app/routes.php' );
 			{
 				include_once('controller/play/menuPlay.php');
 			}
-			else if (isset($_GET['section']) and $_GET['section'] == 'team_view' and isset($_GET['id']))
-			{
-				include_once('controller/team/menuTeam.php');
-			}
 			else if (isset($_GET['section']) and $_GET['section'] == 'schedule')
 			{
 				include_once('controller/game/menuGames.php');

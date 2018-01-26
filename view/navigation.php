@@ -12,7 +12,7 @@
                         {
                             echo '<li>';
                             echo '<span class="icon-team-'.preg_replace('/\s+/', '', strtolower($team->getName())).'">&nbsp;</span>';
-                            echo '<a href="index.php?section=team_view&id=' . $team->getId() . '" >';
+                            echo '<a href="' . $GLOBALS['router']->generateUrl( 'team_display', array( 'id' => $team->getId() ) ) . '" >';
                             echo $team->getFullName();
                             echo '</a></li>';
                         }
@@ -28,7 +28,7 @@
                         {
                             echo '<li>';
                             echo '<span class="icon-team-'.preg_replace('/\s+/', '', strtolower($team->getName())).'">&nbsp;</span>';
-                            echo '<a href="index.php?section=team_view&id=' . $team->getId() . '" >';
+                            echo '<a href="' . $GLOBALS['router']->generateUrl( 'team_display', array( 'id' => $team->getId() ) ) . '" >';
                             echo $team->getFullName();
                             echo '</a></li>';
                         }

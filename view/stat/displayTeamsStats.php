@@ -78,7 +78,7 @@
                             echo '<tr>';
                             echo '<td>' . $rank                                              	. '</td>';
 							echo '<td>';
-							echo '<a href="index.php?section=team_view&id=' . $team->getId() .'">';
+							echo '<a href="' . $GLOBALS['router']->generateUrl( 'team_display', array( 'id' => $team->getId() ) ) . '">';
 							echo $team->getFullname();
 							echo '</a>';
 							echo '</td>';
