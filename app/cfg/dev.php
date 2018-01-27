@@ -9,12 +9,12 @@ $GLOBALS['db']['options'] = array(
 	'host'     => 'localhost',
 	'dbname'   => 'nba',
 	'user'     => 'root',
-	'password' => 'root',
+	'password' => '',
 	'charset'  => 'UTF8',
 );
 
 // Server
-$GLOBALS['server'] = 'http://localhost/nba-rp/';
+$GLOBALS['server'] = 'http://localhost/play-nba/';
 
 // Paths
 $GLOBALS['path']['web'] = $GLOBALS['server']      . 'web/';
