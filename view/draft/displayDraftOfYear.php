@@ -13,9 +13,9 @@
     <div class="sectionHeader">
         NBA <?php echo $viewYear; ?> Draft&nbsp;
 		<?php
-		if($_GET['section'] != 'draft_history')
+		if ( $section != 'draft_history' )
 		{
-			echo '<a href="index.php?section=select_prospect" class="button mainoption">Select next pick &raquo;</a>';
+			echo '<a href="' . $GLOBALS['router']->generateUrl( 'draft_choose' ) . '" class="button mainoption">Select next pick &raquo;</a>';
 			echo '<a href="index.php?section=trade" class="button">Make a trade</a>';
 		}
 		?>

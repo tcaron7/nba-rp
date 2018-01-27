@@ -230,22 +230,6 @@ require_once( 'app/routes.php' );
 			{
 				include_once('controller/transaction/trade/menuTrade.php');
 			}
-			else if (isset($_GET['section']) and $_GET['section'] == 'lottery')
-			{
-				include_once('controller/draft/menuLotteryDraft.php');
-			}
-			else if (isset($_GET['section']) and $_GET['section'] == 'draft_subscription')
-			{
-				include_once('controller/draft/menuSubscriptionDraft.php');
-			}
-			else if (isset($_GET['section']) and $_GET['section'] == 'draft_history')
-			{
-				include_once('controller/draft/menuDraftHistory.php');
-			}
-			else if (isset($_GET['section']) and ( $_GET['section'] == 'draft' || $_GET['section'] == 'select_prospect') )
-			{
-				include_once('controller/draft/menuDraft.php');
-			}
 			else if (isset($_GET['section']) and $_GET['section'] == 'season_transition')
 			{
 				include_once('controller/season/menuSeasonTransition.php');

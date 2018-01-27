@@ -15,3 +15,12 @@ $GLOBALS['router']->get( '/team/:id',          'TeamController::displayAction', 
 $GLOBALS['router']->get( '/team/:id/roster',   'TeamController::rosterAction',   'team_roster' );
 $GLOBALS['router']->get( '/team/:id/stats',    'TeamController::statsAction',    'team_stats' );
 $GLOBALS['router']->get( '/team/:id/schedule', 'TeamController::scheduleAction', 'team_schedule' );
+
+$GLOBALS['router']->get(  '/draft/lottery',       'DraftController::lotteryAction',            'draft_lottery' );
+$GLOBALS['router']->get(  '/draft/subscribe',     'DraftController::selectProspectsAction',    'draft_select' );
+$GLOBALS['router']->post( '/draft/subscribe',     'DraftController::subscribeProspectsAction', 'draft_subscribe' );
+$GLOBALS['router']->get(  '/draft/do',            'DraftController::doAction',                 'draft_do' );
+$GLOBALS['router']->get(  '/draft/pick',          'DraftController::chooseAction',             'draft_choose' );
+$GLOBALS['router']->post( '/draft/pick',          'DraftController::pickAction',               'draft_pick' );
+$GLOBALS['router']->get(  '/draft/history',       'DraftController::historyChooseYearAction',  'draft_history' );
+$GLOBALS['router']->get(  '/draft/history/:year', 'DraftController::historyDisplayAction',     'draft_year' );

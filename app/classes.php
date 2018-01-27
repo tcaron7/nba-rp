@@ -31,3 +31,4 @@ require_once( $GLOBALS['path']['controllers'] . 'HomeController.class.php' );
 require_once( $GLOBALS['path']['controllers'] . 'AwardController.class.php' );
 require_once( $GLOBALS['path']['controllers'] . 'StandingController.class.php' );
 require_once( $GLOBALS['path']['controllers'] . 'TeamController.class.php' );
+require_once( $GLOBALS['path']['controllers'] . 'DraftController.class.php' );

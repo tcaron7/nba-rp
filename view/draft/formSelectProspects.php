@@ -1,7 +1,7 @@
 <section id="selectProspects">
     <div class="sectionHeader">Select Prospects</div>
     
-    <form action="#" method="post">
+    <form action="<?php echo $GLOBALS['router']->generateUrl( 'draft_subscribe' ); ?>" method="post">
     <input type="submit" value="Submit Prospects &raquo;" />
     <div class="sectionBody">
     <?php
