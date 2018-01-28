@@ -16,7 +16,7 @@
 		if ( $section != 'draft_history' )
 		{
 			echo '<a href="' . $GLOBALS['router']->generateUrl( 'draft_choose' ) . '" class="button mainoption">Select next pick &raquo;</a>';
-			echo '<a href="index.php?section=trade" class="button">Make a trade</a>';
+			echo '<a href="' . $GLOBALS['router']->generateUrl( 'trade_create' ) . '" class="button">Make a trade</a>';
 		}
 		?>
     </div>

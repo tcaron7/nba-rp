@@ -8,7 +8,7 @@
 	  */
 ?>
 <section id="tradingTeams">
-    <form action="index.php?section=trade&submit=yes" method="post">
+    <form action="<?php echo $GLOBALS['router']->generateUrl( 'trade_do' ); ?>" method="post">
         <div class="sectionHeader">
             Trading Teams
             <input type="submit" value="Submit Transaction &raquo;" />

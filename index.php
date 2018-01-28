@@ -221,10 +221,6 @@ require_once( 'app/routes.php' );
 			{
 				include_once('controller/transaction/signature/menuSignature.php');
 			}
-			else if (isset($_GET['section']) and $_GET['section'] == 'trade')
-			{
-				include_once('controller/transaction/trade/menuTrade.php');
-			}
 			else if (isset($_GET['section']) and $_GET['section'] == 'season_transition')
 			{
 				include_once('controller/season/menuSeasonTransition.php');

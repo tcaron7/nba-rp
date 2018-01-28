@@ -23,7 +23,7 @@
         { 
     ?>
             <p>During this period you are still able to make a trade.</p>
-            <p>Follow <a href="index.php?section=trade">this link</a> to make a trade.</p>
+            <p>Follow <a href="<?php echo $GLOBALS['router']->generateUrl( 'trade_create' ); ?>">this link</a> to make a trade.</p>
     <?php 
         } 
         elseif($sectionTitle == 'Sign a player')

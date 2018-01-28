@@ -38,3 +38,6 @@ $GLOBALS['router']->get(  '/injuries',                'InjuryController::display
 $GLOBALS['router']->get(  '/injury/create',           'InjuryController::selectAction',         'injury_select' );
 $GLOBALS['router']->get(  '/injury/create/:playerId', 'InjuryController::createAction',         'injury_create' );
 $GLOBALS['router']->post( '/injury',                  'InjuryController::insertAction',         'injury_insert' );
+
+$GLOBALS['router']->get(  '/trade', 'TradeController::createAction', 'trade_create' );
+$GLOBALS['router']->post( '/trade', 'TradeController::doAction',     'trade_do' );
