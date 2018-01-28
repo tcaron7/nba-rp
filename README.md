@@ -1,1 +1,1 @@
-# nba-rp
+*Note:* To make games playing work, you will need to create a `store` folder.

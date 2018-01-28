@@ -32,13 +32,11 @@ elseif($_GET['option'] == 'preGame')
     
     $scoreHomeTeam    = $_POST[$gameId]['homeTeam']['score'];
     $scoreVisitorTeam = $_POST[$gameId]['visitorTeam']['score'];
-    
-    // Génération des stats des équipes
-    include_once('controller/play/generateGameTeamsStats.php');
-    
-    // Génération des temps de jeu des joueurs
-    include_once('controller/play/generatePlayersMinutesPlayed.php');
-    
+
+    $gameController = new GameController();
+    $gameTeamsStats = $gameController->generateGameTeamsStats( $gameId, $scoreHomeTeam, $scoreVisitorTeam );
+    $playersMinutes = $gameController->generatePlayersMinutesPlayed( $gameId );
+
     // On affiche la page (vue)
     include_once('view/game/formPreGame.php');
 }
@@ -59,7 +57,7 @@ else if($_GET['option'] == 'fillGame')
 }
 else if($_GET['option'] == 'recapGame')
 {
-    $statsGame = new StatsGame(null,$_POST);
+    $statsGame = new StatGame(null,$_POST);
     
     $homeTeamId     = $statsGame->getHomeTeamId();
     $visitorTeamId  = $statsGame->getVisitorTeamId();
@@ -72,17 +70,19 @@ else if($_GET['option'] == 'recapGame')
     $playersStats['visitorTeam'] = $statsGame->getVisitorTeamStats();
     
     $serializeStatsGame = serialize($statsGame);
-    file_put_contents('store', $serializeStatsGame);
+    file_put_contents( $GLOBALS['path']['store'] . 'game_' . $gameId, $serializeStatsGame );
   
     // On affiche la page (vue)
     include_once('view/game/recapGameStats.php');
 }
 else if($_GET['option'] == 'submitGame')
 {
-    $serializeStatsGame = file_get_contents('store');
+    $serializeStatsGame = file_get_contents( $GLOBALS['path']['store'] . 'game_' . $gameId );
     $statsGame = unserialize($serializeStatsGame);
     
 	updateStatPlayer($statsGame);
     insertStatsGame($statsGame);
     updateGameResult($statsGame);
+
+    unlink( $GLOBALS['path']['store'] . 'game_' . $gameId );
 }

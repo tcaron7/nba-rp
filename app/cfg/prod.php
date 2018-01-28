@@ -16,6 +16,7 @@ $GLOBALS['timezone'] = 'Europe/Paris';
 
 // Paths
 $GLOBALS['path']['root']        = './';
+$GLOBALS['path']['store']       = $GLOBALS['path']['root']    . 'store/';
 $GLOBALS['path']['web']         = $GLOBALS['server']          . 'web/';
 $GLOBALS['path']['css']         = $GLOBALS['path']['web']     . 'css/';
 $GLOBALS['path']['img']         = $GLOBALS['path']['web']     . 'img/';

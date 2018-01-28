@@ -2,7 +2,7 @@
 include_once('model/stat/read.php');
 include_once('model/stat/write.php');
 
-class StatsGame
+class StatGame
 {
 	/********************/
 	/*    Attributes    */
