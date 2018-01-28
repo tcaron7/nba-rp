@@ -30,7 +30,7 @@
         { 
     ?>
             <p>During this period you are still able to sign a player.</p>
-            <p>Follow <a href="index.php?section=signature">this link</a> to sign a player.</p>
+            <p>Follow <a href="<?php echo $GLOBALS['router']->generateUrl( 'signature_choose' ); ?>"">this link</a> to sign a player.</p>
     <?php 
         } 
     ?>

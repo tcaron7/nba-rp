@@ -213,14 +213,6 @@ require_once( 'app/routes.php' );
 			{
 				include_once('controller/person/prospect/addProspects.php');
 			}
-			else if (isset($_GET['section']) and $_GET['section'] == 'signature')
-			{
-				include_once('controller/transaction/signature/menuSignature.php');
-			}
-			else if (isset($_GET['section']) and ( $_GET['section'] == 'sign_player' or $_GET['section'] == 'sign_rookie') )
-			{
-				include_once('controller/transaction/signature/menuSignature.php');
-			}
 			else if (isset($_GET['section']) and $_GET['section'] == 'season_transition')
 			{
 				include_once('controller/season/menuSeasonTransition.php');

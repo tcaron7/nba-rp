@@ -41,3 +41,8 @@ $GLOBALS['router']->post( '/injury',                  'InjuryController::insertA
 
 $GLOBALS['router']->get(  '/trade', 'TradeController::createAction', 'trade_create' );
 $GLOBALS['router']->post( '/trade', 'TradeController::doAction',     'trade_do' );
+
+$GLOBALS['router']->get(  '/signature',           'SignatureController::chooseAction',     'signature_choose' );
+$GLOBALS['router']->get(  '/signature/:playerId', 'SignatureController::createAction',     'signature_create' );
+$GLOBALS['router']->post( '/signature/player',    'SignatureController::signPlayerAction', 'signature_player' );
+$GLOBALS['router']->post( '/signature/rookie',    'SignatureController::signRookieAction', 'signature_rookie' );

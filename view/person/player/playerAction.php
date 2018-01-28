@@ -4,12 +4,15 @@
         if( ($player->getExperience() > 0) or ($player->getTeamId() == 0) )
         {
             echo '<br />';
-            echo '<a class="button" href="index.php?section=sign_player&id=' . $player->getId() . '">Sign Player</a>'; 
+            echo '<a class="button" href="' . $GLOBALS['router']->generateUrl( 'signature_create', array( 'playerId' => $player->getId() ) ) . '">Sign Player</a>';
         }
         else
         {
             echo '<br />';
-            echo '<a class="button" href="index.php?section=sign_rookie&id=' . $player->getId() . '">Sign Rookie</a>';
+            echo '<form action="' . $GLOBALS['router']->generateUrl( 'signature_rookie' ) . '" method="post">
+                <input type="hidden" name="playerId" value="' . $player->getId() . '" />
+                <input type="submit" value="Sign Rookie" />
+                </form>';
         }
     }
     echo '<br />';
