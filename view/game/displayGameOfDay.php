@@ -62,7 +62,7 @@
                         </div>
                         <br class="clear"/>
                         <div class="play">
-                            <a href="index.php?section=play&option=fillScore&id=<?php echo $game->getId(); ?>">
+                            <a href="<?php echo $GLOBALS['router']->generateUrl( 'game_play_score', array( 'id' => $game->getId() ) ); ?>">
                                 Play Game
                             </a>
                         </div>

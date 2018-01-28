@@ -173,11 +173,7 @@ require_once( 'app/routes.php' );
 			// Content
 			echo '<div id="pageContent">';
 
-            if (isset($_GET['section']) and $_GET['section'] == 'play')
-			{
-				include_once('controller/play/menuPlay.php');
-			}
-			else if (isset($_GET['section']) and $_GET['section'] == 'season_view' and isset($_GET['year']))
+            if (isset($_GET['section']) and $_GET['section'] == 'season_view' and isset($_GET['year']))
 			{
 				include_once('controller/season/menuSeason.php');
 			}

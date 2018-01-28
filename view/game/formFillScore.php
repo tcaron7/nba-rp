@@ -1,4 +1,4 @@
-<form action="index.php?section=play&option=preGame&id=<?php echo $gameId; ?>" method="post">
+<form action="<?php echo $GLOBALS['router']->generateUrl( 'game_play_pre', array( 'id' => $gameId ) ); ?>" method="post">
     <?php
     foreach($index as $teamIndex)
     {

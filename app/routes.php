@@ -27,3 +27,9 @@ $GLOBALS['router']->get(  '/draft/history/:year', 'DraftController::historyDispl
 
 $GLOBALS['router']->get( '/games',    'GameController::scheduleAction', 'game_schedule' );
 $GLOBALS['router']->get( '/game/:id', 'GameController::recapAction',    'game_recap' );
+
+$GLOBALS['router']->get(  '/game/:id/play/score',  'GameController::playScoreAction',  'game_play_score' );
+$GLOBALS['router']->post( '/game/:id/play/pre',    'GameController::playPreAction',    'game_play_pre' );
+$GLOBALS['router']->post( '/game/:id/play/fill',   'GameController::playFillAction',   'game_play_fill' );
+$GLOBALS['router']->post( '/game/:id/play/recap',  'GameController::playRecapAction',  'game_play_recap' );
+$GLOBALS['router']->post( '/game/:id/play/submit', 'GameController::playSubmitAction', 'game_play_submit' );

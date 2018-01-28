@@ -20,15 +20,103 @@ class GameController
 		$statGame = new StatGame( $id, null );
 		$index    = array( 'homeTeam', 'visitorTeam' );
 
-		// Get team Players
 		$teams['homeTeam']           = new Team( $statGame->getHomeTeamId() );
 		$playersStats['homeTeam']    = $statGame->getHomeTeamStats();
 
 		$teams['visitorTeam']        = new Team( $statGame->getVisitorTeamId() );
 		$playersStats['visitorTeam'] = $statGame->getVisitorTeamStats();
 
-		// On affiche la page (vue)
 		include_once( $GLOBALS['path']['views'] . 'game/recapPlayedGameStats.php');
+	}
+
+	public function playScoreAction( $id )
+	{
+		$game  = new Game( $id, null, null, null);
+		$index = array( 'homeTeam', 'visitorTeam' );
+
+		$gameId        = $id;
+		$homeTeamId    = $game->getHomeTeam()->getId();
+		$visitorTeamId = $game->getVisitorTeam()->getId();
+
+		$teams['homeTeam']    = new Team( $homeTeamId );
+		$teams['visitorTeam'] = new Team( $visitorTeamId );
+
+		include_once( $GLOBALS['path']['views'] . 'game/formFillScore.php' );
+	}
+
+	public function playPreAction( $id )
+	{
+		$game  = new Game( $id, null, null, null);
+		$index = array( 'homeTeam', 'visitorTeam' );
+
+		$gameId        = $id;
+		$homeTeamId    = $game->getHomeTeam()->getId();
+		$visitorTeamId = $game->getVisitorTeam()->getId();
+
+		$teams['homeTeam']    = new Team( $homeTeamId );
+		$teams['visitorTeam'] = new Team( $visitorTeamId );
+
+		$teamPlayers['homeTeam']    = getAllPlayersOfTeam( $homeTeamId );
+		$teamPlayers['visitorTeam'] = getAllPlayersOfTeam( $visitorTeamId );
+
+		$scoreHomeTeam    = (int) $_POST[$gameId]['homeTeam']['score'];
+		$scoreVisitorTeam = (int) $_POST[$gameId]['visitorTeam']['score'];
+
+		$gameTeamsStats = $this->generateGameTeamsStats( $gameId, $scoreHomeTeam, $scoreVisitorTeam );
+		$playersMinutes = $this->generatePlayersMinutesPlayed( $gameId );
+
+		include_once( $GLOBALS['path']['views'] . 'game/formPreGame.php' );
+	}
+
+	public function playFillAction( $id )
+	{
+		$game  = new Game( $id, null, null, null);
+		$index = array( 'homeTeam', 'visitorTeam' );
+
+		$gameId        = $id;
+		$homeTeamId    = $game->getHomeTeam()->getId();
+		$visitorTeamId = $game->getVisitorTeam()->getId();
+
+		$teams['homeTeam']    = new Team( $homeTeamId );
+		$teams['visitorTeam'] = new Team( $visitorTeamId );
+
+		$teamPlayers['homeTeam']    = getAllPlayersOfTeam( $homeTeamId );
+		$teamPlayers['visitorTeam'] = getAllPlayersOfTeam( $visitorTeamId );
+
+		include_once( $GLOBALS['path']['views'] . 'game/formGameStats.php' );
+	}
+
+	public function playRecapAction( $id )
+	{
+		$game  = new Game( $id, null, null, null);
+		$index = array( 'homeTeam', 'visitorTeam' );
+
+		$gameId        = $id;
+		$homeTeamId    = $game->getHomeTeam()->getId();
+		$visitorTeamId = $game->getVisitorTeam()->getId();
+
+		$teams['homeTeam']    = new Team( $homeTeamId );
+		$teams['visitorTeam'] = new Team( $visitorTeamId );
+
+		$statsGame                   = new StatGame( null, $_POST );
+		$playersStats['homeTeam']    = $statsGame->getHomeTeamStats();
+		$playersStats['visitorTeam'] = $statsGame->getVisitorTeamStats();
+		file_put_contents( $GLOBALS['path']['store'] . 'game_' . $gameId, serialize( $statsGame ) );
+
+		include_once( $GLOBALS['path']['views'] . 'game/recapGameStats.php' );
+	}
+
+	public function playSubmitAction( $id )
+	{
+		$gameId             = $id;
+		$serializeStatsGame = file_get_contents( $GLOBALS['path']['store'] . 'game_' . $gameId );
+		$statsGame          = unserialize( $serializeStatsGame );
+
+		updateStatPlayer( $statsGame );
+		insertStatsGame( $statsGame );
+		updateGameResult( $statsGame );
+
+		unlink( $GLOBALS['path']['store'] . 'game_' . $gameId );
 	}
 
 	public function generateGameTeamsStats( $gameId, $scoreHomeTeam, $scoreVisitorTeam )
