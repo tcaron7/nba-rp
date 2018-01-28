@@ -1,4 +1,4 @@
-<form action="<?php echo $GLOBALS['router']->generateUrl( 'home' ); ?>" method="post">
+<form action="<?php echo $GLOBALS['router']->generateUrl( 'season_insert' ); ?>" method="post">
 <p>
     <section>
         <div class="sectionHeader">Next season parameter</div>

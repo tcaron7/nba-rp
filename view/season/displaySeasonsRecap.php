@@ -5,7 +5,7 @@
 	
 	if($season->getStatus() == 0)
 	{
-		echo 'La saison est terminée. <br />';
+		echo 'La saison est terminee. <br />';
 		echo 'Le champion NBA ' . ($year-1) . '/' . $year . " est l'equipe " . $season->getChampion()->getName() . '. <br />';
 		echo "Le finaliste est l'equipe " . $season->getFinalist()->getName() . '. </br >';
 	}

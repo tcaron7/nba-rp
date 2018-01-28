@@ -54,10 +54,6 @@ class HomeController
 		if ( $currentDay == $endSeason )
 		{
 			include( $GLOBALS['path']['views'] . 'season/menuSeasonTransitionDay.php' );
-			if ( !empty( $_POST ) )
-			{
-				$valid = insertNewSeason( $_POST );
-			}
 		}
 
 		// Season start
@@ -84,11 +80,6 @@ class HomeController
 		$currentSeason = getCurrentSeason();
 		$season        = new Season( $currentSeason );
 		$endSeason     = $season->getStopDate();
-
-		if ( $viewDay == $endSeason )
-		{
-			include( 'controller/season/generateSeasonTransition.php' );
-		}
 
 		preg_match( '/^(?<year>[0-9]{4})-(?<month>[0-9]{2})-(?<day>[0-9]{2})$/', $viewDay, $currentDay );
 		$day = new Date( $currentDay['year'], $currentDay['month'], $currentDay['day'] );

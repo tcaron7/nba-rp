@@ -36,3 +36,4 @@ require_once( $GLOBALS['path']['controllers'] . 'GameController.class.php' );
 require_once( $GLOBALS['path']['controllers'] . 'InjuryController.class.php' );
 require_once( $GLOBALS['path']['controllers'] . 'TradeController.class.php' );
 require_once( $GLOBALS['path']['controllers'] . 'SignatureController.class.php' );
+require_once( $GLOBALS['path']['controllers'] . 'SeasonController.class.php' );

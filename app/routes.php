@@ -46,3 +46,7 @@ $GLOBALS['router']->get(  '/signature',           'SignatureController::chooseAc
 $GLOBALS['router']->get(  '/signature/:playerId', 'SignatureController::createAction',     'signature_create' );
 $GLOBALS['router']->post( '/signature/player',    'SignatureController::signPlayerAction', 'signature_player' );
 $GLOBALS['router']->post( '/signature/rookie',    'SignatureController::signRookieAction', 'signature_rookie' );
+
+$GLOBALS['router']->get(  '/season/new',   'SeasonController::createAction',  'season_create' );
+$GLOBALS['router']->post( '/season/new',   'SeasonController::insertAction',  'season_insert' );
+$GLOBALS['router']->get(  '/season/:year', 'SeasonController::displayAction', 'season_display' );

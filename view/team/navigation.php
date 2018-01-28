@@ -10,7 +10,7 @@
 			$lastTenSeasons = getLastTenSeasons();
 			foreach ($lastTenSeasons as $key => $season)
 			{
-				echo '<li><a href="index.php?section=season_view&year=' . $season->getYear() . '" >';
+				echo '<li><a href="' . $GLOBALS['router']->generateUrl( 'season_display', array( 'year' => $season->getYear() ) ) . '" >';
 				echo  $season->getYear();
 				echo '</a></li>';
 			}
