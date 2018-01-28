@@ -38,7 +38,7 @@
             </div>
 		</li>
         
-		<li><a href="index.php?section=schedule">Scores & Schedules</a></li>
+		<li><a href="<?php echo $GLOBALS['router']->generateUrl( 'game_schedule' ); ?>">Scores & Schedules</a></li>
 		<li><a href="index.php?section=player">Players</a></li>
 		<li><a href="<?php echo $GLOBALS['router']->generateUrl( 'standings_display' ); ?>">Standings</a></li>
 		

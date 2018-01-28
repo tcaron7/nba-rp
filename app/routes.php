@@ -24,3 +24,6 @@ $GLOBALS['router']->get(  '/draft/pick',          'DraftController::chooseAction
 $GLOBALS['router']->post( '/draft/pick',          'DraftController::pickAction',               'draft_pick' );
 $GLOBALS['router']->get(  '/draft/history',       'DraftController::historyChooseYearAction',  'draft_history' );
 $GLOBALS['router']->get(  '/draft/history/:year', 'DraftController::historyDisplayAction',     'draft_year' );
+
+$GLOBALS['router']->get( '/games',    'GameController::scheduleAction', 'game_schedule' );
+$GLOBALS['router']->get( '/game/:id', 'GameController::recapAction',    'game_recap' );

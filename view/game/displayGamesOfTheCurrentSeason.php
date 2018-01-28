@@ -25,7 +25,7 @@
             {
                 echo $game->getVisitorTeam()->getName() . ' ' . $game->getVisitorTeamScore() . '<br />';
 				echo $game->getHomeTeam()->getName() . ' ' . $game->getHomeTeamScore() . '<br />';
-				echo '<a href="index.php?section=schedule&gameId=' . $game->getId() . '">';
+				echo '<a href="' . $GLOBALS['router']->generateUrl( 'game_recap', array( 'id' => $game->getId() ) ) . '">';
 				echo 'Recap';
 				echo '</a><br /><br />';
             }

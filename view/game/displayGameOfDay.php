@@ -87,7 +87,7 @@
                     }
                     
                     ?>
-                    <a href="index.php?section=schedule&gameId=<?php echo $game->getId();?>" class="tile final">
+                    <a href="<?php echo $GLOBALS['router']->generateUrl( 'game_recap', array( 'id' => $game->getId() ) ); ?>" class="tile final">
                         <div class="clock">Final</div>
                         <div class="matchup">
                             <div class="visitor">
