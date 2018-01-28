@@ -33,3 +33,8 @@ $GLOBALS['router']->post( '/game/:id/play/pre',    'GameController::playPreActio
 $GLOBALS['router']->post( '/game/:id/play/fill',   'GameController::playFillAction',   'game_play_fill' );
 $GLOBALS['router']->post( '/game/:id/play/recap',  'GameController::playRecapAction',  'game_play_recap' );
 $GLOBALS['router']->post( '/game/:id/play/submit', 'GameController::playSubmitAction', 'game_play_submit' );
+
+$GLOBALS['router']->get(  '/injuries',                'InjuryController::displayCurrentAction', 'injury_current' );
+$GLOBALS['router']->get(  '/injury/create',           'InjuryController::selectAction',         'injury_select' );
+$GLOBALS['router']->get(  '/injury/create/:playerId', 'InjuryController::createAction',         'injury_create' );
+$GLOBALS['router']->post( '/injury',                  'InjuryController::insertAction',         'injury_insert' );

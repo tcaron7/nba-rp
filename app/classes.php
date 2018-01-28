@@ -33,3 +33,4 @@ require_once( $GLOBALS['path']['controllers'] . 'StandingController.class.php' )
 require_once( $GLOBALS['path']['controllers'] . 'TeamController.class.php' );
 require_once( $GLOBALS['path']['controllers'] . 'DraftController.class.php' );
 require_once( $GLOBALS['path']['controllers'] . 'GameController.class.php' );
+require_once( $GLOBALS['path']['controllers'] . 'InjuryController.class.php' );

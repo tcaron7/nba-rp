@@ -60,8 +60,8 @@
                 <div class="primary">
                     <ul>
                         <li><a href="<?php echo $GLOBALS['router']->generateUrl( 'award_news' ); ?>">Awards</a></li>
-                        <li><a href="index.php?section=transactionDisplay">Transactions</a></li>
-                        <li><a href="index.php?section=injuryDisplay">Injuries</a></li>
+                        <li><a href="#">Transactions</a></li>
+                        <li><a href="<?php echo $GLOBALS['router']->generateUrl( 'injury_current' ); ?>">Injuries</a></li>
                     </ul>
                 </div>
             </div>

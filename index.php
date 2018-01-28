@@ -237,14 +237,6 @@ require_once( 'app/routes.php' );
 			{
 				include_once('controller/person/player/menuActivateRestrictedFreeAgentOption.php');
 			}
-			else if (isset($_GET['section']) and $_GET['section'] == 'injury')
-			{
-				include_once('controller/injury/menuAddInjury.php');
-			}
-			else if (isset($_GET['section']) and ( ($_GET['section'] == 'injuryDisplay') || ($_GET['section'] == 'transactionDisplay') ))
-			{
-				include_once('controller/injury/menuNews.php');
-			}
 			else
 			{
 				try
