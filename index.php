@@ -172,13 +172,6 @@ require_once( 'app/routes.php' );
 			
 			// Content
 			echo '<div id="pageContent">';
-
-			if (isset($_GET['section']) and $_GET['section'] == 'stats')
-			{
-				include_once('controller/stat/menuStats.php');
-			}
-			else
-			{
 				try
 				{
 					$GLOBALS['router']->run();
@@ -187,7 +180,6 @@ require_once( 'app/routes.php' );
 				{
 					echo '<b>Routing error:</b> ' . $e;
 				}
-			}
 			echo '</div>';
 
 			// Footer

@@ -71,3 +71,6 @@ $GLOBALS['router']->post( '/player',                         'PlayerController::
 $GLOBALS['router']->get(  '/prospect/list/:selection', 'ProspectController::listAction',   'prospect_list' );
 $GLOBALS['router']->get(  '/prospect/create',          'ProspectController::createAction', 'prospect_create' );
 $GLOBALS['router']->post( '/prospect',                 'ProspectController::insertAction', 'prospect_insert' );
+
+$GLOBALS['router']->get(  '/stats/:selection', 'StatController::displayAction', 'stat_display' );
+$GLOBALS['router']->post( '/stats/:selection', 'StatController::displayAction', 'stat_display' );

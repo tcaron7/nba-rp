@@ -47,8 +47,8 @@
             <div class="dropdown">
                 <div class="primary">
                     <ul>
-                        <li><a href="index.php?section=stats&stats=players">Players Top Stats</a></li>
-                        <li><a href="index.php?section=stats&stats=teams">Team Stats</a></li>
+                        <li><a href="<?php echo $GLOBALS['router']->generateUrl( 'stat_display', array( 'selection' => 'players' ) ); ?>">Players Top Stats</a></li>
+                        <li><a href="<?php echo $GLOBALS['router']->generateUrl( 'stat_display', array( 'selection' => 'teams' ) ); ?>">Team Stats</a></li>
                     </ul>
                 </div>
             </div>

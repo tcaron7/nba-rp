@@ -2,7 +2,7 @@
 	echo 'Stats of the season... I LOVE THIS GAME !!!<br />';
 	echo 'Best NBA Scorers !!!<br /><br />';
 ?>
-<form action="#" method="post">
+<form action="<?php echo $GLOBALS['router']->generateUrl( 'stat_display', array( 'selection' => 'teams' ) ); ?>" method="post">
     <p>
         <fieldset>
         <legend>Stats filtering</legend>
