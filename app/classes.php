@@ -38,3 +38,4 @@ require_once( $GLOBALS['path']['controllers'] . 'TradeController.class.php' );
 require_once( $GLOBALS['path']['controllers'] . 'SignatureController.class.php' );
 require_once( $GLOBALS['path']['controllers'] . 'SeasonController.class.php' );
 require_once( $GLOBALS['path']['controllers'] . 'PlayerController.class.php' );
+require_once( $GLOBALS['path']['controllers'] . 'ProspectController.class.php' );

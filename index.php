@@ -177,14 +177,6 @@ require_once( 'app/routes.php' );
 			{
 				include_once('controller/stat/menuStats.php');
 			}
-			else if (isset($_GET['section']) and $_GET['section'] == 'prospects')
-			{
-				include_once('controller/person/prospect/menuProspects.php');
-			}
-			else if (isset($_GET['section']) and $_GET['section'] == 'add_prospect')
-			{
-				include_once('controller/person/prospect/addProspects.php');
-			}
 			else
 			{
 				try

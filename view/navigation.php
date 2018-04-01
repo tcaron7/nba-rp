@@ -68,7 +68,7 @@
 		</li>
         
 		<li><a href="<?php echo $GLOBALS['router']->generateUrl( 'draft_history' ); ?>">Draft</a></li>
-		<li><a href="index.php?section=prospects">Prospects</a></li>
+		<li><a href="<?php echo $GLOBALS['router']->generateUrl( 'prospect_list', array( 'selection' => 'all' ) ); ?>">Prospects</a></li>
         
 		<li class="hasDropdown">
 			<a href="#">Archives</a>

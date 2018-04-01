@@ -67,3 +67,7 @@ $GLOBALS['router']->get(  '/player/:id/restricted/activate', 'PlayerController::
 $GLOBALS['router']->get(  '/player/:id/restricted/decline',  'PlayerController::restrictedDeclineAction',  'player_restricted_decline' );
 $GLOBALS['router']->get(  '/player/create',                  'PlayerController::createAction',             'player_create' );
 $GLOBALS['router']->post( '/player',                         'PlayerController::insertAction',             'player_insert' );
+
+$GLOBALS['router']->get(  '/prospect/list/:selection', 'ProspectController::listAction',   'prospect_list' );
+$GLOBALS['router']->get(  '/prospect/create',          'ProspectController::createAction', 'prospect_create' );
+$GLOBALS['router']->post( '/prospect',                 'ProspectController::insertAction', 'prospect_insert' );
