@@ -28,12 +28,12 @@
             echo '<td>' . $player->getContractType()  . '</td>';
             echo '<td>';
                 echo '<a class="button" href="'
-                    . $GLOBALS['router']->generateUrl( 'player_option_activate', array( 'id' => $player->getId() ) )
+                    . $GLOBALS['router']->generateUrl( 'player_restricted_activate', array( 'id' => $player->getId() ) )
                     . '">Activate Option</a>';
             echo '</td>';
             echo '<td>';
                 echo '<a class="button" href="'
-                    . $GLOBALS['router']->generateUrl( 'player_option_decline', array( 'id' => $player->getId() ) )
+                    . $GLOBALS['router']->generateUrl( 'player_restricted_decline', array( 'id' => $player->getId() ) )
                     . '">Reject Option</a>';
             echo '</td>';
             echo '</tr>';

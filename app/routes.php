@@ -50,3 +50,20 @@ $GLOBALS['router']->post( '/signature/rookie',    'SignatureController::signRook
 $GLOBALS['router']->get(  '/season/new',   'SeasonController::createAction',  'season_create' );
 $GLOBALS['router']->post( '/season/new',   'SeasonController::insertAction',  'season_insert' );
 $GLOBALS['router']->get(  '/season/:year', 'SeasonController::displayAction', 'season_display' );
+
+$GLOBALS['router']->get(  '/player/list',                    'PlayerController::listAllAction',            'player_list_all' );
+$GLOBALS['router']->get(  '/player/list/option',             'PlayerController::listOptionAction',         'player_list_option' );
+$GLOBALS['router']->get(  '/player/list/restricted',         'PlayerController::listRestrictedAction',     'player_list_restricted' );
+$GLOBALS['router']->get(  '/player/create',                  'PlayerController::createAction',             'player_create' );
+$GLOBALS['router']->get(  '/player/:id',                     'PlayerController::displayAction',            'player_display' );
+$GLOBALS['router']->get(  '/player/:id/stats',               'PlayerController::statsAction',              'player_stats' );
+$GLOBALS['router']->get(  '/player/:id/career',              'PlayerController::careerAction',             'player_career' );
+$GLOBALS['router']->get(  '/player/:id/games',               'PlayerController::gamesAction',              'player_games' );
+$GLOBALS['router']->get(  '/player/:id/awards',              'PlayerController::awardsAction',             'player_awards' );
+$GLOBALS['router']->get(  '/player/:id/retire',              'PlayerController::retireAction',             'player_retire' );
+$GLOBALS['router']->get(  '/player/:id/option/activate',     'PlayerController::optionActivateAction',     'player_option_activate' );
+$GLOBALS['router']->get(  '/player/:id/option/decline',      'PlayerController::optionDeclineAction',      'player_option_decline' );
+$GLOBALS['router']->get(  '/player/:id/restricted/activate', 'PlayerController::restrictedActivateAction', 'player_restricted_activate' );
+$GLOBALS['router']->get(  '/player/:id/restricted/decline',  'PlayerController::restrictedDeclineAction',  'player_restricted_decline' );
+$GLOBALS['router']->get(  '/player/create',                  'PlayerController::createAction',             'player_create' );
+$GLOBALS['router']->post( '/player',                         'PlayerController::insertAction',             'player_insert' );

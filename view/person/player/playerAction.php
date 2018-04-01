@@ -16,6 +16,6 @@
         }
     }
     echo '<br />';
-    echo '<a class="button" href="index.php?section=player&player_id=' . $player->getId() . '&action=retirement">Retire</a>';
+    echo '<a class="button" href="' . $GLOBALS['router']->generateUrl( 'player_retire', array( 'id' => $player->getId() ) ) . '">Retire</a>';
 ?>	
 

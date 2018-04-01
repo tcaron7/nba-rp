@@ -13,7 +13,7 @@
                     echo '</dt>';
                     echo '<dd>';
                 }
-                echo '<a href="index.php?section=player&player_id=' . $restrictedFreeAgent->getId() .'">';
+                echo '<a href="' . $GLOBALS['router']->generateUrl( 'player_display', array( 'id' => $restrictedFreeAgent->getId() ) ) .'">';
                 echo $restrictedFreeAgent->getFullname();
                 echo '</a>';
                 

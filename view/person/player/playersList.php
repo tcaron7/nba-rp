@@ -1,7 +1,7 @@
 <section class="playersList">
     <div class="sectionHeader">
         Players of the season
-        <a class="button" href="index.php?section=add_player">Add Player</a>
+        <a class="button" href="<?php echo $GLOBALS['router']->generateUrl( 'player_create', array( 'id' => $player->getId() ) ); ?>">Add Player</a>
     </div>
 
     <div class="sectionBody">
@@ -31,7 +31,7 @@
             foreach ( $playersLetter as $player )
             {
                 echo '<span>';
-                echo '<a href="index.php?section=player&player_id=' . $player->getId() .'">';
+                echo '<a href="' . $GLOBALS['router']->generateUrl( 'player_display', array( 'id' => $player->getId() ) ) .'">';
                 echo $player->getFullname();
                 echo '</a>';
                 echo ' [' . $player->getTeam()->getAbbreviation() . ']';

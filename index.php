@@ -173,33 +173,9 @@ require_once( 'app/routes.php' );
 			// Content
 			echo '<div id="pageContent">';
 
-			if (isset($_GET['section']) and $_GET['section'] == 'add_player')
-			{
-				include_once('controller/person/player/addPlayers.php');
-			}
-			else if (isset($_GET['section']) and $_GET['section'] == 'player')
-			{
-				include_once('controller/person/player/menuPlayers.php');
-			}
-			else if (isset($_GET['section']) and $_GET['section'] == 'stats')
+			if (isset($_GET['section']) and $_GET['section'] == 'stats')
 			{
 				include_once('controller/stat/menuStats.php');
-			}
-			else if (isset($_GET['section']) and $_GET['section'] == 'player_season_stats')
-			{
-				include_once('controller/person/player/menuPlayers.php');
-			}
-			else if (isset($_GET['section']) and $_GET['section'] == 'player_career_stats')
-			{
-				include_once('controller/person/player/menuPlayers.php');
-			}
-			else if (isset($_GET['section']) and $_GET['section'] == 'player_games_logs')
-			{
-				include_once('controller/person/player/menuPlayers.php');
-			}
-			else if (isset($_GET['section']) and $_GET['section'] == 'player_awards')
-			{
-				include_once('controller/person/player/menuPlayers.php');
 			}
 			else if (isset($_GET['section']) and $_GET['section'] == 'prospects')
 			{
@@ -208,14 +184,6 @@ require_once( 'app/routes.php' );
 			else if (isset($_GET['section']) and $_GET['section'] == 'add_prospect')
 			{
 				include_once('controller/person/prospect/addProspects.php');
-			}
-			else if (isset($_GET['section']) and $_GET['section'] == 'players_option')
-			{
-				include_once('controller/person/player/menuActivatePlayersOption.php');
-			}
-			else if (isset($_GET['section']) and $_GET['section'] == 'restricted_players_option')
-			{
-				include_once('controller/person/player/menuActivateRestrictedFreeAgentOption.php');
 			}
 			else
 			{
