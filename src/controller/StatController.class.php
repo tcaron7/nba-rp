@@ -5,6 +5,20 @@ class StatController
 
 	public function __construct() { }
 
+	public function filterAction( $selection )
+	{
+		if ( $selection == 'players' )
+		{
+			$players = array();
+			include_once( $GLOBALS['path']['views'] . 'stat/displayPlayersTopStats.php' );
+		}
+		elseif ( $selection == 'teams' )
+		{
+			$teams = array();
+			include_once( $GLOBALS['path']['views'] . 'stat/displayTeamsStats.php' );
+		}
+	}
+
 	public function displayAction( $selection )
 	{
 		$season      = getCurrentSeason();
