@@ -30,7 +30,7 @@
             foreach ( $playersLetter as $player )
             {
                 echo '<span>';
-                echo '<a href="nba.php?section=injury&player_id=' . $player->getId() .'">';
+                echo '<a href="' . $GLOBALS['router']->generateUrl( 'injury_create', array( 'playerId' => $player->getId() ) ) . '">';
                 echo $player->getFullname();
                 echo '</a>';
                 echo ' [' . $player->getTeam()->getAbbreviation() . ']';

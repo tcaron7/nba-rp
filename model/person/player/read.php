@@ -61,7 +61,6 @@ function getAllCandidatesToAnAward($award)
 	$request;
     $players;
 	$inTeamPlayers;
-	echo($award);
     $sql = '    SELECT player.playerId FROM player
                 LEFT JOIN person ON player.personId = person.personId
                 LEFT JOIN team   ON player.teamId   = team.teamId
@@ -85,9 +84,7 @@ function getAllCandidatesToAnAward($award)
     }
     
     $sql .= ' ORDER BY person.name';
-    
-    echo($sql);
-    
+        
 	$request = $db->prepare($sql);
 	$request->execute();
 	$players = $request->fetchAll();

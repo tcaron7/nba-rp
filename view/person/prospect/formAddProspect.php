@@ -1,4 +1,4 @@
-<form action="nba.php?section=add_prospect&submit=yes" method="post">
+<form action="<?php echo $GLOBALS['router']->generateUrl( 'prospect_insert' ); ?>" method="post">
 <p>
 	<?php
 	include_once('view/person/inputAddPerson.php');

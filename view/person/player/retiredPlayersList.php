@@ -7,7 +7,7 @@
 		{
 			echo '<br />' . substr($retiredPlayer->getName(),0,1) . '<br />';
 		}
-        echo '<a href="nba.php?section=player&player_id=' . $retiredPlayer->getId() .'">';
+        echo '<a href="' . $GLOBALS['router']->generateUrl( 'player_display', array( 'id' => $retiredPlayer->getId() ) ) .'">';
 		echo $retiredPlayer->getFirstname() . ' ' . $retiredPlayer->getName() . '</a>';
         
         echo '<br />';

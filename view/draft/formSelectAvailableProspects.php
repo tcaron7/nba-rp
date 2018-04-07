@@ -1,7 +1,7 @@
 <section id="selectProspects">
     <div class="sectionHeader">Select Prospects</div>
     
-    <form action="nba.php?section=draft" method="post">
+    <form action="<?php echo $GLOBALS['router']->generateUrl( 'draft_pick' ); ?>" method="post">
     <input type="submit" value="Submit Prospects &raquo;" />
     <div class="sectionBody">
     <?php

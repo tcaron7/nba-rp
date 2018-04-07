@@ -5,7 +5,7 @@
   */
 function getTotalWinBySeason($season)
 {
-    global $db;
+	global $db;
 	$request;
 	$win;
 	
@@ -17,10 +17,10 @@ function getTotalWinBySeason($season)
 	');
 	$request->bindParam(':season', $season, PDO::PARAM_INT);
 	$request->execute();
-    $win = $request->fetchAll();
-    
+	$win = $request->fetchAll();
+	
 	$request->closeCursor();
-    return $win;
+	return $win;
 }
 
 /**
@@ -28,7 +28,7 @@ function getTotalWinBySeason($season)
   */
 function getTotalLossBySeason($season)
 {
-    global $db;
+	global $db;
 	$request;
 	$loss;
 	
@@ -40,10 +40,10 @@ function getTotalLossBySeason($season)
 	');
 	$request->bindParam(':season', $season, PDO::PARAM_INT);
 	$request->execute();
-    $loss = $request->fetchAll();
-    
+	$loss = $request->fetchAll();
+	
 	$request->closeCursor();
-    return $loss;
+	return $loss;
 }
 
 /**
@@ -53,7 +53,7 @@ function getTotalWinForCurrentSeason()
 {
 	$currentSeason = getCurrentSeason();
 	$win = getTotalWinBySeason($currentSeason);
-    return $win;
+	return $win;
 }
 
 /**
@@ -63,7 +63,7 @@ function getTotalLossForCurrentSeason()
 {
 	$currentSeason = getCurrentSeason();
 	$loss = getTotalLossBySeason($currentSeason);
-    return $loss;
+	return $loss;
 }
 
 /**
@@ -101,5 +101,32 @@ function getTeamStandingForCurrentSeason()
 		}
 		$teamStanding[$id] = new Standing($id, $teamWin, $teamLoss);
 	}
+	return $teamStanding;
+}
+
+/**
+  * Returns the total number of wins, losses and ranks for each team for the current season
+  */
+function getTeamStandingWithRankForCurrentSeason()
+{
+	$teamStanding = getTeamStandingForCurrentSeason();
+	usort( $teamStanding, 'Standing::compare' );
+
+	$rankEast = 1;
+	$rankWest = 1;
+	foreach ( $teamStanding as $standing )
+	{
+		if ( $standing->getConference() == 'East' )
+		{
+			$standing->setConferenceRank( $rankEast );
+			$rankEast = $rankEast + 1;
+		}
+		else if ( $standing->getConference() == 'West' )
+		{
+			$standing->setConferenceRank( $rankWest );
+			$rankWest = $rankWest + 1;
+		}
+	}
+
 	return $teamStanding;
 }

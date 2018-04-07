@@ -31,7 +31,7 @@
                 echo '<tr>';
                 echo '<td>' . $teamPlayer->getPosition()                                 . '</td>';
                 echo '<td>';
-                echo '<a href="nba.php?section=player&player_id=' . $teamPlayer->getId() .'">';
+                echo '<a href="' . $GLOBALS['router']->generateUrl( 'player_display', array( 'id' => $teamPlayer->getId() ) ) .'">';
                 echo $teamPlayer->getFullname();
                 echo '</a>';
                 echo '</td>';

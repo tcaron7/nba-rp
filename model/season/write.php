@@ -78,3 +78,47 @@ function insertNewSeason($data)
         
     return 1;
 }
+
+function insertSeasonSchedule($seasonGames)
+{
+    global $db;
+    
+    foreach($seasonGames as $seasonGame)
+    {
+        $request;
+        $request = $db->prepare('
+                                    INSERT INTO game (
+                                        season,
+                                        date,
+                                        homeTeamId,
+                                        visitorTeamId,
+                                        homeTeamScore,
+                                        visitorTeamScore,
+                                        overtime,
+                                        status
+                                    )
+                                    VALUES (
+                                        :season,
+                                        :date,
+                                        :homeTeamId,
+                                        :visitorTeamId,
+                                        :homeTeamScore,
+                                        :visitorTeamScore,
+                                        :overtime,
+                                        :status
+                                    )
+                                ');
+
+        $request->bindValue(':season',              $seasonGame->getSeason(),               PDO::PARAM_INT);
+        $request->bindValue(':date',                $seasonGame->getGameDate(),             PDO::PARAM_STR);
+        $request->bindValue(':homeTeamId',          $seasonGame->getHomeTeam()->getId(),    PDO::PARAM_INT);
+        $request->bindValue(':visitorTeamId',       $seasonGame->getVisitorTeam()->getId(), PDO::PARAM_INT);
+        $request->bindValue(':homeTeamScore',       $seasonGame->getHomeTeamScore(),        PDO::PARAM_INT);
+        $request->bindValue(':visitorTeamScore',    $seasonGame->getVisitorTeamScore(),     PDO::PARAM_INT);
+        $request->bindValue(':overtime',            $seasonGame->getOvertime(),             PDO::PARAM_INT);
+        $request->bindValue(':status',              $seasonGame->getStatus(),               PDO::PARAM_INT);
+
+        $request->execute();
+        $request->closeCursor();
+    }
+}

@@ -16,27 +16,25 @@
 
     <tbody>
         <?php
-        foreach($playersWithOption as $playerWithOption)
+        foreach( $players as $player )
         {
             echo '<tr>';
-            echo '<td>' . $playerWithOption->getPosition()      . '</td>';
-            echo '<td>' . $playerWithOption->getFullName()      . '</td>';
-            echo '<td>' . $playerWithOption->getAge()           . '</td>';
-            echo '<td>' . $playerWithOption->getExperience()    . '</td>';
-            echo '<td>' . $playerWithOption->getSalary()        . '</td>';
-            echo '<td>' . $playerWithOption->getOptionalYear()  . '</td>';
-            echo '<td>' . $playerWithOption->getContractType()  . '</td>';
+            echo '<td>' . $player->getPosition()      . '</td>';
+            echo '<td>' . $player->getFullName()      . '</td>';
+            echo '<td>' . $player->getAge()           . '</td>';
+            echo '<td>' . $player->getExperience()    . '</td>';
+            echo '<td>' . $player->getSalary()        . '</td>';
+            echo '<td>' . $player->getOptionalYear()  . '</td>';
+            echo '<td>' . $player->getContractType()  . '</td>';
             echo '<td>';
-                echo '<form action="nba.php?section=players_option&activate=yes" method="post">';
-                echo '<input type="hidden" name="playerId" value="' . $playerWithOption->getId() . '">';
-                echo '<input type="submit" value="Activate Option"/>';
-                echo '</form>';
+                echo '<a class="button" href="'
+                    . $GLOBALS['router']->generateUrl( 'player_option_activate', array( 'id' => $player->getId() ) )
+                    . '">Activate Option</a>';
             echo '</td>';
             echo '<td>';
-                echo '<form action="nba.php?section=players_option&activate=no" method="post">';
-                echo '<input type="hidden" name="playerId" value="' . $playerWithOption->getId() . '">';
-                echo '<input type="submit" value="Reject Option"/>';
-                echo '</form>';
+                echo '<a class="button" href="'
+                    . $GLOBALS['router']->generateUrl( 'player_option_decline', array( 'id' => $player->getId() ) )
+                    . '">Reject Option</a>';
             echo '</td>';
             echo '</tr>';
         }

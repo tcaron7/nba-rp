@@ -1,4 +1,4 @@
-<form action="nba.php?section=play&option=fillGame&id=<?php echo $gameId; ?>" method="post">
+<form action="<?php echo $GLOBALS['router']->generateUrl( 'game_play_fill', array( 'id' => $gameId ) ); ?>" method="post">
     <?php
     foreach($index as $teamIndex)
     {

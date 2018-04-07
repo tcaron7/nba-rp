@@ -1,9 +1,9 @@
 <nav id="navPlayer">
 	<ul>       
-		<li><a href="nba.php?section=player_season_stats&player_id=<?php echo $player->getId(); ?>">Season</a></li>
-		<li><a href="nba.php?section=player_games_logs&player_id=<?php echo $player->getId(); ?>">Games Logs</a></li>
-		<li><a href="nba.php?section=player_career_stats&player_id=<?php echo $player->getId(); ?>">Career</a></li>
-		<li><a href="nba.php?section=player_awards&player_id=<?php echo $player->getId(); ?>">Awards & Records</a></li>
+		<li><a href="<?php echo $GLOBALS['router']->generateUrl( 'player_stats', array( 'id' => $player->getId() ) ); ?>">Season</a></li>
+		<li><a href="<?php echo $GLOBALS['router']->generateUrl( 'player_games', array( 'id' => $player->getId() ) ); ?>">Games Logs</a></li>
+		<li><a href="<?php echo $GLOBALS['router']->generateUrl( 'player_career', array( 'id' => $player->getId() ) ); ?>">Career</a></li>
+		<li><a href="<?php echo $GLOBALS['router']->generateUrl( 'player_awards', array( 'id' => $player->getId() ) ); ?>">Awards & Records</a></li>
 	</ul>
 </nav>
 

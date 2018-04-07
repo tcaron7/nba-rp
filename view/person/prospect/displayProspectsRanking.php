@@ -7,19 +7,19 @@
 	
 	echo 'Prospects ranking ... I LOVE THIS GAME !!!<br /><br />';
 	
-	echo '<li><a href="nba.php?section=prospects&prospect=Seniors">Seniors</a></li>';
-	echo '<li><a href="nba.php?section=prospects&prospect=Juniors">Juniors</a></li>';
-	echo '<li><a href="nba.php?section=prospects&prospect=Sophomores">Sophomores</a></li>';
-	echo '<li><a href="nba.php?section=prospects&prospect=Freshmen">Freshmen</a></li>';
-    echo '<li><a href="nba.php?section=prospects&prospect=International">International</a>';                    
+	echo '<li><a href="' . $GLOBALS['router']->generateUrl( 'prospect_list', array( 'selection' => 'seniors' ) ) . '">Seniors</a></li>';
+	echo '<li><a href="' . $GLOBALS['router']->generateUrl( 'prospect_list', array( 'selection' => 'juniors' ) ) . '">Juniors</a></li>';
+	echo '<li><a href="' . $GLOBALS['router']->generateUrl( 'prospect_list', array( 'selection' => 'sophomores' ) ) . '">Sophomores</a></li>';
+	echo '<li><a href="' . $GLOBALS['router']->generateUrl( 'prospect_list', array( 'selection' => 'freshmen' ) ) . '">Freshmen</a></li>';
+    echo '<li><a href="' . $GLOBALS['router']->generateUrl( 'prospect_list', array( 'selection' => 'international' ) ) . '">International</a>';
 	echo '<ul>';
-	echo '<li><a href="nba.php?section=prospects&prospect=International&birthyear=' . $prospectBirthYear4	. '">' . $prospectBirthYear4	. '</a></li>';
-	echo '<li><a href="nba.php?section=prospects&prospect=International&birthyear=' . $prospectBirthYear3	. '">' . $prospectBirthYear3	. '</a></li>';
-	echo '<li><a href="nba.php?section=prospects&prospect=International&birthyear=' . $prospectBirthYear2	. '">' . $prospectBirthYear2	. '</a></li>';
-	echo '<li><a href="nba.php?section=prospects&prospect=International&birthyear=' . $prospectBirthYear1	. '">' . $prospectBirthYear1	. '</a></li>';
-	echo '<li><a href="nba.php?section=prospects&prospect=International&birthyear=' . $prospectBirthYear0	. '">' . $prospectBirthYear0	. '</a></li>';
+	echo '<li><a href="#">' . $prospectBirthYear4	. '</a></li>';
+	echo '<li><a href="#">' . $prospectBirthYear3	. '</a></li>';
+	echo '<li><a href="#">' . $prospectBirthYear2	. '</a></li>';
+	echo '<li><a href="#">' . $prospectBirthYear1	. '</a></li>';
+	echo '<li><a href="#">' . $prospectBirthYear0	. '</a></li>';
 	echo '</ul>';
 	echo '</li>';
 ?>
 
-<a class="button" href="nba.php?section=add_prospect">Add Prospect</a>
+<a class="button" href="<?php echo $GLOBALS['router']->generateUrl( 'prospect_create' ); ?>">Add Prospect</a>

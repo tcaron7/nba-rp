@@ -2,7 +2,7 @@
 	echo 'Stats of the season... I LOVE THIS GAME !!!<br />';
 	echo 'Best NBA Scorers !!!<br /><br />';
 ?>
-<form action="#" method="post">
+<form action="<?php echo $GLOBALS['router']->generateUrl( 'stat_display', array( 'selection' => 'teams' ) ); ?>" method="post">
     <p>
         <fieldset>
         <legend>Stats filtering</legend>
@@ -78,7 +78,7 @@
                             echo '<tr>';
                             echo '<td>' . $rank                                              	. '</td>';
 							echo '<td>';
-							echo '<a href="nba.php?section=team_view&id=' . $team->getId() .'">';
+							echo '<a href="' . $GLOBALS['router']->generateUrl( 'team_display', array( 'id' => $team->getId() ) ) . '">';
 							echo $team->getFullname();
 							echo '</a>';
 							echo '</td>';
