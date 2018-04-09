@@ -14,7 +14,8 @@ $GLOBALS['db']['options'] = array(
 );
 
 // Server
-$GLOBALS['server'] = 'http://localhost/play-nba/';
+$GLOBALS['server']      = 'http://localhost/play-nba/';
+$GLOBALS['environment'] = 'dev';
 
 // Paths
 $GLOBALS['path']['web'] = $GLOBALS['server']      . 'web/';

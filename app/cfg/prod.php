@@ -11,8 +11,9 @@ $GLOBALS['db']['options'] = array(
 );
 
 // Server
-$GLOBALS['server']   = '';
-$GLOBALS['timezone'] = 'Europe/Paris';
+$GLOBALS['server']      = '';
+$GLOBALS['timezone']    = 'Europe/Paris';
+$GLOBALS['environment'] = 'prod';
 
 // Paths
 $GLOBALS['path']['root']        = './';
@@ -25,3 +26,5 @@ $GLOBALS['path']['views']       = $GLOBALS['path']['root']    . 'view/';
 $GLOBALS['path']['sources']     = $GLOBALS['path']['root']    . 'src/';
 $GLOBALS['path']['entities']    = $GLOBALS['path']['sources'] . 'entity/';
 $GLOBALS['path']['controllers'] = $GLOBALS['path']['sources'] . 'controller/';
+$GLOBALS['path']['models']      = $GLOBALS['path']['sources'] . 'model/';
+$GLOBALS['path']['tests']       = $GLOBALS['path']['sources'] . 'test/';
