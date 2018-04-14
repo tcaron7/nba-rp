@@ -16,7 +16,8 @@ class Conference
 	/*    Constructs    */
 	/********************/
 
-	function __construct( array $data = null ) {
+	function __construct( array $data = null )
+	{
 		if ( !is_null( $data ) )
 		{
 			$this->constructWithData( $data );
@@ -83,6 +84,15 @@ class Conference
 	public function getDivisions()
 	{
 		$divisionModel = new DivisionModel();
+		return $divisionModel->findByConference( $this->getId() );
+	}
+
+	/**
+	  * Returns all teams of a conference
+	  */
+	public function getTeams()
+	{
+		$divisionModel = new TeamModel();
 		return $divisionModel->findByConference( $this->getId() );
 	}
 

@@ -1,104 +1,225 @@
 <?php
-include_once('model/team/read.php');
 
 class Team
 {
+
+
 	/********************/
 	/*    Attributes    */
 	/********************/
-	
-    private $id;
+
+	private $id;
+	private $city;
 	private $name;
-    private $abbreviation;
-    private $city;
-    private $conference;
-    private $division;
-    private $mainColor;
-    private $secondaryColor;
-	private $stats;
-	private $players;
-	
+	private $abbreviation;
+	private $divisionId;
+	private $mainColor;
+	private $secondaryColor;
+	//private $stats;
+	//private $players;
+
+
 	/********************/
 	/*    Constructs    */
 	/********************/
-	
-	function __construct($id) {
-		// check id 
-		
-		if ($id) {
-			$team = getTeamById($id);
-			
-			$this->id             = $team['teamId'];
-			$this->city           = $team['city'];
-			$this->name           = $team['name'];
-            $this->abbreviation   = $team['abbreviation'];
-			$this->conference     = $team['conference'];
-            $this->division       = $team['division'];
-			$this->mainColor      = $team['mainColor'];
-            $this->secondaryColor = $team['secondaryColor'];
-			
-			// $this->setStats();
+
+	function __construct( array $data = null )
+	{
+		if ( !is_null( $data ) )
+		{
+			$this->constructWithData( $data );
 		}
-		
-		else if ($id == 0) {
-            $this->id             = 0;
-			$this->city           = 'Total';
-			$this->name           = 'Total';
-            $this->abbreviation   = 'ALL';
-			$this->conference     = '';
-            $this->division       = '';
-			$this->mainColor      = '';
-            $this->secondaryColor = '';
-			
+		else
+		{
+			$this->constructWithNone();
 		}
-    }
-	
-	
+	}
+
+	function constructWithNone()
+	{
+		$this->setCity( 'Total' );
+		$this->setName( 'Total' );
+		$this->setAbbreviation( 'ALL' );
+	}
+
+	function constructWithData( $data )
+	{
+		if ( $data['id'] )
+		{
+			$this->setId( $data['id'] );
+		}
+
+		if ( $data['city'] )
+		{
+			$this->setCity( $data['city'] );
+		}
+
+		if ( $data['name'] )
+		{
+			$this->setName( $data['name'] );
+		}
+
+		if ( $data['abbreviation'] )
+		{
+			$this->setAbbreviation( $data['abbreviation'] );
+		}
+
+		if ( $data['divisionId'] )
+		{
+			$this->setDivisionId( $data['divisionId'] );
+		}
+
+		if ( $data['mainColor'] )
+		{
+			$this->setMainColor( $data['mainColor'] );
+		}
+
+		if ( $data['secondaryColor'] )
+		{
+			$this->setSecondaryColor( $data['secondaryColor'] );
+		}
+	}
+
+
 	/********************/
 	/*     Getters      */
 	/********************/
-	
+
 	public function getId()
 	{
 		return $this->id;
 	}
-	
-	public function getName()
-	{
-		return $this->name;
-	}
-    
-	public function getAbbreviation()
-	{
-		return $this->abbreviation;
-	}
-    
+
 	public function getCity()
 	{
 		return $this->city;
 	}
-	
-	public function getConference()
+
+	public function getName()
 	{
-		return $this->conference;
+		return $this->name;
 	}
-    
-    public function getDivision()
+
+	public function getAbbreviation()
 	{
-		return $this->division;
+		return $this->abbreviation;
 	}
-    
+
+	public function getDivisionId()
+	{
+		return $this->divisionId;
+	}
+
 	public function getMainColor()
 	{
 		return $this->mainColor;
 	}
-    
-    public function getSecondaryColor()
+
+	public function getSecondaryColor()
 	{
 		return $this->secondaryColor;
 	}
-	
-	public function getPlayers()
+
+
+	/********************/
+	/*     Setters      */
+	/********************/
+
+	public function setId( int $id )
+	{
+		$this->id = $id;
+	}
+
+	public function setCity( string $city )
+	{
+		$this->city = $city;
+	}
+
+	public function setName( string $name )
+	{
+		$this->name = $name;
+	}
+
+	public function setAbbreviation( string $abbreviation )
+	{
+		$this->abbreviation = $abbreviation;
+	}
+
+	public function setDivisionId( int $divisionId )
+	{
+		$this->divisionId = $divisionId;
+	}
+
+	public function setMainColor( string $mainColor = null )
+	{
+		$this->mainColor = $mainColor;
+	}
+
+	public function setSecondaryColor( string $secondaryColor = null )
+	{
+		$this->secondaryColor = $secondaryColor;
+	}
+
+
+	/********************/
+	/*    Functions     */
+	/********************/
+
+	/**
+	  * Returns the full name of the team (City followed by Name)
+	  */
+	public function getFullName()
+	{
+		return $this->getCity() . ' ' . $this->getName();
+	}
+
+	/**
+	  * Returns the Division of the team
+	  */
+	public function getDivision()
+	{
+		$divisionModel = new DivisionModel();
+		return $divisionModel->findById( $this->getDivisionId() );
+	}
+
+	/**
+	  * Set the Division of the team
+	  */
+	public function setDivision( Division $division )
+	{
+		$this->setDivisionId( $division->getId() );
+	}
+
+	/**
+	  * Returns the Conference ID of the team
+	  */
+	public function getConferenceId()
+	{
+		$divisionModel = new DivisionModel();
+		return $divisionModel->findById( $this->getDivisionId() )->getConferenceId();
+	}
+
+	/**
+	  * Returns the Conference of the team
+	  */
+	public function getConference()
+	{
+		$divisionModel = new DivisionModel();
+		return $divisionModel->findById( $this->getDivisionId() )->getConference();
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+	/*public function getPlayers()
 	{
 		if ( !$this->players ) 
 		{
@@ -106,7 +227,7 @@ class Team
 		}
 		return $this->players;
 	}
-	
+
 	public function getStats()
 	{
 		if ( !$this->stats ) 
@@ -115,51 +236,11 @@ class Team
 		}
 		return $this->stats;
 	}
-	
-	
-	/********************/
-	/*     Setters      */
-	/********************/
-	
-	public function setName($newName)
-	{
-		$this->name = $newName;
-	}
 
-    public function setAbbreviation($newAbbreviation)
-	{
-		$this->abbreviation = $newAbbreviation;
-	}
-	
-	public function setCity($newCity)
-	{
-		$this->city = $newCity;
-	}
-
-	public function setConference($newConference)
-	{
-		$this->conference = $newConference;
-	}
-    
-    public function setDivision($newDivision)
-	{
-		$this->division = $newDivision;
-	}
-	
-    public function setMainColor($newMainColor)
-	{
-		$this->mainColor = $newMainColor;
-	}
-    
-    public function setSecondaryColor($newSecondaryColor)
-	{
-		$this->secondaryColor = $newSecondaryColor;
-	}
-    
 	public function setStats()
 	{
 		$stat;
-        $seasons = null;
+		$seasons = null;
 		$season = getCurrentSeason();
 
 		$stat = new StatTeam($this->getId());
@@ -167,77 +248,64 @@ class Team
 		$this->stats[$season] = $stat;
 
 		return $this->stats;
-	}
+	}*/
 	
-	/********************/
-	/*    Functions     */
-	/********************/
-	   
-	/**
-	  * Returns the full name of the team (City followed by Name)
-	  */
-    public function getFullName()
-	{
-		return $this->getCity() . ' ' . $this->getName();
-	}
-    
 	/**
 	  * Returns all the next drafts of the team for the next $numberYear
 	  */
-    public function getNextDraftPick($numberYear)
-    {
-       return getTeamNextDraftPick($numberYear, $this->id); 
-    }
-    
-    /**
-      * Returns the number of players under contract in the team
-      */
-    public function getNumberOfPlayersInTeam()
-    {
-        $numberOfPlayers = getNumberOfPlayersInATeam($this->id);
-        return $numberOfPlayers; 
-    }
-    
-    /**
-      * Returns the total salary of the team
-      */
-    public function getTotalSalaryTeam()
-    {
-        $totalSalary = getTeamTotalSalary($this->id);
-        return $totalSalary; 
-    }
-    
-    /**
-      * Returns the total salary of the team
-      */
-    public function getSalarialMarginTeam()
-    {
-        $currentSeason = getCurrentSeason();
-        $season = new Season($currentSeason);
-        $maxSalaryCap = $season->getSalaryCap();
-        
-        $totalSalary = $this->getTotalSalaryTeam();
-        return $maxSalaryCap - $totalSalary; 
-    }
-    
-    /**
-      * Get player stats for a given month and stats category 
-      */
-    public function getSpecificSeasonStats($statCategory, $month)
-    {
-        $stats;
-        $season  = getCurrentSeason();
-        
-        if($month == 'Season')
-        {
-            $stats = $this->getStats()[$season]->getCategoryStats($statCategory);
-        }
-        else
-        {
-            // TO DO : get Months stats function
-            $stats = $this->getStats()[$season]->getCategoryStats($statCategory);
-        }
-        return $stats;
-    }
+	/*public function getNextDraftPick($numberYear)
+	{
+	   return getTeamNextDraftPick($numberYear, $this->id); 
+	}*/
+	
+	/**
+	  * Returns the number of players under contract in the team
+	  */
+	/*public function getNumberOfPlayersInTeam()
+	{
+		$numberOfPlayers = getNumberOfPlayersInATeam($this->id);
+		return $numberOfPlayers; 
+	}*/
+	
+	/**
+	  * Returns the total salary of the team
+	  */
+	/*public function getTotalSalaryTeam()
+	{
+		$totalSalary = getTeamTotalSalary($this->id);
+		return $totalSalary; 
+	}*/
+	
+	/**
+	  * Returns the total salary of the team
+	  */
+	/*public function getSalarialMarginTeam()
+	{
+		$currentSeason = getCurrentSeason();
+		$season = new Season($currentSeason);
+		$maxSalaryCap = $season->getSalaryCap();
+		
+		$totalSalary = $this->getTotalSalaryTeam();
+		return $maxSalaryCap - $totalSalary; 
+	}*/
+	
+	/**
+	  * Get player stats for a given month and stats category 
+	  */
+	/*public function getSpecificSeasonStats($statCategory, $month)
+	{
+		$stats;
+		$season  = getCurrentSeason();
+		
+		if($month == 'Season')
+		{
+			$stats = $this->getStats()[$season]->getCategoryStats($statCategory);
+		}
+		else
+		{
+			// TO DO : get Months stats function
+			$stats = $this->getStats()[$season]->getCategoryStats($statCategory);
+		}
+		return $stats;
+	}*/
 }
-?>

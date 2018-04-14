@@ -47,3 +47,4 @@ require_once( $GLOBALS['path']['controllers'] . 'StatController.class.php' );
 require_once( $GLOBALS['path']['models'] . 'DateModel.class.php' );
 require_once( $GLOBALS['path']['models'] . 'ConferenceModel.class.php' );
 require_once( $GLOBALS['path']['models'] . 'DivisionModel.class.php' );
+require_once( $GLOBALS['path']['models'] . 'TeamModel.class.php' );

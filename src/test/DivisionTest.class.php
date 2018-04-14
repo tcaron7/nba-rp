@@ -18,8 +18,9 @@ class DivisionTest
 		echo '<b>Name:</b> '; var_dump( $atlantic->getName() );
 		echo '<b>ConferenceId:</b> '; var_dump( $atlantic->getConferenceId() );
 		echo '<b>Conference:</b> '; var_dump( $atlantic->getConference() );
+		echo '<b>Teams:</b> '; var_dump( $atlantic->getTeams() );
 
-		$new = new Division();
+		/*$new = new Division();
 		$new->setName( 'Unknown' );
 		$new->setConferenceId( $atlantic->getConferenceId() );
 		$divisionModel->save( $new );
@@ -32,7 +33,7 @@ class DivisionTest
 
 		$divisionModel->delete( $new );
 		$all = $divisionModel->findAll();
-		echo '<b>All divisions:</b> '; var_dump( $all );
+		echo '<b>All divisions:</b> '; var_dump( $all );*/
 
 		echo '</pre>';
 	}

@@ -18,7 +18,8 @@ class Date
 	/*    Constructs    */
 	/********************/
 
-	function __construct( array $data = null ) {
+	function __construct( array $data = null )
+	{
 		if ( !is_null( $data ) )
 		{
 			$this->constructWithData( $data );

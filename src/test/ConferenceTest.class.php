@@ -17,8 +17,9 @@ class ConferenceTest
 		echo '<b>Id:</b> '; var_dump( $east->getId() );
 		echo '<b>Name:</b> '; var_dump( $east->getName() );
 		echo '<b>Divisions:</b> '; var_dump( $east->getDivisions() );
+		echo '<b>Teams:</b> '; var_dump( $east->getTeams() );
 
-		$new = new Conference();
+		/*$new = new Conference();
 		$new->setName( 'Unknown' );
 		$conferenceModel->save( $new );
 		echo '<b>New conference:</b> '; var_dump( $new );
@@ -30,7 +31,7 @@ class ConferenceTest
 
 		$conferenceModel->delete( $new );
 		$all = $conferenceModel->findAll();
-		echo '<b>All conferences:</b> '; var_dump( $all );
+		echo '<b>All conferences:</b> '; var_dump( $all );*/
 
 		echo '</pre>';
 	}

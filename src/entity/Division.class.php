@@ -17,7 +17,8 @@ class Division
 	/*    Constructs    */
 	/********************/
 
-	function __construct( array $data = null ) {
+	function __construct( array $data = null )
+	{
 		if ( !is_null( $data ) )
 		{
 			$this->constructWithData( $data );
@@ -108,6 +109,15 @@ class Division
 	public function setConference( Conference $conference = null )
 	{
 		$this->setConferenceId( $conference->getId() );
+	}
+
+	/**
+	  * Returns all teams of a division
+	  */
+	public function getTeams()
+	{
+		$teamModel = new TeamModel();
+		return $teamModel->findByDivision( $this->getId() );
 	}
 
 }
