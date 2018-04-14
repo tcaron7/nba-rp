@@ -40,3 +40,6 @@ require_once( $GLOBALS['path']['controllers'] . 'SeasonController.class.php' );
 require_once( $GLOBALS['path']['controllers'] . 'PlayerController.class.php' );
 require_once( $GLOBALS['path']['controllers'] . 'ProspectController.class.php' );
 require_once( $GLOBALS['path']['controllers'] . 'StatController.class.php' );
+
+// Models
+require_once( $GLOBALS['path']['models'] . 'DateModel.class.php' );
