@@ -1,6 +1,6 @@
 <?php
 
-class Conference
+class Division
 {
 
 
@@ -10,6 +10,7 @@ class Conference
 
 	private $id;
 	private $name;
+	private $conferenceId;
 
 
 	/********************/
@@ -40,6 +41,11 @@ class Conference
 		{
 			$this->setName( $data['name'] );
 		}
+
+		if ( $data['conferenceId'] )
+		{
+			$this->setConferenceId( $data['conferenceId'] );
+		}
 	}
 
 
@@ -57,6 +63,11 @@ class Conference
 		return $this->name;
 	}
 
+	public function getConferenceId()
+	{
+		return $this->conferenceId;
+	}
+
 
 	/********************/
 	/*     Setters      */
@@ -72,18 +83,31 @@ class Conference
 		$this->name = $name;
 	}
 
+	public function setConferenceId( int $conferenceId = null )
+	{
+		$this->conferenceId = $conferenceId;
+	}
+
 
 	/********************/
 	/*    Functions     */
 	/********************/
 
 	/**
-	  * Returns all divisions of a conference
+	  * Return the conference object parent of a division
 	  */
-	public function getDivisions()
+	public function getConference()
 	{
-		$divisionModel = new DivisionModel();
-		return $divisionModel->findByConference( $this->getId() );
+		$conferenceModel = new ConferenceModel();
+		return $conferenceModel->findById( $this->getConferenceId() );
+	}
+
+	/**
+	  * Sets the conference object parent of a division
+	  */
+	public function setConference( Conference $conference = null )
+	{
+		$this->setConferenceId( $conference->getId() );
 	}
 
 }

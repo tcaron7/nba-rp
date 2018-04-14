@@ -16,6 +16,7 @@ class ConferenceTest
 		echo '<b>East conference:</b> '; var_dump( $east );
 		echo '<b>Id:</b> '; var_dump( $east->getId() );
 		echo '<b>Name:</b> '; var_dump( $east->getName() );
+		echo '<b>Divisions:</b> '; var_dump( $east->getDivisions() );
 
 		$new = new Conference();
 		$new->setName( 'Unknown' );
