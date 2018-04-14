@@ -1,9 +1,11 @@
 <?php
 
 // Entities
-require_once( $GLOBALS['path']['entities'] . 'Date.class.php' );
 require_once( $GLOBALS['path']['entities'] . 'Route.class.php' );
 require_once( $GLOBALS['path']['entities'] . 'Router.class.php' );
+require_once( $GLOBALS['path']['entities'] . 'Date.class.php' );
+require_once( $GLOBALS['path']['entities'] . 'Conference.class.php' );
+require_once( $GLOBALS['path']['entities'] . 'Division.class.php' );
 require_once( $GLOBALS['path']['entities'] . 'Person.class.php' );
 require_once( $GLOBALS['path']['entities'] . 'Player.class.php' );
 require_once( $GLOBALS['path']['entities'] . 'Prospect.class.php' );
@@ -43,3 +45,5 @@ require_once( $GLOBALS['path']['controllers'] . 'StatController.class.php' );
 
 // Models
 require_once( $GLOBALS['path']['models'] . 'DateModel.class.php' );
+require_once( $GLOBALS['path']['models'] . 'ConferenceModel.class.php' );
+require_once( $GLOBALS['path']['models'] . 'DivisionModel.class.php' );
