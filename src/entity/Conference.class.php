@@ -16,32 +16,7 @@ class Conference
 	/*    Constructs    */
 	/********************/
 
-	function __construct( array $data = null )
-	{
-		if ( !is_null( $data ) )
-		{
-			$this->constructWithData( $data );
-		}
-		else
-		{
-			$this->constructWithNone();
-		}
-	}
-
-	function constructWithNone() { }
-
-	function constructWithData( $data )
-	{
-		if ( $data['id'] )
-		{
-			$this->setId( $data['id'] );
-		}
-
-		if ( $data['name'] )
-		{
-			$this->setName( $data['name'] );
-		}
-	}
+	function __construct() { }
 
 
 	/********************/

@@ -18,51 +18,7 @@ class Date
 	/*    Constructs    */
 	/********************/
 
-	function __construct( array $data = null )
-	{
-		if ( !is_null( $data ) )
-		{
-			$this->constructWithData( $data );
-		}
-		else
-		{
-			$this->constructWithNone();
-		}
-	}
-
-	function constructWithNone() { }
-
-	function constructWithData( $data )
-	{
-		if ( $data['year'] >= 100 and $data['century'] )
-		{
-			throw new Exception( 'Century given twice.' );
-		}
-
-		if ( $data['day'] )
-		{
-			$this->setDay( $data['day'] );
-		}
-
-		if ( $data['month'] )
-		{
-			$this->setMonth( $data['month'] );
-		}
-
-		if ( $data['year'] >= 100 )
-		{
-			$this->setFullYear( $data['year'] );
-		}
-		else if ( $data['year'] )
-		{
-			$this->setYear( $data['year'] );
-		}
-
-		if ( $data['century'] )
-		{
-			$this->setCentury( $data['century'] );
-		}
-	}
+	function __construct() { }
 
 
 	/********************/
