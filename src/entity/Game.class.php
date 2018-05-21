@@ -1,175 +1,239 @@
 <?php
-include_once('model/game/read.php');
-include_once('model/game/write.php');
 
 class Game
 {
+
+
 	/********************/
 	/*    Attributes    */
 	/********************/
-	
-    private $id;
-    private $season;
-    private $gameDate;
-    private $homeTeam;
-	private $visitorTeam;
-    private $homeTeamScore;
-    private $visitorTeamScore;
-    private $overtime;
-	private $winnerId;
-	private $loserId;
-    private $status;
-	
-	
+
+	private $id;
+	private $date;
+	private $seasonId;
+	private $homeTeamId;
+	private $visitorTeamId;
+	private $homeTeamScore;
+	private $visitorTeamScore;
+	private $overtime;
+	private $comment;
+
+
 	/********************/
 	/*    Constructs    */
 	/********************/
-	
-	function __construct($id,$homeTeamId,$visitorTeamId,$season) {
-		if ($id != null) {
-			$game = getGameById($id);
-			
-			$this->id               = $game['gameId'];
-			$this->season           = $game['season'];
-			$this->gameDate         = $game['date'];
-			$this->homeTeam         = new Team ($game['homeTeamId']);
-			$this->visitorTeam      = new Team ($game['visitorTeamId']);
-			$this->homeTeamScore    = $game['homeTeamScore'];
-			$this->visitorTeamScore = $game['visitorTeamScore'];
-			$this->overtime         = $game['overtime'];
-			$this->winnerId         = new Team ($game['winnerId']);
-			$this->loserId          = new Team ($game['loserId']);
-			$this->status           = $game['status'];
-		}
-        elseif ($homeTeamId != null and $visitorTeamId != null and $season != null)
-        {
-			$this->season           = $season;
-			$this->homeTeam         = new Team ($homeTeamId);
-			$this->visitorTeam      = new Team ($visitorTeamId);
-			$this->homeTeamScore    = 0;
-			$this->visitorTeamScore = 0;
-			$this->overtime         = 0;
-			$this->status           = 0;
-        }
-    }
-	
-	
+
+	function __construct() { }
+
+
 	/********************/
 	/*     Getters      */
 	/********************/
-	
+
 	public function getId()
 	{
 		return $this->id;
 	}
-	
-	public function getSeason()
-	{
-		return $this->season;
-	}
-	
-	public function getGameDate()
+
+	public function getDate()
 	{
 		return $this->gameDate;
 	}
-	
-	public function getHomeTeam()
+
+	public function getSeasonId()
 	{
-		return $this->homeTeam;
+		return $this->seasonId;
 	}
-	
-	public function getVisitorTeam()
+
+	public function getHomeTeamId()
 	{
-		return $this->visitorTeam;
+		return $this->homeTeamId;
 	}
-	
+
+	public function getVisitorTeamId()
+	{
+		return $this->visitorTeamId;
+	}
+
 	public function getHomeTeamScore()
 	{
 		return $this->homeTeamScore;
 	}
-	
+
 	public function getVisitorTeamScore()
 	{
 		return $this->visitorTeamScore;
 	}
-	
+
 	public function getOvertime()
 	{
 		return $this->overtime;
 	}
-	
-	public function getWinnerId()
+
+	public function getComment()
 	{
-		return $this->winnerId;
+		return $this->comment;
 	}
-	
-	public function getLoserId()
-	{
-		return $this->loserId;
-	}
-	
-	public function getStatus()
-	{
-		return $this->status;
-	}
-	
-	
+
+
 	/********************/
 	/*     Setters      */
 	/********************/
-	
-	public function setSeason($newSeason)
+
+	public function setId( int $id )
 	{
-		$this->season = $newSeason;
+		$this->id = $id;
 	}
-	
-	public function setGameDate($newGameDate)
+
+	public function setDate( string $date )
 	{
-		$this->gameDate = $newGameDate;
+		$this->date = $date;
 	}
-	
-	public function setHomeTeam($newHomeTeam)
+
+	public function setSeasonId( int $seasonId )
 	{
-		$this->homeTeam = $newHomeTeam;
+		$this->seasonId = $seasonId;
 	}
-	
-	public function setVisitorTeam($newVisitorTeam)
+
+	public function setHomeTeamId( int $homeTeamId )
 	{
-		$this->visitorTeam = $newVisitorTeam;
+		$this->homeTeamId = $homeTeamId;
 	}
-	
-	public function setHomeTeamScore($newHomeTeamScore)
+
+	public function setVisitorTeamId( int $visitorTeamId )
 	{
-		$this->homeTeamScore = $newHomeTeamScore;
+		$this->visitorTeamId = $visitorTeamId;
 	}
-	
-	public function setVisitorTeamScore($newVisitorTeamScore)
+
+	public function setHomeTeamScore( int $homeTeamScore = null )
 	{
-		$this->visitorTeamScore = $newVisitorTeamScore;
+		$this->homeTeamScore = $homeTeamScore;
 	}
-	
-	public function setOvertime($newOvertime)
+
+	public function setVisitorTeamScore( int $visitorTeamScore = null )
 	{
-		$this->overtime = $newOvertime;
+		$this->visitorTeamScore = $visitorTeamScore;
 	}
-	
-	public function setWinnerId($newWinnerId)
+
+	public function setOvertime( int $overtime = null )
 	{
-		$this->winnerId = $newWinnerId;
+		$this->overtime = $overtime;
 	}
-    
-	public function setLoserId($newLoserId)
+
+	public function setComment( string $comment = null )
 	{
-		$this->loserId = $newLoserId;
+		$this->comment = $comment;
 	}
-	
-	public function setStatus($newStatus)
-	{
-		$this->status = $newStatus;
-	}
-	
-	
+
+
 	/********************/
 	/*    Functions     */
 	/********************/
+
+	public function getSeason()
+	{
+		$seasonModel = new SeasonModel();
+		return $seasonModel->findById( $this->getSeasonId() );
+	}
+
+	public function setSeason( Season $season )
+	{
+		$this->setSeasonId( $season->getYear() );
+	}
+
+	public function getHomeTeam()
+	{
+		$teamModel = new TeamModel();
+		return $teamModel->findById( $this->getHomeTeamId() );
+	}
+
+	public function setHomeTeam( Team $homeTeam )
+	{
+		$this->setHomeTeamId( $homeTeam->getId() );
+	}
+
+	public function getVisitorTeam()
+	{
+		$teamModel = new TeamModel();
+		return $teamModel->findById( $this->getVisitorTeamId() );
+	}
+
+	public function setVisitorTeam( Team $visitorTeam )
+	{
+		$this->setVisitorTeamId( $visitorTeam->getId() );
+
+	}
+
+	public function isFinished()
+	{
+		if ( $this->getHomeTeamScore() and $this->getVisitorTeamScore() )
+		{
+			return 1;
+		}
+		else
+		{
+			return 0;
+		}
+	}
+
+	public function getWinnerTeamId()
+	{
+		if ( !$this->isFinished() )
+		{
+			return null;
+		}
+
+		if ( $this->getHomeTeamScore() > $this->getVisitorTeamScore() )
+		{
+			return $this->getHomeTeamId();
+		}
+
+		return $this->getVisitorTeamId();
+	}
+
+	public function getLoserTeamId()
+	{
+		if ( !$this->isFinished() )
+		{
+			return null;
+		}
+
+		if ( $this->getHomeTeamScore() < $this->getVisitorTeamScore() )
+		{
+			return $this->getHomeTeamId();
+		}
+
+		return $this->getVisitorTeamId();
+	}
+
+	public function getWinnerTeam()
+	{
+		if ( !$this->isFinished() )
+		{
+			return null;
+		}
+
+		if ( $this->getHomeTeamScore() > $this->getVisitorTeamScore() )
+		{
+			return $this->getHomeTeam();
+		}
+
+		return $this->getVisitorTeam();
+	}
+
+	public function getLoserTeam()
+	{
+		if ( !$this->isFinished() )
+		{
+			return null;
+		}
+
+		if ( $this->getHomeTeamScore() < $this->getVisitorTeamScore() )
+		{
+			return $this->getHomeTeam();
+		}
+
+		return $this->getVisitorTeam();
+	}
+
 }

@@ -49,3 +49,4 @@ require_once( $GLOBALS['path']['models'] . 'ConferenceModel.class.php' );
 require_once( $GLOBALS['path']['models'] . 'DivisionModel.class.php' );
 require_once( $GLOBALS['path']['models'] . 'TeamModel.class.php' );
 require_once( $GLOBALS['path']['models'] . 'SeasonModel.class.php' );
+require_once( $GLOBALS['path']['models'] . 'GameModel.class.php' );
