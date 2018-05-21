@@ -1,184 +1,192 @@
 <?php
-include_once('model/person/read.php');
-include_once('model/person/write.php');
 
 class Person
 {
+
+
 	/********************/
 	/*    Attributes    */
 	/********************/
-	
+
 	private $id;
-    private $firstname;
-	private $name;
+	private $firstName;
+	private $lastName;
+	private $middleName;
+	private $nickName;
 	private $birthdate;
+	private $birthplace;
 	private $nationality;
 	private $formation;
 	private $height;
 	private $weight;
-	
-	
+
+
 	/********************/
 	/*    Constructs    */
 	/********************/
-	
-	function __construct($id) {
-		if ( $id == 0 ) {	
-			$this->id         	= 0;
-			$this->firstname	= '';
-			$this->name         = '';
-			$this->birthdate  	= '01-01-2000';
-			$this->nationality	= '';
-			$this->formation	= '';
-			$this->height		= 0.0;
-			$this->weight		= 0;
-		}
-		else if ( $id ) {
-			$person = getPersonById($id);
-			
-			$this->id          = $person['personId'];
-			$this->firstname   = $person['firstname'];
-			$this->name        = $person['name'];
-			$this->birthdate   = $person['birthdate'];
-			$this->nationality = $person['nationality'];
-			$this->formation   = $person['formation'];
-			$this->height      = $person['height'];
-			$this->weight      = $person['weight'];
-		}
-    }
-	
-	
+
+	function __construct() { }
+
+
 	/********************/
 	/*     Getters      */
 	/********************/
-	
+
 	public function getId()
 	{
 		return $this->id;
 	}
-	
-	public function getFirstname()
+
+	public function getFirstName()
 	{
-		return $this->firstname;
+		return $this->firstName;
 	}
-	
-	public function getName()
+
+	public function getLastName()
 	{
-		return $this->name;
+		return $this->lastName;
 	}
-    
-    public function getFullName()
+
+	public function getMiddleName()
 	{
-        $playerFullName = $this->getFirstname() . ' ' . $this->getName();
-		return $playerFullName;
+		return $this->lastName;
 	}
-	
+
+	public function getNickName()
+	{
+		return $this->lastName;
+	}
+
 	public function getBirthdate()
 	{
 		return $this->birthdate;
 	}
-	
+
+	public function getBirthplace()
+	{
+		return $this->birthplace;
+	}
+
 	public function getNationality()
 	{
 		return $this->nationality;
 	}
-	
+
 	public function getFormation()
 	{
 		return $this->formation;
 	}
-	
+
 	public function getHeight()
 	{
 		return $this->height;
 	}
-	
+
 	public function getWeight()
 	{
 		return $this->weight;
 	}
-	
-	
+
+
 	/********************/
 	/*     Setters      */
 	/********************/
 
-	public function setId($newId)
+	public function setId( $id )
 	{
-		$this->id = $newId;
-	}
-	
-	public function setFirstname($newFirstname)
-	{
-		$this->firstname = $newFirstname;
-	}
-	
-	public function setName($newName)
-	{
-		$this->name = $newName;
-	}
-	
-	public function setBirthdate($newBirthdate)
-	{
-		$this->birthdate = $newBirthdate;
+		$this->id = $id;
 	}
 
-	public function setNationality($newNationality)
+	public function setFirstName( $firstName )
 	{
-		$this->nationality = $newNationality;
-	}
-	
-	public function setFormation($newFormation)
-	{
-		$this->formation = $newFormation;
+		$this->firstName = $firstName;
 	}
 
-	public function setHeight($newHeight)
+	public function setLastName( $lastName )
 	{
-		$this->height = $newHeight;
+		$this->lastName = $lastName;
+	}
+
+	public function setMiddleName( $middleName )
+	{
+		$this->middleName = $middleName;
+	}
+
+	public function setNickName( $nickName )
+	{
+		$this->nickName = $nickName;
+	}
+
+	public function setBirthdate( $birthdate )
+	{
+		$this->birthdate = $birthdate;
+	}
+
+	public function setBirthplace( $birthplace )
+	{
+		$this->birthplace = $birthplace;
+	}
+
+	public function setNationality( $nationality )
+	{
+		$this->nationality = $nationality;
+	}
+
+	public function setFormation( $formation )
+	{
+		$this->formation = $formation;
+	}
+
+	public function setHeight( $height )
+	{
+		$this->height = $height;
 	}
 	
-	public function setWeight($newWeight)
+	public function setWeight( $weight )
 	{
-		$this->weight = $newWeight;
+		$this->weight = $weight;
 	}
-	
-	
+
+
 	/********************/
 	/*    Functions     */
 	/********************/
-	
+
 	/**
-	  * Returns the age of a person on current date
+	  * Returns the full name a person (first and last name).
+	  */
+	public function getFullName()
+	{
+		return $this->getFirstName() . ' ' . $this->getLastName();
+	}
+
+	/**
+	  * Returns the age of a person on current date or "unknown" if birthdate is not given.
 	  */
 	public function getAge()
 	{
-		$age;
-		$current;
-		$birth;
-		
-		if ( $this->getBirthdate() == '0000-00-00')
+		if ( !$this->getBirthdate() )
 		{
-			return 'Non communiqué';
+			return 'unknown';
 		}
-		
-		preg_match('/^(?<year>[0-9]{4})-(?<month>[0-9]{2})-(?<day>[0-9]{2})$/', getCurrentDate(), $current);
-		preg_match('/^(?<year>[0-9]{4})-(?<month>[0-9]{2})-(?<day>[0-9]{2})$/', $this->getBirthdate(), $birth);
-		
-		$age = $current['year'] - $birth['year'];
-		
-		if ($current['month'] < $birth['month'])
-		{
-			$age--;
-		}
-		
-		if ( $current['month'] == $birth['month'] && $current['day'] < $birth['day'])
+
+		$dateModel   = new DateModel();
+		$currentDate = $dateModel->findCurrentDate();
+
+		$birthDate = new Date();
+		$birthDate->setFullYear( $this->getBirthdate() );
+
+		$age = $currentDate->getYear() - $birthDate->getYear();
+
+		if ( $currentDate->getMonth() < $birthDate->getMonth() )
 		{
 			$age--;
 		}
-		
+		else if ( $currentDate->getMonth() == $birthDate->getMonth() && $currentDate->getDay() < $birthDategetDay() )
+		{
+			$age--;
+		}
+
 		return $age;
 	}
-	
 }
-?>
