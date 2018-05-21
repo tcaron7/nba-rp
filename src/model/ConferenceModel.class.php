@@ -87,7 +87,7 @@ class ConferenceModel
 		{
 			throw new \Exception( sprintf( 'Can not delete conference without ID.' ) );
 		}
-		
+
 		$request = $GLOBALS['db']->prepare('
 			DELETE FROM conference
 			WHERE conference.conferenceId = :id
@@ -103,8 +103,16 @@ class ConferenceModel
 	{
 		$conference = new Conference();
 		$conference->setId( $row['conferenceId'] );
-		$conference->setName( $row['name'] );
+
+		foreach ( $row as $key => $value )
+		{
+			$method = 'set' . ucfirst( $key );
+			if ( method_exists( $conference, $method ) )
+			{
+				$conference->$method( $value );
+			}
+		}
+
 		return $conference;
 	}
-
 }

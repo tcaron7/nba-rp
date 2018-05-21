@@ -194,21 +194,16 @@ class SeasonModel
 	protected function buildDomainObject( array $row )
 	{
 		$season = new Season();
-		$season->setYear( $row['year'] );
-		$season->setStartDate( $row['startDate'] );
-		$season->setStopDate( $row['stopDate'] );
-		$season->setDraftDate( $row['draftDate'] );
-		$season->setTradeLimitDate( $row['tradeLimitDate'] );
-		$season->setSignatureLimitDate( $row['signatureLimitDate'] );
-		$season->setRestrictedFreeAgentOptionLimitDate( $row['restrictedFreeAgentOptionLimitDate'] );
-		$season->setAllStarGameDate( $row['allStarGameDate'] );
-		$season->setRegularSeasonAwardsDate( $row['regularSeasonAwardsDate'] );
-		$season->setSalaryCap( $row['salaryCap'] );
-		$season->setContractMax( $row['contractMax'] );
-		$season->setMaxPlayersInTeam( $row['maxPlayersInTeam'] );
-		$season->setChampionTeamId( $row['championTeamId'] );
-		$season->setFinalistTeamId( $row['finalistTeamId'] );
+
+		foreach ( $row as $key => $value )
+		{
+			$method = 'set' . ucfirst( $key );
+			if ( method_exists( $season, $method ) )
+			{
+				$season->$method( $value );
+			}
+		}
+
 		return $season;
 	}
-
 }

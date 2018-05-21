@@ -140,16 +140,16 @@ class PersonModel
 	{
 		$person = new Person();
 		$person->setId( $row['personId'] );
-		$person->setFirstName( $row['firstName'] );
-		$person->setLastName( $row['lastName'] );
-		$person->setMiddleName( $row['middleName'] );
-		$person->setNickName( $row['nickName'] );
-		$person->setBirthdate( $row['birthdate'] );
-		$person->setBirthplace( $row['birthplace'] );
-		$person->setNationality( $row['nationality'] );
-		$person->setFormation( $row['formation'] );
-		$person->setHeight( $row['height'] );
-		$person->setWeight( $row['weight'] );
+
+		foreach ( $row as $key => $value )
+		{
+			$method = 'set' . ucfirst( $key );
+			if ( method_exists( $person, $method ) )
+			{
+				$person->$method( $value );
+			}
+		}
+
 		return $person;
 	}
 }

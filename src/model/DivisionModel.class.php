@@ -77,7 +77,7 @@ class DivisionModel
 		{
 			throw new \Exception( sprintf( 'Can not save division without a name.' ) );
 		}
-		
+
 		if ( !$division->getConferenceId() )
 		{
 			throw new \Exception( sprintf( 'Can not save division without a conferenceId.' ) );
@@ -122,7 +122,7 @@ class DivisionModel
 		{
 			throw new \Exception( sprintf( 'Can not delete division without ID.' ) );
 		}
-		
+
 		$request = $GLOBALS['db']->prepare('
 			DELETE FROM division
 			WHERE division.divisionId = :id
@@ -138,9 +138,16 @@ class DivisionModel
 	{
 		$division = new Division();
 		$division->setId( $row['divisionId'] );
-		$division->setName( $row['name'] );
-		$division->setConferenceId( $row['conferenceId'] );
+
+		foreach ( $row as $key => $value )
+		{
+			$method = 'set' . ucfirst( $key );
+			if ( method_exists( $division, $method ) )
+			{
+				$division->$method( $value );
+			}
+		}
+
 		return $division;
 	}
-
 }

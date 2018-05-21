@@ -221,15 +221,16 @@ class GameModel
 	{
 		$game = new Game();
 		$game->setId( $row['gameId'] );
-		$game->setDate( $row['date'] );
-		$game->setSeasonId( $row['seasonId'] );
-		$game->setHomeTeamId( $row['homeTeamId'] );
-		$game->setVisitorTeamId( $row['visitorTeamId'] );
-		$game->setHomeTeamScore( $row['homeTeamScore'] );
-		$game->setVisitorTeamScore( $row['visitorTeamScore'] );
-		$game->setOvertime( $row['overtime'] );
-		$game->setComment( $row['comment'] );
+
+		foreach ( $row as $key => $value )
+		{
+			$method = 'set' . ucfirst( $key );
+			if ( method_exists( $game, $method ) )
+			{
+				$game->$method( $value );
+			}
+		}
+
 		return $game;
 	}
-
 }

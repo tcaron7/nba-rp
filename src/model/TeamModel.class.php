@@ -75,7 +75,7 @@ class TeamModel
 	public function findByConference( int $id )
 	{
 		$request = $GLOBALS['db']->prepare('
-			SELECT *
+			SELECT team.*
 			FROM team
 			LEFT JOIN division ON team.divisionId = division.divisionId
 			WHERE division.conferenceId = :id
@@ -175,7 +175,7 @@ class TeamModel
 		{
 			throw new \Exception( sprintf( 'Can not delete team without ID.' ) );
 		}
-		
+
 		$request = $GLOBALS['db']->prepare('
 			DELETE FROM team
 			WHERE team.teamId = :id
@@ -191,13 +191,16 @@ class TeamModel
 	{
 		$team = new Team();
 		$team->setId( $row['teamId'] );
-		$team->setCity( $row['city'] );
-		$team->setName( $row['name'] );
-		$team->setAbbreviation( $row['abbreviation'] );
-		$team->setDivisionId( $row['divisionId'] );
-		$team->setMainColor( $row['mainColor'] );
-		$team->setSecondaryColor( $row['secondaryColor'] );
+
+		foreach ( $row as $key => $value )
+		{
+			$method = 'set' . ucfirst( $key );
+			if ( method_exists( $team, $method ) )
+			{
+				$team->$method( $value );
+			}
+		}
+
 		return $team;
 	}
-
 }
