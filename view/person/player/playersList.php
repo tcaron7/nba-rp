@@ -1,7 +1,7 @@
 <section class="playersList">
     <div class="sectionHeader">
         Players of the season
-        <a class="button" href="<?php echo $GLOBALS['router']->generateUrl( 'player_create', array( 'id' => $player->getId() ) ); ?>">Add Player</a>
+        <a class="button" href="<?php echo $GLOBALS['router']->generateUrl( 'player_create' ); ?>">Add Player</a>
     </div>
 
     <div class="sectionBody">
