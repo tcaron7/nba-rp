@@ -5,9 +5,9 @@
         $totalMinutes = 0;
         foreach($teamPlayers[$teamIndex] as $teamPlayer)
         {
-            $playerStats   = $teamPlayer->getStats()[$season];
-            if($playerStats != NULL)
-            {
+            if(isset($teamPlayer->getStats()[$season]) && ($teamPlayer->getStats()[$season]) != NULL)
+            {    
+                $playerStats   = $teamPlayer->getStats()[$season];
                 $playerGames   = $playerStats->getGames();
                 $playerMinutes = $playerStats->getMinutes();
             }
@@ -16,8 +16,8 @@
                 $playerGames   = 0;
                 $playerMinutes = 0;
             }
-
-            if($teamPlayer->getInjuryStatus() == 'Healthy')
+            
+            if( ($teamPlayer->getInjuryStatus() == 'Healthy') && ($playerGames > 0) )
             {
                 if($playerMinutes/$playerGames > 10)
                 {
@@ -43,7 +43,7 @@
             {
                 $playersMinutes[$teamIndex][$teamPlayer->getId()] = 0;
             }
-            
+
             $totalMinutes = $totalMinutes + $playersMinutes[$teamIndex][$teamPlayer->getId()];
         }
         
