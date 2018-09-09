@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS `draftpick` (
   `originalOwnerTeamId` int(11) NOT NULL,
   `currentOwnerTeamId` int(11) NOT NULL,
   PRIMARY KEY (`draftPickId`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1638 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1639 ;
 
 CREATE TABLE IF NOT EXISTS `game` (
   `gameId` int(11) NOT NULL AUTO_INCREMENT,
@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS `injury` (
   `recoveryDate` date NOT NULL,
   `injurySeverity` varchar(25) NOT NULL,
   PRIMARY KEY (`injuryId`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=52 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=55 ;
 
 CREATE TABLE IF NOT EXISTS `nbacurrentdate` (
   `nbaDate` date NOT NULL
@@ -150,7 +150,7 @@ CREATE TABLE IF NOT EXISTS `statplayer` (
   `blocks` int(11) NOT NULL,
   `evaluation` int(11) NOT NULL,
   PRIMARY KEY (`statsId`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1841 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3114 ;
 
 CREATE TABLE IF NOT EXISTS `statsgame` (
   `statsId` int(11) NOT NULL AUTO_INCREMENT,
@@ -175,7 +175,7 @@ CREATE TABLE IF NOT EXISTS `statsgame` (
   `blocks` int(11) NOT NULL,
   `evaluation` int(11) NOT NULL,
   PRIMARY KEY (`statsId`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8789 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9325 ;
 
 CREATE TABLE IF NOT EXISTS `team` (
   `teamId` int(11) NOT NULL AUTO_INCREMENT,
@@ -197,10 +197,10 @@ CREATE TABLE IF NOT EXISTS `tradeelement` (
   `tradeElement` int(11) NOT NULL,
   `tradeElementType` varchar(25) NOT NULL,
   PRIMARY KEY (`tradeElementId`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=76 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=80 ;
 
 CREATE TABLE IF NOT EXISTS `transaction` (
   `transactionId` int(11) NOT NULL AUTO_INCREMENT,
   `date` date NOT NULL,
   PRIMARY KEY (`transactionId`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=160 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=161 ;
