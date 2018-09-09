@@ -175,7 +175,7 @@ function insertStatsGame($statsGame)
             {
                 // Insert player stat
                 $request = $db->prepare('
-                    INSERT INTO statsGame (
+                    INSERT INTO statsgame (
                         playerId,
                         playerTeamId,
                         season,
