@@ -328,9 +328,9 @@ class GameController
 			$totalMinutes = 0;
 			foreach ( $teamPlayers[$teamIndex] as $teamPlayer )
 			{
-				$playerStats = $teamPlayer->getStats()[$season];
-				if ( $playerStats != NULL )
-				{
+				if(isset($teamPlayer->getStats()[$season]) && ($teamPlayer->getStats()[$season]) != NULL)
+				{    
+					$playerStats   = $teamPlayer->getStats()[$season];
 					$playerGames   = $playerStats->getGames();
 					$playerMinutes = $playerStats->getMinutes();
 				}
@@ -344,7 +344,7 @@ class GameController
 				{
 					$playersMinutes[$teamIndex][$teamPlayer->getId()] = 0;
 				}
-				else if ( $teamPlayer->getInjuryStatus() == 'Healthy' )
+				else if ( ( $teamPlayer->getInjuryStatus() == 'Healthy' ) && ($playerGames > 0) )
 				{
 					if ( $playerMinutes / $playerGames > 10 )
 					{
