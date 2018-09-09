@@ -78,7 +78,7 @@ function getSeasonsPlayedByPlayers($playerId)
 	$seasons;
 	$playerSeasons=null;
     
-	$request = $db->prepare('SELECT season FROM statPlayer WHERE playerId = :playerId GROUP BY season');
+	$request = $db->prepare('SELECT season FROM statplayer WHERE playerId = :playerId GROUP BY season');
 	$request->bindParam(':playerId', $playerId, PDO::PARAM_INT);
     $request->execute();
 	$seasons = $request->fetchAll();
@@ -106,7 +106,7 @@ function getTeamsPlayedByPlayersInASeason($playerId, $season)
 	$teams;
 	$playerSeasonTeams=null;
     
-	$request = $db->prepare('SELECT teamId FROM statPlayer WHERE playerId = :playerId AND season = :season GROUP BY teamId');
+	$request = $db->prepare('SELECT teamId FROM statplayer WHERE playerId = :playerId AND season = :season GROUP BY teamId');
 	$request->bindParam(':playerId', $playerId, PDO::PARAM_INT);
 	$request->bindParam(':season',	 $season, 	PDO::PARAM_INT);
     $request->execute();

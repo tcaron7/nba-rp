@@ -253,7 +253,7 @@ function updateRookieContract($rookiePlayer)
     
     $request = $db->prepare('
         SELECT *
-        FROM rookieContract
+        FROM rookiecontract
         WHERE pick = :pick
     ');
     $request->bindValue(':pick', $rookiePlayer->getDraftPosition(),   PDO::PARAM_INT);

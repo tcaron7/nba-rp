@@ -6,7 +6,7 @@
 function getCurrentDate()
 {
     global $db;
-	$request = $db->query('SELECT nbaDate FROM nbaCurrentDate');
+	$request = $db->query('SELECT nbaDate FROM nbacurrentdate');
 	$data    = $request->fetch();
 	
 	$request->closeCursor();
@@ -19,7 +19,7 @@ function getCurrentDate()
 function getCurrentDay()
 {
     global $db;
-	$request = $db->query('SELECT nbaDate FROM nbaCurrentDate');
+	$request = $db->query('SELECT nbaDate FROM nbacurrentdate');
 	$data    = $request->fetch();
 
 	preg_match('/^([0-9]{4})-([0-9]{2})-(?<day>[0-9]{2})$/', $data['nbaDate'], $currentSeason);
@@ -34,7 +34,7 @@ function getCurrentDay()
 function getCurrentMonth()
 {
     global $db;
-	$request = $db->query('SELECT nbaDate FROM nbaCurrentDate');
+	$request = $db->query('SELECT nbaDate FROM nbacurrentdate');
 	$data    = $request->fetch();
 
 	preg_match('/^([0-9]{4})-(?<month>[0-9]{2})-([0-9]{2})$/', $data['nbaDate'], $currentSeason);
@@ -49,7 +49,7 @@ function getCurrentMonth()
 function getCurrentYear()
 {
     global $db;
-	$request = $db->query('SELECT nbaDate FROM nbaCurrentDate');
+	$request = $db->query('SELECT nbaDate FROM nbacurrentdate');
 	$data    = $request->fetch();
 
 	preg_match('/^(?<year>[0-9]{4})-([0-9]{2})-([0-9]{2})$/', $data['nbaDate'], $currentSeason);
@@ -64,7 +64,7 @@ function getCurrentYear()
 function getCurrentSeason()
 {
     global $db;
-	$request = $db->query('SELECT nbaDate FROM nbaCurrentDate');
+	$request = $db->query('SELECT nbaDate FROM nbacurrentdate');
 	$data    = $request->fetch();
 
 	preg_match('/^(?<year>[0-9]{4})-(?<month>[0-9]{2})-(?<day>[0-9]{2})$/', $data['nbaDate'], $currentSeason);

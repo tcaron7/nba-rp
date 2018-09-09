@@ -11,7 +11,7 @@ $GLOBALS['db']['options'] = array(
 );
 
 // Server
-$GLOBALS['server']   = '';
+$GLOBALS['server']   = 'http://raspberrypi.local/play-nba/';
 $GLOBALS['timezone'] = 'Europe/Paris';
 
 // Paths
