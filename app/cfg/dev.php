@@ -8,8 +8,8 @@ $GLOBALS['db']['options'] = array(
 	'driver'   => 'mysql',
 	'host'     => 'localhost',
 	'dbname'   => 'nba',
-	'user'     => 'root',
-	'password' => '',
+	'user'     => 'admin',
+	'password' => 'admin',
 	'charset'  => 'UTF8',
 );
 
